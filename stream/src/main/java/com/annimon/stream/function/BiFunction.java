@@ -23,7 +23,8 @@ public interface BiFunction<T, U, R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code BiFunction} calls.
@@ -39,18 +40,8 @@ public interface BiFunction<T, U, R> {
          * @return the result of composed function
          * @throws NullPointerException if {@code f1} or {@code f2} is null
          */
-        public static <T, U, R, V> BiFunction<T, U, V> andThen(
-                @NotNull final BiFunction<? super T, ? super U, ? extends R> f1,
-                @NotNull final Function<? super R, ? extends V> f2) {
-            Objects.requireNonNull(f1, "f1");
-            Objects.requireNonNull(f2, "f2");
-            return new BiFunction<T, U, V>() {
-
-                @Override
-                public V apply(T t, U u) {
-                    return f2.apply(f1.apply(t, u));
-                }
-            };
+        public static <T, U, R, V> BiFunction<T, U, V> andThen(@NotNull final BiFunction<? super T, ? super U, ? extends R> f1, @NotNull final Function<? super R, ? extends V> f2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -68,15 +59,8 @@ public interface BiFunction<T, U, R> {
          * @throws NullPointerException if {@code function} is null
          * @since 1.1.6
          */
-        public static <T, U, R> BiFunction<U, T, R> reverse(
-                @NotNull final BiFunction<? super T, ? super U, ? extends R> function) {
-            Objects.requireNonNull(function);
-            return new BiFunction<U, T, R>() {
-                @Override
-                public R apply(U u, T t) {
-                    return function.apply(t, u);
-                }
-            };
+        public static <T, U, R> BiFunction<U, T, R> reverse(@NotNull final BiFunction<? super T, ? super U, ? extends R> function) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

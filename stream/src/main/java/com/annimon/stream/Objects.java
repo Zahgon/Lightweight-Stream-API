@@ -15,7 +15,8 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("WeakerAccess")
 public final class Objects {
 
-    private Objects() { }
+    private Objects() {
+    }
 
     /**
      * Checks equality of two objects.
@@ -26,7 +27,7 @@ public final class Objects {
      */
     @Contract(pure = true)
     public static boolean equals(@Nullable Object a, @Nullable Object b) {
-        return (a == b) || (a != null && a.equals(b));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -41,9 +42,7 @@ public final class Objects {
      */
     @Contract(pure = true)
     public static boolean deepEquals(@Nullable Object a, @Nullable Object b) {
-        return (a == b)
-                || (a != null && b != null)
-                && Arrays.deepEquals(new Object[] { a }, new Object[] { b });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -54,7 +53,7 @@ public final class Objects {
      */
     @Contract(pure = true)
     public static int hashCode(@Nullable Object o) {
-        return o != null ? o.hashCode() : 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -65,12 +64,7 @@ public final class Objects {
      */
     @Contract(pure = true)
     public static int hash(@Nullable Object... values) {
-        if (values == null) return 0;
-
-        int result = 1;
-        for (Object element : values)
-            result = 31 * result + hashCode(element);
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,7 +77,7 @@ public final class Objects {
     @NotNull
     @Contract("null, _ -> param2")
     public static String toString(@Nullable Object o, @NotNull String nullDefault) {
-        return (o != null) ? o.toString() : nullDefault;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -97,7 +91,7 @@ public final class Objects {
      */
     @Contract(pure = true)
     public static <T> int compare(@Nullable T a, @Nullable T b, @NotNull Comparator<? super T> c) {
-        return (a == b) ? 0 : c.compare(a, b);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -110,7 +104,7 @@ public final class Objects {
      */
     @Contract(pure = true)
     public static int compareInt(int x, int y) {
-        return (x < y) ? -1 : ((x == y) ? 0 : 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,7 +117,7 @@ public final class Objects {
      */
     @Contract(pure = true)
     public static int compareLong(long x, long y) {
-        return (x < y) ? -1 : ((x == y) ? 0 : 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -138,9 +132,7 @@ public final class Objects {
     @NotNull
     @Contract(value = "null -> fail; !null -> param1", pure = true)
     public static <T> T requireNonNull(@Nullable T obj) {
-        if (obj == null)
-            throw new NullPointerException();
-        else return obj;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -156,9 +148,7 @@ public final class Objects {
     @NotNull
     @Contract(value = "null, _ -> fail; !null, _ -> param1", pure = true)
     public static <T> T requireNonNull(@Nullable T obj, @NotNull String message) {
-        if (obj == null)
-            throw new NullPointerException(message);
-        else return obj;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -176,9 +166,7 @@ public final class Objects {
     @NotNull
     @Contract("null, _ -> fail; !null, _ -> param1")
     public static <T> T requireNonNull(@Nullable T obj, @NotNull Supplier<String> messageSupplier) {
-        if (obj == null)
-            throw new NullPointerException(messageSupplier.get());
-        else return obj;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -196,7 +184,7 @@ public final class Objects {
     @NotNull
     @Contract(value = "!null, _ -> param1; null, !null -> param2; null, null -> fail", pure = true)
     public static <T> T requireNonNullElse(@Nullable T obj, @NotNull T defaultObj) {
-        return (obj != null) ? obj : requireNonNull(defaultObj, "defaultObj");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -214,9 +202,7 @@ public final class Objects {
     @NotNull
     @Contract("!null, _ -> param1; null, null -> fail")
     public static <T> T requireNonNullElseGet(@Nullable T obj, @NotNull Supplier<? extends T> supplier) {
-        if (obj != null) return obj;
-        final T suppliedObj = requireNonNull(supplier, "supplier").get();
-        return requireNonNull(suppliedObj, "supplier.get()");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -231,11 +217,7 @@ public final class Objects {
     @NotNull
     @Contract("null -> fail; !null -> param1")
     public static <T> Collection<T> requireNonNullElements(@NotNull Collection<T> collection) {
-        requireNonNull(collection);
-        for (T t : collection) {
-            requireNonNull(t);
-        }
-        return collection;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -248,7 +230,7 @@ public final class Objects {
      */
     @Contract(value = "null -> true; !null -> false", pure = true)
     public static boolean isNull(@Nullable Object obj) {
-        return obj == null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,6 +244,6 @@ public final class Objects {
      */
     @Contract(value = "null -> false; !null -> true", pure = true)
     public static boolean nonNull(@Nullable Object obj) {
-        return obj != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

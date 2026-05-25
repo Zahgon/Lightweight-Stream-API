@@ -7,8 +7,11 @@ import org.jetbrains.annotations.NotNull;
 public class IntCodePoints extends PrimitiveIterator.OfInt {
 
     private final CharSequence charSequence;
+
     private final boolean isString;
+
     private int current;
+
     private int length;
 
     public IntCodePoints(@NotNull CharSequence charSequence) {
@@ -20,25 +23,12 @@ public class IntCodePoints extends PrimitiveIterator.OfInt {
 
     @Override
     public boolean hasNext() {
-        return current < ensureLength();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-    
+
     @Override
     public int nextInt() {
-        final int length = ensureLength();
-        if (current >= length) {
-            throw new NoSuchElementException();
-        }
-
-        final char nextChar = charSequence.charAt(current++);
-        if (Character.isHighSurrogate(nextChar) && current < length) {
-            final char currentChar = charSequence.charAt(current);
-            if (Character.isLowSurrogate(currentChar)) {
-                current++;
-                return Character.toCodePoint(nextChar, currentChar);
-            }
-        }
-        return nextChar;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private int ensureLength() {

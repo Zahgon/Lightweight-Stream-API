@@ -7,7 +7,9 @@ import org.jetbrains.annotations.NotNull;
 public class ObjSkip<T> extends LsaIterator<T> {
 
     private final Iterator<? extends T> iterator;
+
     private final long n;
+
     private long skipped;
 
     public ObjSkip(@NotNull Iterator<? extends T> iterator, long n) {
@@ -18,18 +20,11 @@ public class ObjSkip<T> extends LsaIterator<T> {
 
     @Override
     public boolean hasNext() {
-        while (skipped < n) {
-            if (!iterator.hasNext()) {
-                return false;
-            }
-            iterator.next();
-            skipped++;
-        }
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T nextIteration() {
-        return iterator.next();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

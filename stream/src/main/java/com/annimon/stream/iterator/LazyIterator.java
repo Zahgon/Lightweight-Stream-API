@@ -8,7 +8,9 @@ import java.util.Iterator;
  * @param <T> the type of the elements
  */
 public class LazyIterator<T> implements Iterator<T> {
+
     private final Iterable<? extends T> iterable;
+
     private Iterator<? extends T> iterator;
 
     public LazyIterator(Iterable<? extends T> iterable) {
@@ -25,19 +27,16 @@ public class LazyIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        ensureIterator();
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T next() {
-        ensureIterator();
-        return iterator.next();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void remove() {
-        ensureIterator();
-        iterator.remove();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

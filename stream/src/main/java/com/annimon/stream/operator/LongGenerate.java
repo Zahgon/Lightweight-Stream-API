@@ -14,11 +14,11 @@ public class LongGenerate extends PrimitiveIterator.OfLong {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        return supplier.getAsLong();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

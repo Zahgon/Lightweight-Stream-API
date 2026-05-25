@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 public class LongSkip extends PrimitiveIterator.OfLong {
 
     private final PrimitiveIterator.OfLong iterator;
+
     private final long n;
+
     private long skipped;
 
     public LongSkip(@NotNull PrimitiveIterator.OfLong iterator, long n) {
@@ -17,18 +19,11 @@ public class LongSkip extends PrimitiveIterator.OfLong {
 
     @Override
     public boolean hasNext() {
-        while (iterator.hasNext()) {
-            if (skipped == n) {
-                break;
-            }
-            iterator.nextLong();
-            skipped++;
-        }
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        return iterator.nextLong();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

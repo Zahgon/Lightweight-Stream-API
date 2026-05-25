@@ -21,7 +21,8 @@ public interface IndexedDoubleConsumer {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code IndexedDoubleConsumer} calls.
@@ -33,18 +34,8 @@ public interface IndexedDoubleConsumer {
          * @return a composed {@code IndexedDoubleConsumer}
          * @throws NullPointerException if {@code c1} or {@code c2} is null
          */
-        public static IndexedDoubleConsumer andThen(
-                @NotNull final IndexedDoubleConsumer c1,
-                @NotNull final IndexedDoubleConsumer c2) {
-            Objects.requireNonNull(c1, "c1");
-            Objects.requireNonNull(c2, "c2");
-            return new IndexedDoubleConsumer() {
-                @Override
-                public void accept(int index, double value) {
-                    c1.accept(index, value);
-                    c2.accept(index, value);
-                }
-            };
+        public static IndexedDoubleConsumer andThen(@NotNull final IndexedDoubleConsumer c1, @NotNull final IndexedDoubleConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -62,21 +53,8 @@ public interface IndexedDoubleConsumer {
          * @param c2  the {@code DoubleConsumer} for value, can be null
          * @return an {@code IndexedDoubleConsumer}
          */
-        public static IndexedDoubleConsumer accept(
-                @Nullable final IntConsumer c1,
-                @Nullable final DoubleConsumer c2) {
-            return new IndexedDoubleConsumer() {
-                @Override
-                public void accept(int index, double value) {
-                    if (c1 != null) {
-                        c1.accept(index);
-                    }
-                    if (c2 != null) {
-                        c2.accept(value);
-                    }
-                }
-            };
+        public static IndexedDoubleConsumer accept(@Nullable final IntConsumer c1, @Nullable final DoubleConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

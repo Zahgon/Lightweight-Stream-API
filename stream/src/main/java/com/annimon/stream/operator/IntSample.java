@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 public class IntSample extends PrimitiveIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final int stepWidth;
 
     public IntSample(@NotNull PrimitiveIterator.OfInt iterator, int stepWidth) {
@@ -15,17 +16,11 @@ public class IntSample extends PrimitiveIterator.OfInt {
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        final int result = iterator.nextInt();
-        int skip = 1;
-        while (skip < stepWidth && iterator.hasNext()) {
-            iterator.nextInt();
-            skip++;
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -10,12 +10,12 @@ import org.jetbrains.annotations.NotNull;
 public class ObjDistinctBy<T, K> extends LsaExtIterator<T> {
 
     private final Iterator<? extends T> iterator;
+
     private final Function<? super T, ? extends K> classifier;
+
     private final Set<K> set;
 
-    public ObjDistinctBy(
-            @NotNull Iterator<? extends T> iterator,
-            @NotNull Function<? super T, ? extends K> classifier) {
+    public ObjDistinctBy(@NotNull Iterator<? extends T> iterator, @NotNull Function<? super T, ? extends K> classifier) {
         this.iterator = iterator;
         this.classifier = classifier;
         set = new HashSet<K>();
@@ -23,12 +23,6 @@ public class ObjDistinctBy<T, K> extends LsaExtIterator<T> {
 
     @Override
     protected void nextIteration() {
-        while (hasNext = iterator.hasNext()) {
-            next = iterator.next();
-            final K key = classifier.apply(next);
-            if (set.add(key)) {
-                return;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleArray extends PrimitiveIterator.OfDouble {
 
     private final double[] values;
+
     private int index;
 
     public DoubleArray(@NotNull double[] values) {
@@ -15,11 +16,11 @@ public class DoubleArray extends PrimitiveIterator.OfDouble {
 
     @Override
     public double nextDouble() {
-        return values[index++];
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean hasNext() {
-        return index < values.length;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

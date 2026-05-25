@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 public class LongLimit extends PrimitiveIterator.OfLong {
 
     private final PrimitiveIterator.OfLong iterator;
+
     private final long maxSize;
+
     private long index;
 
     public LongLimit(@NotNull PrimitiveIterator.OfLong iterator, long maxSize) {
@@ -17,12 +19,11 @@ public class LongLimit extends PrimitiveIterator.OfLong {
 
     @Override
     public boolean hasNext() {
-        return (index < maxSize) && iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        index++;
-        return iterator.nextLong();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

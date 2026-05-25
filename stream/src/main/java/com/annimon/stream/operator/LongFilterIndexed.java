@@ -9,36 +9,26 @@ import org.jetbrains.annotations.NotNull;
 public class LongFilterIndexed extends PrimitiveIterator.OfLong {
 
     private final PrimitiveIndexedIterator.OfLong iterator;
+
     private final IndexedLongPredicate predicate;
+
     private boolean hasNext, hasNextEvaluated;
+
     private long next;
 
-    public LongFilterIndexed(
-            @NotNull PrimitiveIndexedIterator.OfLong iterator,
-            @NotNull IndexedLongPredicate predicate) {
+    public LongFilterIndexed(@NotNull PrimitiveIndexedIterator.OfLong iterator, @NotNull IndexedLongPredicate predicate) {
         this.iterator = iterator;
         this.predicate = predicate;
     }
 
     @Override
     public boolean hasNext() {
-        if (!hasNextEvaluated) {
-            nextIteration();
-            hasNextEvaluated = true;
-        }
-        return hasNext;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        if (!hasNextEvaluated) {
-            hasNext = hasNext();
-        }
-        if (!hasNext) {
-            throw new NoSuchElementException();
-        }
-        hasNextEvaluated = false;
-        return next;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void nextIteration() {

@@ -19,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
  * {@code getAsInt()} will return the value.
  */
 public final class OptionalInt {
+
     /**
      * Common instance for {@code empty()}.
      */
@@ -28,6 +29,7 @@ public final class OptionalInt {
      * If true then the value is present, otherwise indicates no value is present
      */
     private final boolean isPresent;
+
     private final int value;
 
     /**
@@ -46,7 +48,7 @@ public final class OptionalInt {
      */
     @NotNull
     public static OptionalInt empty() {
-        return EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -67,7 +69,7 @@ public final class OptionalInt {
      */
     @NotNull
     public static OptionalInt of(int value) {
-        return new OptionalInt(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -79,7 +81,7 @@ public final class OptionalInt {
      */
     @NotNull
     public static OptionalInt ofNullable(@Nullable Integer value) {
-        return value == null ? EMPTY : new OptionalInt(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -94,7 +96,7 @@ public final class OptionalInt {
      * @see #orElseThrow()
      */
     public int getAsInt() {
-        return orElseThrow();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,7 +105,7 @@ public final class OptionalInt {
      * @return {@code true} if there is a value present, otherwise {@code false}
      */
     public boolean isPresent() {
-        return isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -113,7 +115,7 @@ public final class OptionalInt {
      * @since 1.2.1
      */
     public boolean isEmpty() {
-        return !isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -124,8 +126,7 @@ public final class OptionalInt {
      *         null
      */
     public void ifPresent(@NotNull IntConsumer consumer) {
-        if (isPresent)
-            consumer.accept(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -139,11 +140,7 @@ public final class OptionalInt {
      * @since 1.1.4
      */
     public void ifPresentOrElse(@NotNull IntConsumer consumer, @NotNull Runnable emptyAction) {
-        if (isPresent) {
-            consumer.accept(value);
-        } else {
-            emptyAction.run();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -157,8 +154,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalInt executeIfPresent(@NotNull IntConsumer consumer) {
-        ifPresent(consumer);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -170,9 +166,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalInt executeIfAbsent(@NotNull Runnable action) {
-        if (!isPresent())
-            action.run();
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -186,8 +180,7 @@ public final class OptionalInt {
      */
     @Nullable
     public <R> R custom(@NotNull Function<OptionalInt, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -200,8 +193,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalInt filter(@NotNull IntPredicate predicate) {
-        if (!isPresent()) return this;
-        return predicate.test(value) ? this : OptionalInt.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -214,7 +206,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalInt filterNot(@NotNull IntPredicate predicate) {
-        return filter(IntPredicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -229,8 +221,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalInt map(@NotNull IntUnaryOperator mapper) {
-        if (!isPresent()) return empty();
-        return OptionalInt.of(mapper.applyAsInt(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -246,8 +237,7 @@ public final class OptionalInt {
      */
     @NotNull
     public <U> Optional<U> mapToObj(@NotNull IntFunction<U> mapper) {
-        if (!isPresent()) return Optional.empty();
-        return Optional.ofNullable(mapper.apply(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,8 +252,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalLong mapToLong(@NotNull IntToLongFunction mapper) {
-        if (!isPresent()) return OptionalLong.empty();
-        return OptionalLong.of(mapper.applyAsLong(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -278,8 +267,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalDouble mapToDouble(@NotNull IntToDoubleFunction mapper) {
-        if (!isPresent()) return OptionalDouble.empty();
-        return OptionalDouble.of(mapper.applyAsDouble(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -289,8 +277,7 @@ public final class OptionalInt {
      */
     @NotNull
     public IntStream stream() {
-        if (!isPresent()) return IntStream.empty();
-        return IntStream.of(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -305,9 +292,7 @@ public final class OptionalInt {
      */
     @NotNull
     public OptionalInt or(@NotNull Supplier<OptionalInt> supplier) {
-        if (isPresent()) return this;
-        Objects.requireNonNull(supplier);
-        return Objects.requireNonNull(supplier.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -317,7 +302,7 @@ public final class OptionalInt {
      * @return the value, if present, otherwise {@code other}
      */
     public int orElse(int other) {
-        return isPresent ? value : other;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -331,7 +316,7 @@ public final class OptionalInt {
      *         null
      */
     public int orElseGet(@NotNull IntSupplier other) {
-        return isPresent ? value : other.getAsInt();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -342,10 +327,7 @@ public final class OptionalInt {
      * @since 1.2.0
      */
     public int orElseThrow() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -357,11 +339,7 @@ public final class OptionalInt {
      * @throws X if inner value is not present
      */
     public <X extends Throwable> int orElseThrow(@NotNull Supplier<X> exceptionSupplier) throws X {
-        if (isPresent) {
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -379,18 +357,7 @@ public final class OptionalInt {
      */
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) {
-            return true;
-        }
-
-        if(!(obj instanceof OptionalInt)) {
-            return false;
-        }
-
-        OptionalInt other = (OptionalInt) obj;
-        return (isPresent && other.isPresent)
-                ? value == other.value
-                : isPresent == other.isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -401,7 +368,7 @@ public final class OptionalInt {
      */
     @Override
     public int hashCode() {
-        return isPresent ? value : 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -413,8 +380,6 @@ public final class OptionalInt {
     @NotNull
     @Override
     public String toString() {
-        return isPresent
-                ? String.format("OptionalInt[%s]", value)
-                : "OptionalInt.empty";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

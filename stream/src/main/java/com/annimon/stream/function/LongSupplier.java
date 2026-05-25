@@ -20,7 +20,8 @@ public interface LongSupplier {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Creates a safe {@code LongSupplier}.
@@ -32,7 +33,7 @@ public interface LongSupplier {
          * @see #safe(com.annimon.stream.function.ThrowableLongSupplier, long)
          */
         public static LongSupplier safe(@NotNull ThrowableLongSupplier<Throwable> throwableSupplier) {
-            return safe(throwableSupplier, 0L);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -44,22 +45,8 @@ public interface LongSupplier {
          * @throws NullPointerException if {@code throwableSupplier} is null
          * @since 1.1.7
          */
-        public static LongSupplier safe(
-                @NotNull final ThrowableLongSupplier<Throwable> throwableSupplier,
-                final long resultIfFailed) {
-            Objects.requireNonNull(throwableSupplier);
-            return new LongSupplier() {
-
-                @Override
-                public long getAsLong() {
-                    try {
-                        return throwableSupplier.getAsLong();
-                    } catch (Throwable ex) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static LongSupplier safe(@NotNull final ThrowableLongSupplier<Throwable> throwableSupplier, final long resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

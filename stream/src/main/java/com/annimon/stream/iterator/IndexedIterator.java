@@ -12,7 +12,9 @@ import java.util.Iterator;
 public class IndexedIterator<T> implements Iterator<T> {
 
     private final Iterator<? extends T> iterator;
+
     private final int step;
+
     private int index;
 
     public IndexedIterator(Iterator<? extends T> iterator) {
@@ -26,23 +28,21 @@ public class IndexedIterator<T> implements Iterator<T> {
     }
 
     public int getIndex() {
-        return index;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T next() {
-        final T result = iterator.next();
-        index += step;
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void remove() {
-        iterator.remove();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

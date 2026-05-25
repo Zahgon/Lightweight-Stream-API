@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleIterate extends PrimitiveIterator.OfDouble {
 
     private final DoubleUnaryOperator op;
+
     private double current;
 
     public DoubleIterate(double seed, @NotNull DoubleUnaryOperator f) {
@@ -16,13 +17,11 @@ public class DoubleIterate extends PrimitiveIterator.OfDouble {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public double nextDouble() {
-        final double old = current;
-        current = op.applyAsDouble(current);
-        return old;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

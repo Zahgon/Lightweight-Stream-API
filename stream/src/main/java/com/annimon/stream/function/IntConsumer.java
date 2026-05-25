@@ -25,7 +25,8 @@ public interface IntConsumer {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code IntConsumer} calls.
@@ -37,18 +38,8 @@ public interface IntConsumer {
          * @return a composed {@code IntConsumer}
          * @throws NullPointerException if {@code c1} or {@code c2} is null
          */
-        public static IntConsumer andThen(
-                @NotNull final IntConsumer c1,
-                @NotNull final IntConsumer c2) {
-            Objects.requireNonNull(c1, "c1");
-            Objects.requireNonNull(c2, "c2");
-            return new IntConsumer() {
-                @Override
-                public void accept(int value) {
-                    c1.accept(value);
-                    c2.accept(value);
-                }
-            };
+        public static IntConsumer andThen(@NotNull final IntConsumer c1, @NotNull final IntConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -61,7 +52,7 @@ public interface IntConsumer {
          * @see #safe(com.annimon.stream.function.ThrowableIntConsumer, com.annimon.stream.function.IntConsumer)
          */
         public static IntConsumer safe(@NotNull ThrowableIntConsumer<Throwable> throwableConsumer) {
-            return safe(throwableConsumer, null);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -74,24 +65,8 @@ public interface IntConsumer {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableIntConsumer)
          */
-        public static IntConsumer safe(
-                @NotNull final ThrowableIntConsumer<Throwable> throwableConsumer,
-                @Nullable final IntConsumer onFailedConsumer) {
-            Objects.requireNonNull(throwableConsumer);
-            return new IntConsumer() {
-
-                @Override
-                public void accept(int value) {
-                    try {
-                        throwableConsumer.accept(value);
-                    } catch (Throwable ex) {
-                        if (onFailedConsumer != null) {
-                            onFailedConsumer.accept(value);
-                        }
-                    }
-                }
-            };
+        public static IntConsumer safe(@NotNull final ThrowableIntConsumer<Throwable> throwableConsumer, @Nullable final IntConsumer onFailedConsumer) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

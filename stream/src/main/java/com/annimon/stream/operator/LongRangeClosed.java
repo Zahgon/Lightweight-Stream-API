@@ -5,7 +5,9 @@ import com.annimon.stream.iterator.PrimitiveIterator;
 public class LongRangeClosed extends PrimitiveIterator.OfLong {
 
     private final long endInclusive;
+
     private long current;
+
     private boolean hasNext;
 
     public LongRangeClosed(long startInclusive, long endInclusive) {
@@ -16,15 +18,11 @@ public class LongRangeClosed extends PrimitiveIterator.OfLong {
 
     @Override
     public boolean hasNext() {
-        return hasNext;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        if (current >= endInclusive) {
-            hasNext = false;
-            return endInclusive;
-        }
-        return current++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

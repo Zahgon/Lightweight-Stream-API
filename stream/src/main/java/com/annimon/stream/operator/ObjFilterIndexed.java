@@ -9,36 +9,26 @@ import org.jetbrains.annotations.NotNull;
 public class ObjFilterIndexed<T> implements Iterator<T> {
 
     private final IndexedIterator<? extends T> iterator;
+
     private final IndexedPredicate<? super T> predicate;
+
     private boolean hasNext, hasNextEvaluated;
+
     private T next;
 
-    public ObjFilterIndexed(
-            @NotNull IndexedIterator<? extends T> iterator,
-            @NotNull IndexedPredicate<? super T> predicate) {
+    public ObjFilterIndexed(@NotNull IndexedIterator<? extends T> iterator, @NotNull IndexedPredicate<? super T> predicate) {
         this.iterator = iterator;
         this.predicate = predicate;
     }
 
     @Override
     public boolean hasNext() {
-        if (!hasNextEvaluated) {
-            nextIteration();
-            hasNextEvaluated = true;
-        }
-        return hasNext;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T next() {
-        if (!hasNextEvaluated) {
-            hasNext = hasNext();
-        }
-        if (!hasNext) {
-            throw new NoSuchElementException();
-        }
-        hasNextEvaluated = false;
-        return next;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void nextIteration() {
@@ -55,6 +45,6 @@ public class ObjFilterIndexed<T> implements Iterator<T> {
 
     @Override
     public void remove() {
-        throw new UnsupportedOperationException("remove not supported");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

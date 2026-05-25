@@ -8,24 +8,21 @@ import org.jetbrains.annotations.NotNull;
 public class ObjPeek<T> extends LsaIterator<T> {
 
     private final Iterator<? extends T> iterator;
+
     private final Consumer<? super T> action;
 
-    public ObjPeek(
-            @NotNull Iterator<? extends T> iterator,
-            @NotNull Consumer<? super T> action) {
+    public ObjPeek(@NotNull Iterator<? extends T> iterator, @NotNull Consumer<? super T> action) {
         this.iterator = iterator;
         this.action = action;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T nextIteration() {
-        final T value = iterator.next();
-        action.accept(value);
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

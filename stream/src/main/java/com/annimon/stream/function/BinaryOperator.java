@@ -11,9 +11,11 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> the type of the operands and result of the operator
  */
 public interface BinaryOperator<T> extends BiFunction<T, T, T> {
+
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Returns a {@code BinaryOperator} which returns lesser of two elements
@@ -25,15 +27,8 @@ public interface BinaryOperator<T> extends BiFunction<T, T, T> {
          *         according to the supplied {@code Comparator}
          * @throws NullPointerException if the argument is null
          */
-        public static <T> BinaryOperator<T> minBy(
-                @NotNull final Comparator<? super T> comparator) {
-            Objects.requireNonNull(comparator);
-            return new BinaryOperator<T>() {
-                @Override
-                public T apply(T a, T b) {
-                    return comparator.compare(a, b) <= 0 ? a : b;
-                }
-            };
+        public static <T> BinaryOperator<T> minBy(@NotNull final Comparator<? super T> comparator) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -47,13 +42,7 @@ public interface BinaryOperator<T> extends BiFunction<T, T, T> {
          * @throws NullPointerException if the argument is null
          */
         public static <T> BinaryOperator<T> maxBy(final Comparator<? super T> comparator) {
-            Objects.requireNonNull(comparator);
-            return new BinaryOperator<T>() {
-                @Override
-                public T apply(T a, T b) {
-                    return comparator.compare(a, b) >= 0 ? a : b;
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

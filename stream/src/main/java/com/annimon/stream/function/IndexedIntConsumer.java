@@ -20,7 +20,8 @@ public interface IndexedIntConsumer {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code IndexedIntConsumer} calls.
@@ -32,18 +33,8 @@ public interface IndexedIntConsumer {
          * @return a composed {@code IndexedIntConsumer}
          * @throws NullPointerException if {@code c1} or {@code c2} is null
          */
-        public static IndexedIntConsumer andThen(
-                @NotNull final IndexedIntConsumer c1,
-                @NotNull final IndexedIntConsumer c2) {
-            Objects.requireNonNull(c1, "c1");
-            Objects.requireNonNull(c2, "c2");
-            return new IndexedIntConsumer() {
-                @Override
-                public void accept(int index, int value) {
-                    c1.accept(index, value);
-                    c2.accept(index, value);
-                }
-            };
+        public static IndexedIntConsumer andThen(@NotNull final IndexedIntConsumer c1, @NotNull final IndexedIntConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -61,20 +52,8 @@ public interface IndexedIntConsumer {
          * @param c2  the {@code IntConsumer} for value, can be null
          * @return an {@code IndexedIntConsumer}
          */
-        public static IndexedIntConsumer accept(
-                final IntConsumer c1, final IntConsumer c2) {
-            return new IndexedIntConsumer() {
-                @Override
-                public void accept(int index, int value) {
-                    if (c1 != null) {
-                        c1.accept(index);
-                    }
-                    if (c2 != null) {
-                        c2.accept(value);
-                    }
-                }
-            };
+        public static IndexedIntConsumer accept(final IntConsumer c1, final IntConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

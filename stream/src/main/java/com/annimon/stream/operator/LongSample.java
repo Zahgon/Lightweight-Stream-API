@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 public class LongSample extends PrimitiveIterator.OfLong {
 
     private final PrimitiveIterator.OfLong iterator;
+
     private final int stepWidth;
 
     public LongSample(@NotNull PrimitiveIterator.OfLong iterator, int stepWidth) {
@@ -15,17 +16,11 @@ public class LongSample extends PrimitiveIterator.OfLong {
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        final long result = iterator.nextLong();
-        int skip = 1;
-        while (skip < stepWidth && iterator.hasNext()) {
-            iterator.nextLong();
-            skip++;
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -1,7 +1,6 @@
 package com.annimon.stream;
 
 import com.annimon.stream.function.*;
-
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,24 +18,27 @@ import org.jetbrains.annotations.Nullable;
  *
  * @see Collector
  */
-@SuppressWarnings({"WeakerAccess", "unused", "RedundantTypeArguments"})
+@SuppressWarnings({ "WeakerAccess", "unused", "RedundantTypeArguments" })
 public final class Collectors {
 
     private static final Supplier<long[]> LONG_2ELEMENTS_ARRAY_SUPPLIER = new Supplier<long[]>() {
+
         @Override
         public long[] get() {
-            return new long[] { 0L, 0L };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
     private static final Supplier<double[]> DOUBLE_2ELEMENTS_ARRAY_SUPPLIER = new Supplier<double[]>() {
+
         @Override
         public double[] get() {
-            return new double[] { 0d, 0d };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 
-    private Collectors() { }
+    private Collectors() {
+    }
 
     /**
      * Returns a {@code Collector} that fills new {@code Collection}, provided by {@code collectionSupplier},
@@ -48,19 +50,8 @@ public final class Collectors {
      * @return a {@code Collector}
      */
     @NotNull
-    public static <T, R extends Collection<T>> Collector<T, ?, R> toCollection(
-            @NotNull Supplier<R> collectionSupplier) {
-        return new CollectorsImpl<T, R, R>(
-
-                collectionSupplier,
-
-                new BiConsumer<R, T>() {
-                    @Override
-                    public void accept(@NotNull R t, T u) {
-                        t.add(u);
-                    }
-                }
-        );
+    public static <T, R extends Collection<T>> Collector<T, ?, R> toCollection(@NotNull Supplier<R> collectionSupplier) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -71,23 +62,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, List<T>> toList() {
-        return new CollectorsImpl<T, List<T>, List<T>>(
-
-                new Supplier<List<T>>() {
-                    @NotNull
-                    @Override
-                    public List<T> get() {
-                        return new ArrayList<T>();
-                    }
-                },
-
-                new BiConsumer<List<T>, T>() {
-                    @Override
-                    public void accept(@NotNull List<T> t, T u) {
-                        t.add(u);
-                    }
-                }
-        );
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,15 +77,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, List<T>> toUnmodifiableList() {
-        return Collectors.collectingAndThen(Collectors.<T>toList(), new UnaryOperator<List<T>>() {
-
-            @NotNull
-            @Override
-            public List<T> apply(@NotNull List<T> list) {
-                Objects.requireNonNullElements(list);
-                return Collections.unmodifiableList(list);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -121,23 +88,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Set<T>> toSet() {
-        return new CollectorsImpl<T, Set<T>, Set<T>>(
-
-                new Supplier<Set<T>>() {
-                    @NotNull
-                    @Override
-                    public Set<T> get() {
-                        return new HashSet<T>();
-                    }
-                },
-
-                new BiConsumer<Set<T>, T>() {
-                    @Override
-                    public void accept(@NotNull Set<T> set, T t) {
-                        set.add(t);
-                    }
-                }
-        );
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -153,15 +104,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Set<T>> toUnmodifiableSet() {
-        return Collectors.collectingAndThen(Collectors.<T>toSet(), new UnaryOperator<Set<T>>() {
-
-            @NotNull
-            @Override
-            public Set<T> apply(@NotNull Set<T> set) {
-                Objects.requireNonNullElements(set);
-                return Collections.unmodifiableSet(set);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -178,9 +121,8 @@ public final class Collectors {
      * @see #toMap(Function, Function, BinaryOperator)
      */
     @NotNull
-    public static <T, K> Collector<T, ?, Map<K, T>> toMap(
-            @NotNull final Function<? super T, ? extends K> keyMapper) {
-        return Collectors.<T, K, T>toMap(keyMapper, UnaryOperator.Util.<T>identity());
+    public static <T, K> Collector<T, ?, Map<K, T>> toMap(@NotNull final Function<? super T, ? extends K> keyMapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -198,11 +140,8 @@ public final class Collectors {
      * @see #toMap(Function, Function, BinaryOperator)
      */
     @NotNull
-    public static <T, K, V> Collector<T, ?, Map<K, V>> toMap(
-            @NotNull final Function<? super T, ? extends K> keyMapper,
-            @NotNull final Function<? super T, ? extends V> valueMapper) {
-        return Collectors.<T, K, V, Map<K, V>>toMap(keyMapper, valueMapper,
-                Collectors.<K, V>hashMapSupplier());
+    public static <T, K, V> Collector<T, ?, Map<K, V>> toMap(@NotNull final Function<? super T, ? extends K> keyMapper, @NotNull final Function<? super T, ? extends V> valueMapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -222,31 +161,8 @@ public final class Collectors {
      * @see #toMap(Function, Function, BinaryOperator, Supplier)
      */
     @NotNull
-    public static <T, K, V, M extends Map<K, V>> Collector<T, ?, M> toMap(
-            @NotNull final Function<? super T, ? extends K> keyMapper,
-            @NotNull final Function<? super T, ? extends V> valueMapper,
-            @NotNull final Supplier<M> mapFactory) {
-        return new CollectorsImpl<T, M, M>(
-
-                mapFactory,
-
-                new BiConsumer<M, T>() {
-                    @Override
-                    public void accept(M map, T t) {
-                        final K key = keyMapper.apply(t);
-                        final V value = Objects.requireNonNull(valueMapper.apply(t));
-
-                        // To avoid calling map.get to determine duplicate keys
-                        // we check the result of map.put
-                        final V oldValue = map.put(key, value);
-                        if (oldValue != null) {
-                            // If there is duplicate key, rollback previous put operation
-                            map.put(key, oldValue);
-                            throw duplicateKeyException(key, oldValue, value);
-                        }
-                    }
-                }
-        );
+    public static <T, K, V, M extends Map<K, V>> Collector<T, ?, M> toMap(@NotNull final Function<? super T, ? extends K> keyMapper, @NotNull final Function<? super T, ? extends V> valueMapper, @NotNull final Supplier<M> mapFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -266,12 +182,8 @@ public final class Collectors {
      * @since 1.2.0
      */
     @NotNull
-    public static <T, K, V> Collector<T, ?, Map<K, V>> toUnmodifiableMap(
-            @NotNull final Function<? super T, ? extends K> keyMapper,
-            @NotNull final Function<? super T, ? extends V> valueMapper) {
-        return Collectors.collectingAndThen(
-                Collectors.<T, K, V>toMap(keyMapper, valueMapper),
-                Collectors.<K, V>toUnmodifiableMapConverter());
+    public static <T, K, V> Collector<T, ?, Map<K, V>> toUnmodifiableMap(@NotNull final Function<? super T, ? extends K> keyMapper, @NotNull final Function<? super T, ? extends V> valueMapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -291,13 +203,8 @@ public final class Collectors {
      * @since 1.2.0
      */
     @NotNull
-    public static <T, K, V> Collector<T, ?, Map<K, V>> toMap(
-            @NotNull final Function<? super T, ? extends K> keyMapper,
-            @NotNull final Function<? super T, ? extends V> valueMapper,
-            @NotNull final BinaryOperator<V> mergeFunction) {
-        return Collectors.<T, K, V, Map<K, V>>toMap(
-                keyMapper, valueMapper, mergeFunction,
-                Collectors.<K, V>hashMapSupplier());
+    public static <T, K, V> Collector<T, ?, Map<K, V>> toMap(@NotNull final Function<? super T, ? extends K> keyMapper, @NotNull final Function<? super T, ? extends V> valueMapper, @NotNull final BinaryOperator<V> mergeFunction) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -319,24 +226,8 @@ public final class Collectors {
      * @since 1.2.0
      */
     @NotNull
-    public static <T, K, V, M extends Map<K, V>> Collector<T, ?, M> toMap(
-            @NotNull final Function<? super T, ? extends K> keyMapper,
-            @NotNull final Function<? super T, ? extends V> valueMapper,
-            @NotNull final BinaryOperator<V> mergeFunction,
-            @NotNull final Supplier<M> mapFactory) {
-        return new CollectorsImpl<T, M, M>(
-
-                mapFactory,
-
-                new BiConsumer<M, T>() {
-                    @Override
-                    public void accept(@NotNull M map, T t) {
-                        final K key = keyMapper.apply(t);
-                        final V value = valueMapper.apply(t);
-                        mapMerge(map, key, value, mergeFunction);
-                    }
-                }
-        );
+    public static <T, K, V, M extends Map<K, V>> Collector<T, ?, M> toMap(@NotNull final Function<? super T, ? extends K> keyMapper, @NotNull final Function<? super T, ? extends V> valueMapper, @NotNull final BinaryOperator<V> mergeFunction, @NotNull final Supplier<M> mapFactory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -355,15 +246,8 @@ public final class Collectors {
      * @since 1.2.0
      */
     @NotNull
-    public static <T, K, V> Collector<T, ?, Map<K, V>> toUnmodifiableMap(
-            @NotNull final Function<? super T, ? extends K> keyMapper,
-            @NotNull final Function<? super T, ? extends V> valueMapper,
-            @NotNull final BinaryOperator<V> mergeFunction) {
-        return Collectors.collectingAndThen(
-                Collectors.<T, K, V, Map<K, V>>toMap(
-                        keyMapper, valueMapper, mergeFunction,
-                        Collectors.<K, V>hashMapSupplier()),
-                Collectors.<K, V>toUnmodifiableMapConverter());
+    public static <T, K, V> Collector<T, ?, Map<K, V>> toUnmodifiableMap(@NotNull final Function<? super T, ? extends K> keyMapper, @NotNull final Function<? super T, ? extends V> valueMapper, @NotNull final BinaryOperator<V> mergeFunction) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -373,7 +257,7 @@ public final class Collectors {
      */
     @NotNull
     public static Collector<CharSequence, ?, String> joining() {
-        return joining("");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -384,7 +268,7 @@ public final class Collectors {
      */
     @NotNull
     public static Collector<CharSequence, ?, String> joining(@NotNull CharSequence delimiter) {
-        return joining(delimiter, "", "");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -396,11 +280,8 @@ public final class Collectors {
      * @return a {@code Collector}
      */
     @NotNull
-    public static Collector<CharSequence, ?, String> joining(
-            @NotNull CharSequence delimiter,
-            @NotNull CharSequence prefix,
-            @NotNull CharSequence suffix) {
-        return joining(delimiter, prefix, suffix, prefix.toString() + suffix.toString());
+    public static Collector<CharSequence, ?, String> joining(@NotNull CharSequence delimiter, @NotNull CharSequence prefix, @NotNull CharSequence suffix) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -413,46 +294,8 @@ public final class Collectors {
      * @return a {@code Collector}
      */
     @NotNull
-    public static Collector<CharSequence, ?, String> joining(
-            @NotNull final CharSequence delimiter,
-            @NotNull final CharSequence prefix,
-            @NotNull final CharSequence suffix,
-            @NotNull final String emptyValue) {
-        return new CollectorsImpl<CharSequence, StringBuilder, String>(
-
-                new Supplier<StringBuilder>() {
-                    @NotNull
-                    @Override
-                    public StringBuilder get() {
-                        return new StringBuilder();
-                    }
-                },
-
-                new BiConsumer<StringBuilder, CharSequence>() {
-                    @Override
-                    public void accept(@NotNull StringBuilder t, CharSequence u) {
-                        if (t.length() > 0) {
-                            t.append(delimiter);
-                        } else {
-                            t.append(prefix);
-                        }
-                        t.append(u);
-                    }
-                },
-
-                new Function<StringBuilder, String>() {
-                    @NotNull
-                    @Override
-                    public String apply(@NotNull StringBuilder value) {
-                        if (value.length() == 0) {
-                            return emptyValue;
-                        } else {
-                            value.append(suffix);
-                            return value.toString();
-                        }
-                    }
-                }
-        );
+    public static Collector<CharSequence, ?, String> joining(@NotNull final CharSequence delimiter, @NotNull final CharSequence prefix, @NotNull final CharSequence suffix, @NotNull final String emptyValue) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -471,7 +314,7 @@ public final class Collectors {
 
             @Override
             public double applyAsDouble(T t) {
-                return mapper.apply(t);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         });
     }
@@ -486,13 +329,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Double> averagingInt(@NotNull final ToIntFunction<? super T> mapper) {
-        return averagingHelper(new BiConsumer<long[], T>() {
-            @Override
-            public void accept(long[] t, T u) {
-                t[0]++; // count
-                t[1] += mapper.applyAsInt(u); // sum
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -505,32 +342,19 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Double> averagingLong(@NotNull final ToLongFunction<? super T> mapper) {
-        return averagingHelper(new BiConsumer<long[], T>() {
-            @Override
-            public void accept(long[] t, T u) {
-                t[0]++; // count
-                t[1] += mapper.applyAsLong(u); // sum
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @NotNull
     private static <T> Collector<T, ?, Double> averagingHelper(@NotNull final BiConsumer<long[], T> accumulator) {
-        return new CollectorsImpl<T, long[], Double>(
+        return new CollectorsImpl<T, long[], Double>(LONG_2ELEMENTS_ARRAY_SUPPLIER, accumulator, new Function<long[], Double>() {
 
-                LONG_2ELEMENTS_ARRAY_SUPPLIER,
-
-                accumulator,
-
-                new Function<long[], Double>() {
-                    @NotNull
-                    @Override
-                    public Double apply(long[] t) {
-                        if (t[0] == 0) return 0d;
-                        return t[1] / (double) t[0];
-                    }
-                }
-        );
+            @NotNull
+            @Override
+            public Double apply(long[] t) {
+                throw new UnsupportedOperationException("STUB: not implemented");
+            }
+        });
     }
 
     /**
@@ -543,27 +367,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Double> averagingDouble(@NotNull final ToDoubleFunction<? super T> mapper) {
-        return new CollectorsImpl<T, double[], Double>(
-
-                DOUBLE_2ELEMENTS_ARRAY_SUPPLIER,
-
-                new BiConsumer<double[], T>() {
-                    @Override
-                    public void accept(double[] t, T u) {
-                        t[0]++; // count
-                        t[1] += mapper.applyAsDouble(u); // sum
-                    }
-                },
-
-                new Function<double[], Double>() {
-                    @NotNull
-                    @Override
-                    public Double apply(double[] t) {
-                        if (t[0] == 0) return 0d;
-                        return t[1] / t[0];
-                    }
-                }
-        );
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -576,30 +380,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Integer> summingInt(@NotNull final ToIntFunction<? super T> mapper) {
-        return new CollectorsImpl<T, int[], Integer>(
-
-                new Supplier<int[]>() {
-                    @NotNull
-                    @Override
-                    public int[] get() {
-                        return new int[] { 0 };
-                    }
-                },
-
-                new BiConsumer<int[], T>() {
-                    @Override
-                    public void accept(int[] t, T u) {
-                        t[0] += mapper.applyAsInt(u);
-                    }
-                },
-
-                new Function<int[], Integer>() {
-                    @Override
-                    public Integer apply(int[] value) {
-                        return value[0];
-                    }
-                }
-        );
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -612,24 +393,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Long> summingLong(@NotNull final ToLongFunction<? super T> mapper) {
-        return new CollectorsImpl<T, long[], Long>(
-
-                LONG_2ELEMENTS_ARRAY_SUPPLIER,
-
-                new BiConsumer<long[], T>() {
-                    @Override
-                    public void accept(long[] t, T u) {
-                        t[0] += mapper.applyAsLong(u);
-                    }
-                },
-
-                new Function<long[], Long>() {
-                    @Override
-                    public Long apply(long[] value) {
-                        return value[0];
-                    }
-                }
-        );
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -642,24 +406,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Double> summingDouble(@NotNull final ToDoubleFunction<? super T> mapper) {
-        return new CollectorsImpl<T, double[], Double>(
-
-                DOUBLE_2ELEMENTS_ARRAY_SUPPLIER,
-
-                new BiConsumer<double[], T>() {
-                    @Override
-                    public void accept(double[] t, T u) {
-                        t[0] += mapper.applyAsDouble(u);
-                    }
-                },
-
-                new Function<double[], Double>() {
-                    @Override
-                    public Double apply(double[] value) {
-                        return value[0];
-                    }
-                }
-        );
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -670,13 +417,7 @@ public final class Collectors {
      */
     @NotNull
     public static <T> Collector<T, ?, Long> counting() {
-        return summingLong(new ToLongFunction<T>() {
-
-            @Override
-            public long applyAsLong(T t) {
-                return 1L;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -689,32 +430,8 @@ public final class Collectors {
      * @see #reducing(java.lang.Object, com.annimon.stream.function.Function, com.annimon.stream.function.BinaryOperator)
      */
     @NotNull
-    public static <T> Collector<T, ?, T> reducing(@Nullable  final T identity,
-                                                  @NotNull final BinaryOperator<T> op) {
-        return new CollectorsImpl<T, Tuple1<T>, T>(
-
-                new Supplier<Tuple1<T>>() {
-                    @NotNull
-                    @Override
-                    public Tuple1<T> get() {
-                        return new Tuple1<T>(identity);
-                    }
-                },
-
-                new BiConsumer<Tuple1<T>, T>() {
-                    @Override
-                    public void accept(@NotNull Tuple1<T> tuple, T value) {
-                        tuple.a = op.apply(tuple.a, value);
-                    }
-                },
-
-                new Function<Tuple1<T>, T>() {
-                    @Override
-                    public T apply(@NotNull Tuple1<T> tuple) {
-                        return tuple.a;
-                    }
-                }
-        );
+    public static <T> Collector<T, ?, T> reducing(@Nullable final T identity, @NotNull final BinaryOperator<T> op) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -729,34 +446,8 @@ public final class Collectors {
      * @see #reducing(java.lang.Object, com.annimon.stream.function.BinaryOperator)
      */
     @NotNull
-    public static <T, R> Collector<T, ?, R> reducing(
-            @Nullable  final R identity,
-            @NotNull final Function<? super T, ? extends R> mapper,
-            @NotNull final BinaryOperator<R> op) {
-        return new CollectorsImpl<T, Tuple1<R>, R>(
-
-                new Supplier<Tuple1<R>>() {
-                    @NotNull
-                    @Override
-                    public Tuple1<R> get() {
-                        return new Tuple1<R>(identity);
-                    }
-                },
-
-                new BiConsumer<Tuple1<R>, T>() {
-                    @Override
-                    public void accept(@NotNull Tuple1<R> tuple, T value) {
-                        tuple.a = op.apply(tuple.a, mapper.apply(value));
-                    }
-                },
-
-                new Function<Tuple1<R>, R>() {
-                    @Override
-                    public R apply(@NotNull Tuple1<R> tuple) {
-                        return tuple.a;
-                    }
-                }
-        );
+    public static <T, R> Collector<T, ?, R> reducing(@Nullable final R identity, @NotNull final Function<? super T, ? extends R> mapper, @NotNull final BinaryOperator<R> op) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -771,24 +462,8 @@ public final class Collectors {
      * @since 1.1.3
      */
     @NotNull
-    public static <T, A, R> Collector<T, ?, R> filtering(
-            @NotNull final Predicate<? super T> predicate,
-            @NotNull final Collector<? super T, A, R> downstream) {
-        final BiConsumer<A, ? super T> accumulator = downstream.accumulator();
-        return new CollectorsImpl<T, A, R>(
-
-                downstream.supplier(),
-
-                new BiConsumer<A, T>() {
-                    @Override
-                    public void accept(A a, T t) {
-                        if (predicate.test(t))
-                            accumulator.accept(a, t);
-                    }
-                },
-
-                downstream.finisher()
-        );
+    public static <T, A, R> Collector<T, ?, R> filtering(@NotNull final Predicate<? super T> predicate, @NotNull final Collector<? super T, A, R> downstream) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -803,24 +478,8 @@ public final class Collectors {
      * @return a {@code Collector}
      */
     @NotNull
-    public static <T, U, A, R> Collector<T, ?, R> mapping(
-            @NotNull final Function<? super T, ? extends U> mapper,
-            @NotNull final Collector<? super U, A, R> downstream) {
-
-        final BiConsumer<A, ? super U> accumulator = downstream.accumulator();
-        return new CollectorsImpl<T, A, R>(
-
-                downstream.supplier(),
-
-                new BiConsumer<A, T>() {
-                    @Override
-                    public void accept(A a, T t) {
-                        accumulator.accept(a, mapper.apply(t));
-                    }
-                },
-
-                downstream.finisher()
-        );
+    public static <T, U, A, R> Collector<T, ?, R> mapping(@NotNull final Function<? super T, ? extends U> mapper, @NotNull final Collector<? super U, A, R> downstream) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -836,31 +495,8 @@ public final class Collectors {
      * @since 1.1.3
      */
     @NotNull
-    public static <T, U, A, R> Collector<T, ?, R> flatMapping(
-            @NotNull final Function<? super T, ? extends Stream<? extends U>> mapper,
-            @NotNull final Collector<? super U, A, R> downstream) {
-
-        final BiConsumer<A, ? super U> accumulator = downstream.accumulator();
-        return new CollectorsImpl<T, A, R>(
-
-                downstream.supplier(),
-
-                new BiConsumer<A, T>() {
-                    @Override
-                    public void accept(final A a, T t) {
-                        final Stream<? extends U> stream = mapper.apply(t);
-                        if (stream == null) return;
-                        stream.forEach(new Consumer<U>() {
-                            @Override
-                            public void accept(U u) {
-                                accumulator.accept(a, u);
-                            }
-                        });
-                    }
-                },
-
-                downstream.finisher()
-        );
+    public static <T, U, A, R> Collector<T, ?, R> flatMapping(@NotNull final Function<? super T, ? extends Stream<? extends U>> mapper, @NotNull final Collector<? super U, A, R> downstream) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -875,13 +511,8 @@ public final class Collectors {
      * @return a {@code Collector}
      */
     @NotNull
-    public static <T, A, IR, OR> Collector<T, A, OR> collectingAndThen(
-            @NotNull Collector<T, A, IR> c,
-            @NotNull Function<IR, OR> finisher) {
-        Objects.requireNonNull(c);
-        Objects.requireNonNull(finisher);
-        return new CollectorsImpl<T, A, OR>(c.supplier(), c.accumulator(),
-                Function.Util.andThen(c.finisher(), finisher));
+    public static <T, A, IR, OR> Collector<T, A, OR> collectingAndThen(@NotNull Collector<T, A, IR> c, @NotNull Function<IR, OR> finisher) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -895,9 +526,8 @@ public final class Collectors {
      * @see #groupingBy(com.annimon.stream.function.Function, com.annimon.stream.function.Supplier, com.annimon.stream.Collector)
      */
     @NotNull
-    public static <T, K> Collector<T, ?, Map<K, List<T>>> groupingBy(
-            @NotNull Function<? super T, ? extends K> classifier) {
-        return groupingBy(classifier, Collectors.<T>toList());
+    public static <T, K> Collector<T, ?, Map<K, List<T>>> groupingBy(@NotNull Function<? super T, ? extends K> classifier) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -914,11 +544,8 @@ public final class Collectors {
      * @see #groupingBy(com.annimon.stream.function.Function, com.annimon.stream.function.Supplier, com.annimon.stream.Collector)
      */
     @NotNull
-    public static <T, K, A, D> Collector<T, ?, Map<K, D>> groupingBy(
-            @NotNull Function<? super T, ? extends K> classifier,
-            @NotNull Collector<? super T, A, D> downstream) {
-        return Collectors.<T, K, D, A, Map<K, D>>groupingBy(classifier,
-                Collectors.<K, D>hashMapSupplier(), downstream);
+    public static <T, K, A, D> Collector<T, ?, Map<K, D>> groupingBy(@NotNull Function<? super T, ? extends K> classifier, @NotNull Collector<? super T, A, D> downstream) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -937,52 +564,8 @@ public final class Collectors {
      * @see #groupingBy(com.annimon.stream.function.Function, com.annimon.stream.Collector)
      */
     @NotNull
-    public static <T, K, D, A, M extends Map<K, D>> Collector<T, ?, M> groupingBy(
-            @NotNull final Function<? super T, ? extends K> classifier,
-            @NotNull final Supplier<M> mapFactory,
-            @NotNull final Collector<? super T, A, D> downstream) {
-
-        @SuppressWarnings("unchecked")
-        final Function<A, A> downstreamFinisher = (Function<A, A>) downstream.finisher();
-        Function<Map<K, A>, M> finisher = new Function<Map<K, A>, M>() {
-            @NotNull
-            @Override
-            public M apply(@NotNull Map<K, A> map) {
-                // Update values of a map by a finisher function
-                for (Map.Entry<K, A> entry : map.entrySet()) {
-                    A value = entry.getValue();
-                    value = downstreamFinisher.apply(value);
-                    entry.setValue(value);
-                }
-                @SuppressWarnings("unchecked")
-                M castedMap = (M) map;
-                return castedMap;
-            }
-        };
-
-        @SuppressWarnings("unchecked")
-        Supplier<Map<K, A>> castedMapFactory = (Supplier<Map<K, A>>) mapFactory;
-        return new CollectorsImpl<T, Map<K, A>, M>(
-                castedMapFactory,
-
-                new BiConsumer<Map<K, A>, T>() {
-                    @Override
-                    public void accept(@NotNull Map<K, A> map, T t) {
-                        K key = Objects.requireNonNull(classifier.apply(t), "element cannot be mapped to a null key");
-                        // Get container with currently grouped elements
-                        A container = map.get(key);
-                        if (container == null) {
-                            // Put new container (list, map, set, etc)
-                            container = downstream.supplier().get();
-                            map.put(key, container);
-                        }
-                        // Add element to container
-                        downstream.accumulator().accept(container, t);
-                    }
-                },
-
-                finisher
-        );
+    public static <T, K, D, A, M extends Map<K, D>> Collector<T, ?, M> groupingBy(@NotNull final Function<? super T, ? extends K> classifier, @NotNull final Supplier<M> mapFactory, @NotNull final Collector<? super T, A, D> downstream) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -995,9 +578,8 @@ public final class Collectors {
      * @since 1.1.9
      */
     @NotNull
-    public static <T> Collector<T, ?, Map<Boolean, List<T>>> partitioningBy(
-            @NotNull Predicate<? super T> predicate) {
-        return partitioningBy(predicate, Collectors.<T>toList());
+    public static <T> Collector<T, ?, Map<Boolean, List<T>>> partitioningBy(@NotNull Predicate<? super T> predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1013,42 +595,9 @@ public final class Collectors {
      * @since 1.1.9
      */
     @NotNull
-    public static <T, D, A> Collector<T, ?, Map<Boolean, D>> partitioningBy(
-            @NotNull final Predicate<? super T> predicate,
-            @NotNull final Collector<? super T, A, D> downstream) {
-
-        final BiConsumer<A, ? super T> downstreamAccumulator = downstream.accumulator();
-        return new CollectorsImpl<T, Tuple2<A>, Map<Boolean, D>>(
-                new Supplier<Tuple2<A>>() {
-                    @NotNull
-                    @Override
-                    public Tuple2<A> get() {
-                        return new Tuple2<A>(
-                                downstream.supplier().get(),
-                                downstream.supplier().get());
-                    }
-                },
-                new BiConsumer<Tuple2<A>, T>() {
-                    @Override
-                    public void accept(@NotNull Tuple2<A> container, T t) {
-                        downstreamAccumulator.accept(
-                                predicate.test(t) ? container.a : container.b, t);
-                    }
-                },
-                new Function<Tuple2<A>, Map<Boolean, D>>() {
-                    @NotNull
-                    @Override
-                    public Map<Boolean, D> apply(@NotNull Tuple2<A> container) {
-                        final Function<A, D> finisher = downstream.finisher();
-                        Map<Boolean, D> result = new HashMap<Boolean, D>(2);
-                        result.put(Boolean.TRUE, finisher.apply(container.a));
-                        result.put(Boolean.FALSE, finisher.apply(container.b));
-                        return result;
-                    }
-                }
-        );
+    public static <T, D, A> Collector<T, ?, Map<Boolean, D>> partitioningBy(@NotNull final Predicate<? super T> predicate, @NotNull final Collector<? super T, A, D> downstream) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 
     /**
      * Returns a {@code Collector} that composites two collectors.
@@ -1066,83 +615,58 @@ public final class Collectors {
      * @since 1.2.2
      */
     @NotNull
-    public static <T, R1, R2, R> Collector<T, ?, R> teeing(
-            @NotNull final Collector<? super T, ?, R1> downstream1,
-            @NotNull final Collector<? super T, ?, R2> downstream2,
-            @NotNull final BiFunction<? super R1, ? super R2, R> merger) {
-        return teeingImpl(downstream1, downstream2, merger);
+    public static <T, R1, R2, R> Collector<T, ?, R> teeing(@NotNull final Collector<? super T, ?, R1> downstream1, @NotNull final Collector<? super T, ?, R2> downstream2, @NotNull final BiFunction<? super R1, ? super R2, R> merger) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    private static <T, A1, A2, R1, R2, R> Collector<T, ?, R> teeingImpl(
-            @NotNull final Collector<? super T, A1, R1> downstream1,
-            @NotNull final Collector<? super T, A2, R2> downstream2,
-            @NotNull final BiFunction<? super R1, ? super R2, R> merger) {
-
+    private static <T, A1, A2, R1, R2, R> Collector<T, ?, R> teeingImpl(@NotNull final Collector<? super T, A1, R1> downstream1, @NotNull final Collector<? super T, A2, R2> downstream2, @NotNull final BiFunction<? super R1, ? super R2, R> merger) {
         Objects.requireNonNull(downstream1, "downstream1");
         Objects.requireNonNull(downstream2, "downstream2");
         Objects.requireNonNull(merger, "merger");
+        final Supplier<A1> supplier1 = Objects.requireNonNull(downstream1.supplier(), "downstream1 supplier");
+        final Supplier<A2> supplier2 = Objects.requireNonNull(downstream2.supplier(), "downstream2 supplier");
+        final BiConsumer<A1, ? super T> acc1 = Objects.requireNonNull(downstream1.accumulator(), "downstream1 accumulator");
+        final BiConsumer<A2, ? super T> acc2 = Objects.requireNonNull(downstream2.accumulator(), "downstream2 accumulator");
+        final Function<A1, R1> finisher1 = Objects.requireNonNull(downstream1.finisher(), "downstream1 finisher");
+        final Function<A2, R2> finisher2 = Objects.requireNonNull(downstream2.finisher(), "downstream2 finisher");
+        return new CollectorsImpl<T, Map.Entry<A1, A2>, R>(new Supplier<Map.Entry<A1, A2>>() {
 
-        final Supplier<A1> supplier1 =
-                Objects.requireNonNull(downstream1.supplier(), "downstream1 supplier");
-        final Supplier<A2> supplier2 =
-                Objects.requireNonNull(downstream2.supplier(), "downstream2 supplier");
+            @NotNull
+            @Override
+            public Map.Entry<A1, A2> get() {
+                throw new UnsupportedOperationException("STUB: not implemented");
+            }
+        }, new BiConsumer<Map.Entry<A1, A2>, T>() {
 
-        final BiConsumer<A1, ? super T> acc1 =
-                Objects.requireNonNull(downstream1.accumulator(), "downstream1 accumulator");
-        final BiConsumer<A2, ? super T> acc2 =
-                Objects.requireNonNull(downstream2.accumulator(), "downstream2 accumulator");
+            @Override
+            public void accept(@NotNull Map.Entry<A1, A2> entry, T t) {
+                throw new UnsupportedOperationException("STUB: not implemented");
+            }
+        }, new Function<Map.Entry<A1, A2>, R>() {
 
-        final Function<A1, R1> finisher1 =
-                Objects.requireNonNull(downstream1.finisher(), "downstream1 finisher");
-        final Function<A2, R2> finisher2 =
-                Objects.requireNonNull(downstream2.finisher(), "downstream2 finisher");
-
-        return new CollectorsImpl<T, Map.Entry<A1, A2>, R>(
-                new Supplier<Map.Entry<A1, A2>>() {
-                    @NotNull
-                    @Override
-                    public Map.Entry<A1, A2> get() {
-                        return new AbstractMap.SimpleEntry<A1, A2>(
-                                supplier1.get(),
-                                supplier2.get());
-                    }
-                },
-                new BiConsumer<Map.Entry<A1, A2>, T>() {
-                    @Override
-                    public void accept(@NotNull Map.Entry<A1, A2> entry, T t) {
-                        acc1.accept(entry.getKey(), t);
-                        acc2.accept(entry.getValue(), t);
-                    }
-                },
-                new Function<Map.Entry<A1, A2>, R>() {
-                    @NotNull
-                    @Override
-                    public R apply(@NotNull Map.Entry<A1, A2> entry) {
-                        return merger.apply(
-                                finisher1.apply(entry.getKey()),
-                                finisher2.apply(entry.getValue()));
-                    }
-                }
-        );
+            @NotNull
+            @Override
+            public R apply(@NotNull Map.Entry<A1, A2> entry) {
+                throw new UnsupportedOperationException("STUB: not implemented");
+            }
+        });
     }
 
     @NotNull
-    private static <K, V>  Supplier<Map<K, V>> hashMapSupplier() {
+    private static <K, V> Supplier<Map<K, V>> hashMapSupplier() {
         return new Supplier<Map<K, V>>() {
 
             @NotNull
             @Override
             public Map<K, V> get() {
-                return new HashMap<K, V>();
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         };
     }
 
     @NotNull
     private static IllegalStateException duplicateKeyException(Object key, Object old, Object value) {
-        return new IllegalStateException(String.format(
-                "Duplicate key %s (attempted merging values %s and %s)",
-                key, old, value));
+        return new IllegalStateException(String.format("Duplicate key %s (attempted merging values %s and %s)", key, old, value));
     }
 
     private static <K, V> void mapMerge(@NotNull Map<K, V> map, K key, V value, @NotNull BinaryOperator<V> merger) {
@@ -1153,7 +677,6 @@ public final class Collectors {
         } else {
             newValue = merger.apply(oldValue, value);
         }
-
         if (newValue == null) {
             map.remove(key);
         } else {
@@ -1164,12 +687,11 @@ public final class Collectors {
     @NotNull
     private static <K, V> UnaryOperator<Map<K, V>> toUnmodifiableMapConverter() {
         return new UnaryOperator<Map<K, V>>() {
+
             @NotNull
             @Override
             public Map<K, V> apply(@NotNull Map<K, V> map) {
-                Objects.requireNonNullElements(map.keySet());
-                Objects.requireNonNullElements(map.values());
-                return Collections.unmodifiableMap(map);
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         };
     }
@@ -1177,17 +699,11 @@ public final class Collectors {
     @NotNull
     @SuppressWarnings("unchecked")
     static <A, R> Function<A, R> castIdentity() {
-        return new Function<A, R>() {
-
-            @NotNull
-            @Override
-            public R apply(@NotNull A value) {
-                return (R) value;
-            }
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static final class Tuple1<A> {
+
         A a;
 
         Tuple1(A a) {
@@ -1196,7 +712,9 @@ public final class Collectors {
     }
 
     private static final class Tuple2<A> {
+
         final A a;
+
         final A b;
 
         Tuple2(A a, A b) {
@@ -1208,7 +726,9 @@ public final class Collectors {
     private static final class CollectorsImpl<T, A, R> implements Collector<T, A, R> {
 
         private final Supplier<A> supplier;
+
         private final BiConsumer<A, T> accumulator;
+
         private final Function<A, R> finisher;
 
         public CollectorsImpl(Supplier<A> supplier, BiConsumer<A, T> accumulator) {
@@ -1223,19 +743,18 @@ public final class Collectors {
 
         @Override
         public Supplier<A> supplier() {
-            return supplier;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public BiConsumer<A, T> accumulator() {
-            return accumulator;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Nullable
         @Override
         public Function<A, R> finisher() {
-            return finisher;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

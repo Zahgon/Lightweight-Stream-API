@@ -19,7 +19,8 @@ public interface DoubleUnaryOperator {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Returns a unary operator that always returns its input argument.
@@ -27,12 +28,7 @@ public interface DoubleUnaryOperator {
          * @return a unary operator that always returns its input argument
          */
         public static DoubleUnaryOperator identity() {
-            return new DoubleUnaryOperator() {
-                @Override
-                public double applyAsDouble(double operand) {
-                    return operand;
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

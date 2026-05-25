@@ -27,14 +27,15 @@ public final class IntStream implements Closeable {
      * Single instance for empty stream. It is safe for multi-thread environment because it has no content.
      */
     private static final IntStream EMPTY = new IntStream(new PrimitiveIterator.OfInt() {
+
         @Override
         public int nextInt() {
-            return 0;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean hasNext() {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     });
 
@@ -45,7 +46,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream empty() {
-        return EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -57,8 +58,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream of(@NotNull PrimitiveIterator.OfInt iterator) {
-        Objects.requireNonNull(iterator);
-        return new IntStream(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -70,11 +70,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream of(@NotNull final int... values) {
-        Objects.requireNonNull(values);
-        if (values.length == 0) {
-            return IntStream.empty();
-        }
-        return new IntStream(new IntArray(values));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -85,7 +81,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream of(final int t) {
-        return new IntStream(new IntArray(new int[] { t }));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,7 +98,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream ofCodePoints(@NotNull CharSequence charSequence) {
-        return new IntStream(new IntCodePoints(charSequence));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -117,10 +113,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream range(final int startInclusive, final int endExclusive) {
-        if (startInclusive >= endExclusive) {
-            return empty();
-        }
-        return rangeClosed(startInclusive, endExclusive - 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -135,13 +128,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream rangeClosed(final int startInclusive, final int endInclusive) {
-        if (startInclusive > endInclusive) {
-            return empty();
-        } else if (startInclusive == endInclusive) {
-            return of(startInclusive);
-        } else {
-            return new IntStream(new IntRangeClosed(startInclusive, endInclusive));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -155,8 +142,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public static IntStream generate(@NotNull final IntSupplier s) {
-        Objects.requireNonNull(s);
-        return new IntStream(new IntGenerate(s));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -184,10 +170,8 @@ public final class IntStream implements Closeable {
      * @throws NullPointerException if {@code f} is null
      */
     @NotNull
-    public static IntStream iterate(final int seed,
-                                    @NotNull final IntUnaryOperator f) {
-        Objects.requireNonNull(f);
-        return new IntStream(new IntIterate(seed, f));
+    public static IntStream iterate(final int seed, @NotNull final IntUnaryOperator f) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -210,12 +194,8 @@ public final class IntStream implements Closeable {
      * @since 1.1.5
      */
     @NotNull
-    public static IntStream iterate(
-            final int seed,
-            @NotNull final IntPredicate predicate,
-            @NotNull final IntUnaryOperator op) {
-        Objects.requireNonNull(predicate);
-        return iterate(seed, op).takeWhile(predicate);
+    public static IntStream iterate(final int seed, @NotNull final IntPredicate predicate, @NotNull final IntUnaryOperator op) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -236,13 +216,8 @@ public final class IntStream implements Closeable {
      * @throws NullPointerException if {@code a} or {@code b} is null
      */
     @NotNull
-    public static IntStream concat(
-            @NotNull final IntStream a,
-            @NotNull final IntStream b) {
-        Objects.requireNonNull(a);
-        Objects.requireNonNull(b);
-        IntStream result = new IntStream(new IntConcat(a.iterator, b.iterator));
-        return result.onClose(Compose.closeables(a, b));
+    public static IntStream concat(@NotNull final IntStream a, @NotNull final IntStream b) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -266,31 +241,12 @@ public final class IntStream implements Closeable {
      * @since 1.2.2
      */
     @NotNull
-    public static IntStream concat(
-            @NotNull final IntStream a,
-            @NotNull final IntStream b,
-            @NotNull final IntStream... rest) {
-        Objects.requireNonNull(a);
-        Objects.requireNonNull(b);
-        Objects.requireNonNull(rest);
-
-        final List<PrimitiveIterator.OfInt> iterators =
-                new ArrayList<PrimitiveIterator.OfInt>(rest.length + 2);
-        final List<Closeable> closeables =
-                new ArrayList<Closeable>(rest.length + 2);
-        Collections.addAll(iterators, a.iterator, b.iterator);
-        Collections.addAll(closeables, a, b);
-        for (final IntStream stream : rest) {
-            iterators.add(stream.iterator);
-            closeables.add(stream);
-        }
-
-        IntStream result = new IntStream(new IntConcat(iterators));
-        return result.onClose(Compose.closeables(closeables));
+    public static IntStream concat(@NotNull final IntStream a, @NotNull final IntStream b, @NotNull final IntStream... rest) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-
     private final PrimitiveIterator.OfInt iterator;
+
     private final Params params;
 
     private IntStream(PrimitiveIterator.OfInt iterator) {
@@ -308,7 +264,7 @@ public final class IntStream implements Closeable {
      * @return internal {@code IntStream} iterator.
      */
     public PrimitiveIterator.OfInt iterator() {
-        return iterator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -379,8 +335,7 @@ public final class IntStream implements Closeable {
      */
     @Nullable
     public <R> R custom(@NotNull final Function<IntStream, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -394,7 +349,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public Stream<Integer> boxed() {
-        return new Stream<Integer>(params, iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -416,7 +371,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream prepend(@NotNull IntStream stream) {
-        return IntStream.concat(stream, this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -438,7 +393,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream append(@NotNull IntStream stream) {
-        return IntStream.concat(this, stream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -460,7 +415,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream filter(@NotNull final IntPredicate predicate) {
-        return new IntStream(params, new IntFilter(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -484,7 +439,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream filterIndexed(@NotNull IndexedIntPredicate predicate) {
-        return filterIndexed(0, 1, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -511,11 +466,8 @@ public final class IntStream implements Closeable {
      * @since 1.2.1
      */
     @NotNull
-    public IntStream filterIndexed(int from, int step,
-                                   @NotNull IndexedIntPredicate predicate) {
-        return new IntStream(params, new IntFilterIndexed(
-                new PrimitiveIndexedIterator.OfInt(from, step, iterator),
-                predicate));
+    public IntStream filterIndexed(int from, int step, @NotNull IndexedIntPredicate predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -530,7 +482,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream filterNot(@NotNull final IntPredicate predicate) {
-        return filter(IntPredicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -552,7 +504,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream map(@NotNull final IntUnaryOperator mapper) {
-        return new IntStream(params, new IntMap(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -574,7 +526,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream mapIndexed(@NotNull IntBinaryOperator mapper) {
-        return mapIndexed(0, 1, mapper);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -599,11 +551,8 @@ public final class IntStream implements Closeable {
      * @since 1.2.1
      */
     @NotNull
-    public IntStream mapIndexed(int from, int step,
-                                @NotNull IntBinaryOperator mapper) {
-        return new IntStream(params, new IntMapIndexed(
-                new PrimitiveIndexedIterator.OfInt(from, step, iterator),
-                mapper));
+    public IntStream mapIndexed(int from, int step, @NotNull IntBinaryOperator mapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -618,7 +567,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public <R> Stream<R> mapToObj(@NotNull final IntFunction<? extends R> mapper) {
-        return new Stream<R>(params, new IntMapToObj<R>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -634,7 +583,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public LongStream mapToLong(@NotNull final IntToLongFunction mapper) {
-        return new LongStream(params, new IntMapToLong(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -650,7 +599,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public DoubleStream mapToDouble(@NotNull final IntToDoubleFunction mapper) {
-        return new DoubleStream(params, new IntMapToDouble(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -674,7 +623,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream flatMap(@NotNull final IntFunction<? extends IntStream> mapper) {
-        return new IntStream(params, new IntFlatMap(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -692,14 +641,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream mapMulti(@NotNull final IntStream.IntMapMultiConsumer mapper) {
-        return flatMap(new IntFunction<IntStream>() {
-            @Override
-            public IntStream apply(int value) {
-                SpinedBuffer.OfInt buffer = new SpinedBuffer.OfInt();
-                mapper.accept(value, buffer);
-                return IntStream.of(buffer.iterator());
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -709,6 +651,7 @@ public final class IntStream implements Closeable {
      * @see #mapMulti(com.annimon.stream.IntStream.IntMapMultiConsumer)
      */
     public interface IntMapMultiConsumer {
+
         /**
          * Replaces the given {@code value} with zero or more values
          * by feeding the mapped values to the {@code consumer} consumer.
@@ -734,9 +677,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream distinct() {
-        // While functional and quick to implement, this approach is not very efficient.
-        // An efficient version requires an int-specific map/set implementation.
-        return boxed().distinct().mapToInt(UNBOX_FUNCTION);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -755,7 +696,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream sorted() {
-        return new IntStream(params, new IntSorted(iterator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -775,7 +716,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream sorted(@Nullable Comparator<Integer> comparator) {
-        return boxed().sorted(comparator).mapToInt(UNBOX_FUNCTION);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -797,9 +738,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream sample(final int stepWidth) {
-        if (stepWidth <= 0) throw new IllegalArgumentException("stepWidth cannot be zero or negative");
-        if (stepWidth == 1) return this;
-        return new IntStream(params, new IntSample(iterator, stepWidth));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -814,7 +753,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream peek(@NotNull final IntConsumer action) {
-        return new IntStream(params, new IntPeek(iterator, action));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -839,8 +778,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream scan(@NotNull final IntBinaryOperator accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new IntStream(params, new IntScan(iterator, accumulator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -866,10 +804,8 @@ public final class IntStream implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public IntStream scan(final int identity,
-                          @NotNull final IntBinaryOperator accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new IntStream(params, new IntScanIdentity(iterator, identity, accumulator));
+    public IntStream scan(final int identity, @NotNull final IntBinaryOperator accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -889,7 +825,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream takeWhile(@NotNull final IntPredicate predicate) {
-        return new IntStream(params, new IntTakeWhile(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -912,7 +848,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream takeUntil(@NotNull final IntPredicate stopPredicate) {
-        return new IntStream(params, new IntTakeUntil(iterator, stopPredicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -932,7 +868,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream dropWhile(@NotNull final IntPredicate predicate) {
-        return new IntStream(params, new IntDropWhile(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -958,13 +894,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream limit(final long maxSize) {
-        if (maxSize < 0) {
-            throw new IllegalArgumentException("maxSize cannot be negative");
-        }
-        if (maxSize == 0) {
-            return IntStream.empty();
-        }
-        return new IntStream(params, new IntLimit(iterator, maxSize));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -992,13 +922,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream skip(final long n) {
-        if (n < 0) {
-            throw new IllegalArgumentException("n cannot be negative");
-        } else if (n == 0) {
-            return this;
-        } else {
-            return new IntStream(params, new IntSkip(iterator, n));
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1009,9 +933,7 @@ public final class IntStream implements Closeable {
      * @param action a non-interfering action to perform on the elements
      */
     public void forEach(@NotNull IntConsumer action) {
-        while(iterator.hasNext()) {
-            action.accept(iterator.nextInt());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1023,7 +945,7 @@ public final class IntStream implements Closeable {
      * @since 1.2.1
      */
     public void forEachIndexed(@NotNull IndexedIntConsumer action) {
-        forEachIndexed(0, 1, action);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1036,13 +958,8 @@ public final class IntStream implements Closeable {
      * @param action  the action to be performed on each element
      * @since 1.2.1
      */
-    public void forEachIndexed(int from, int step,
-                               @NotNull IndexedIntConsumer action) {
-        int index = from;
-        while (iterator.hasNext()) {
-            action.accept(index, iterator.nextInt());
-            index += step;
-        }
+    public void forEachIndexed(int from, int step, @NotNull IndexedIntConsumer action) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1074,12 +991,7 @@ public final class IntStream implements Closeable {
      * @see #max()
      */
     public int reduce(int identity, @NotNull IntBinaryOperator op) {
-        int result = identity;
-        while(iterator.hasNext()) {
-            int value = iterator.nextInt();
-            result = op.applyAsInt(result, value);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1098,19 +1010,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public OptionalInt reduce(@NotNull IntBinaryOperator op) {
-        boolean foundAny = false;
-        int result = 0;
-        while(iterator.hasNext()) {
-            int value = iterator.nextInt();
-
-            if(!foundAny) {
-                foundAny = true;
-                result = value;
-            } else {
-                result = op.applyAsInt(result, value);
-            }
-        }
-        return foundAny ? OptionalInt.of(result) : OptionalInt.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1122,7 +1022,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public int[] toArray() {
-        return Operators.toIntArray(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1137,14 +1037,8 @@ public final class IntStream implements Closeable {
      * @see Stream#collect(com.annimon.stream.function.Supplier, com.annimon.stream.function.BiConsumer)
      */
     @Nullable
-    public <R> R collect(@NotNull Supplier<R> supplier,
-                         @NotNull ObjIntConsumer<R> accumulator) {
-        R result = supplier.get();
-        while (iterator.hasNext()) {
-            final int value = iterator.nextInt();
-            accumulator.accept(result, value);
-        }
-        return result;
+    public <R> R collect(@NotNull Supplier<R> supplier, @NotNull ObjIntConsumer<R> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1153,12 +1047,7 @@ public final class IntStream implements Closeable {
      * @return the sum of elements in this stream
      */
     public int sum() {
-        int sum = 0;
-        while(iterator.hasNext()) {
-            sum += iterator.nextInt();
-        }
-
-        return sum;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1172,12 +1061,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public OptionalInt min() {
-        return reduce(new IntBinaryOperator() {
-            @Override
-            public int applyAsInt(int left, int right) {
-                return left < right ? left : right;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1191,12 +1075,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public OptionalInt max() {
-        return reduce(new IntBinaryOperator() {
-            @Override
-            public int applyAsInt(int left, int right) {
-                return left > right ? left : right;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1207,12 +1086,7 @@ public final class IntStream implements Closeable {
      * @return the count of elements in this stream
      */
     public long count() {
-        long count = 0;
-        while(iterator.hasNext()) {
-            iterator.nextInt();
-            count++;
-        }
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1240,12 +1114,7 @@ public final class IntStream implements Closeable {
      *         predicate, otherwise {@code false}
      */
     public boolean anyMatch(@NotNull IntPredicate predicate) {
-        while(iterator.hasNext()) {
-            if(predicate.test(iterator.nextInt()))
-                return true;
-        }
-
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1273,12 +1142,7 @@ public final class IntStream implements Closeable {
      *         provided predicate or the stream is empty, otherwise {@code false}
      */
     public boolean allMatch(@NotNull IntPredicate predicate) {
-        while(iterator.hasNext()) {
-            if(!predicate.test(iterator.nextInt()))
-                return false;
-        }
-
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1306,11 +1170,7 @@ public final class IntStream implements Closeable {
      *         provided predicate or the stream is empty, otherwise {@code false}
      */
     public boolean noneMatch(@NotNull IntPredicate predicate) {
-        while (iterator.hasNext()) {
-            if (predicate.test(iterator.nextInt()))
-                return false;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1324,11 +1184,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public OptionalInt findFirst() {
-        if (iterator.hasNext()) {
-            return OptionalInt.of(iterator.nextInt());
-        } else {
-            return OptionalInt.empty();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1342,11 +1198,7 @@ public final class IntStream implements Closeable {
      * @since 1.2.2
      */
     public int findFirstOrElse(int other) {
-        if (iterator.hasNext()) {
-            return iterator.nextInt();
-        } else {
-            return other;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1361,12 +1213,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public OptionalInt findLast() {
-        return reduce(new IntBinaryOperator() {
-            @Override
-            public int applyAsInt(int left, int right) {
-                return right;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1394,16 +1241,7 @@ public final class IntStream implements Closeable {
      * @since 1.1.3
      */
     public int single() {
-        if (iterator.hasNext()) {
-            int singleCandidate = iterator.nextInt();
-            if (iterator.hasNext()) {
-                throw new IllegalStateException("IntStream contains more than one element");
-            } else {
-                return singleCandidate;
-            }
-        } else {
-            throw new NoSuchElementException("IntStream contains no element");
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1431,16 +1269,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public OptionalInt findSingle() {
-        if (iterator.hasNext()) {
-            int singleCandidate = iterator.nextInt();
-            if (iterator.hasNext()) {
-                throw new IllegalStateException("IntStream contains more than one element");
-            } else {
-                return OptionalInt.of(singleCandidate);
-            }
-        } else {
-            return OptionalInt.empty();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1454,9 +1283,7 @@ public final class IntStream implements Closeable {
      */
     @NotNull
     public IntStream onClose(@NotNull final Runnable closeHandler) {
-        Objects.requireNonNull(closeHandler);
-        final Params newParams = Params.wrapWithCloseHandler(params, closeHandler);
-        return new IntStream(newParams, iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1468,17 +1295,14 @@ public final class IntStream implements Closeable {
      */
     @Override
     public void close() {
-        if (params != null && params.closeHandler != null) {
-            params.closeHandler.run();
-            params.closeHandler = null;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-
     private static final ToIntFunction<Integer> UNBOX_FUNCTION = new ToIntFunction<Integer>() {
+
         @Override
         public int applyAsInt(Integer t) {
-            return t;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 }

@@ -21,7 +21,8 @@ public interface IntSupplier {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Creates a safe {@code IntSupplier}.
@@ -32,9 +33,8 @@ public interface IntSupplier {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableIntSupplier, int)
          */
-        public static IntSupplier safe(
-                @NotNull ThrowableIntSupplier<Throwable> throwableSupplier) {
-            return safe(throwableSupplier, 0);
+        public static IntSupplier safe(@NotNull ThrowableIntSupplier<Throwable> throwableSupplier) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -46,22 +46,8 @@ public interface IntSupplier {
          * @throws NullPointerException if {@code throwableSupplier} is null
          * @since 1.1.7
          */
-        public static IntSupplier safe(
-                @NotNull final ThrowableIntSupplier<Throwable> throwableSupplier,
-                final int resultIfFailed) {
-            Objects.requireNonNull(throwableSupplier);
-            return new IntSupplier() {
-
-                @Override
-                public int getAsInt() {
-                    try {
-                        return throwableSupplier.getAsInt();
-                    } catch (Throwable ex) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static IntSupplier safe(@NotNull final ThrowableIntSupplier<Throwable> throwableSupplier, final int resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

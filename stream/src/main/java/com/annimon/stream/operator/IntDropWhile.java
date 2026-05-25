@@ -8,30 +8,16 @@ import org.jetbrains.annotations.NotNull;
 public class IntDropWhile extends PrimitiveExtIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final IntPredicate predicate;
 
-    public IntDropWhile(
-            @NotNull PrimitiveIterator.OfInt iterator,
-            @NotNull IntPredicate predicate) {
+    public IntDropWhile(@NotNull PrimitiveIterator.OfInt iterator, @NotNull IntPredicate predicate) {
         this.iterator = iterator;
         this.predicate = predicate;
     }
 
     @Override
     protected void nextIteration() {
-        if (!isInit) {
-            // Skip first time
-            while (hasNext = iterator.hasNext()) {
-                next = iterator.nextInt();
-                if (!predicate.test(next)) {
-                    return;
-                }
-            }
-        }
-
-        hasNext = hasNext && iterator.hasNext();
-        if (!hasNext) return;
-
-        next = iterator.nextInt();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -21,7 +21,8 @@ public interface IndexedLongPredicate {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link LongPredicate} and returns {@code IndexedLongPredicate}.
@@ -31,14 +32,7 @@ public interface IndexedLongPredicate {
          * @throws NullPointerException if {@code predicate} is null
          */
         public static IndexedLongPredicate wrap(@NotNull final LongPredicate predicate) {
-            Objects.requireNonNull(predicate);
-            return new IndexedLongPredicate() {
-                @Override
-                public boolean test(int index, long value) {
-                    return predicate.test(value);
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

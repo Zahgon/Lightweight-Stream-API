@@ -19,7 +19,8 @@ public interface LongUnaryOperator {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Returns a unary operator that always returns its input argument.
@@ -27,12 +28,7 @@ public interface LongUnaryOperator {
          * @return a unary operator that always returns its input argument
          */
         public static LongUnaryOperator identity() {
-            return new LongUnaryOperator() {
-                @Override
-                public long applyAsLong(long operand) {
-                    return operand;
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

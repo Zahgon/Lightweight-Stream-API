@@ -7,9 +7,11 @@ package com.annimon.stream.function;
  * @param <T> the type of the operand and result of the operator
  */
 public interface UnaryOperator<T> extends Function<T, T> {
+
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Returns a unary operator that always returns its input argument.
@@ -18,12 +20,7 @@ public interface UnaryOperator<T> extends Function<T, T> {
          * @return a unary operator that always returns its input argument
          */
         public static <T> UnaryOperator<T> identity() {
-            return new UnaryOperator<T>() {
-                @Override
-                public T apply(T t) {
-                    return t;
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

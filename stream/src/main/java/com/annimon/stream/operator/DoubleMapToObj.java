@@ -8,22 +8,21 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleMapToObj<R> extends LsaIterator<R> {
 
     private final PrimitiveIterator.OfDouble iterator;
+
     private final DoubleFunction<? extends R> mapper;
 
-    public DoubleMapToObj(
-            @NotNull PrimitiveIterator.OfDouble iterator,
-            @NotNull DoubleFunction<? extends R> mapper) {
+    public DoubleMapToObj(@NotNull PrimitiveIterator.OfDouble iterator, @NotNull DoubleFunction<? extends R> mapper) {
         this.iterator = iterator;
         this.mapper = mapper;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public R nextIteration() {
-        return mapper.apply(iterator.nextDouble());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -30,7 +30,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public static OptionalDouble empty() {
-        return EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -41,7 +41,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public static OptionalDouble of(double value) {
-        return new OptionalDouble(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -53,10 +53,11 @@ public final class OptionalDouble {
      */
     @NotNull
     public static OptionalDouble ofNullable(@Nullable Double value) {
-        return value == null ? EMPTY : new OptionalDouble(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final boolean isPresent;
+
     private final double value;
 
     private OptionalDouble() {
@@ -80,7 +81,7 @@ public final class OptionalDouble {
      * @see #orElseThrow()
      */
     public double getAsDouble() {
-        return orElseThrow();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -89,7 +90,7 @@ public final class OptionalDouble {
      * @return {@code true} if a value present, {@code false} otherwise
      */
     public boolean isPresent() {
-        return isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -99,7 +100,7 @@ public final class OptionalDouble {
      * @since 1.2.1
      */
     public boolean isEmpty() {
-        return !isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,9 +110,7 @@ public final class OptionalDouble {
      * @throws NullPointerException if value is present and {@code consumer} is null
      */
     public void ifPresent(@NotNull DoubleConsumer consumer) {
-        if (isPresent) {
-            consumer.accept(value);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -124,11 +123,7 @@ public final class OptionalDouble {
      *         or no value is present and the given empty-based action is null.
      */
     public void ifPresentOrElse(@NotNull DoubleConsumer consumer, @NotNull Runnable emptyAction) {
-        if (isPresent) {
-            consumer.accept(value);
-        } else {
-            emptyAction.run();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -141,8 +136,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalDouble executeIfPresent(@NotNull DoubleConsumer consumer) {
-        ifPresent(consumer);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -153,10 +147,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalDouble executeIfAbsent(@NotNull Runnable action) {
-        if (!isPresent()) {
-            action.run();
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -170,8 +161,7 @@ public final class OptionalDouble {
      */
     @Nullable
     public <R> R custom(@NotNull Function<OptionalDouble, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -183,8 +173,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalDouble filter(@NotNull DoublePredicate predicate) {
-        if (!isPresent()) return this;
-        return predicate.test(value) ? this : OptionalDouble.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -197,7 +186,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalDouble filterNot(@NotNull DoublePredicate predicate) {
-        return filter(DoublePredicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -211,11 +200,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalDouble map(@NotNull DoubleUnaryOperator mapper) {
-        if (!isPresent()) {
-            return empty();
-        }
-        Objects.requireNonNull(mapper);
-        return OptionalDouble.of(mapper.applyAsDouble(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -230,11 +215,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public <U> Optional<U> mapToObj(@NotNull DoubleFunction<U> mapper) {
-        if (!isPresent()) {
-            return Optional.empty();
-        }
-        Objects.requireNonNull(mapper);
-        return Optional.ofNullable(mapper.apply(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -248,11 +229,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalInt mapToInt(@NotNull DoubleToIntFunction mapper) {
-        if (!isPresent()) {
-            return OptionalInt.empty();
-        }
-        Objects.requireNonNull(mapper);
-        return OptionalInt.of(mapper.applyAsInt(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -266,11 +243,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalLong mapToLong(@NotNull DoubleToLongFunction mapper) {
-        if (!isPresent()) {
-            return OptionalLong.empty();
-        }
-        Objects.requireNonNull(mapper);
-        return OptionalLong.of(mapper.applyAsLong(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -281,10 +254,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public DoubleStream stream() {
-        if (!isPresent()) {
-            return DoubleStream.empty();
-        }
-        return DoubleStream.of(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -299,9 +269,7 @@ public final class OptionalDouble {
      */
     @NotNull
     public OptionalDouble or(@NotNull Supplier<OptionalDouble> supplier) {
-        if (isPresent()) return this;
-        Objects.requireNonNull(supplier);
-        return Objects.requireNonNull(supplier.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -311,7 +279,7 @@ public final class OptionalDouble {
      * @return the value, if present, otherwise {@code other}
      */
     public double orElse(double other) {
-        return isPresent ? value : other;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -322,7 +290,7 @@ public final class OptionalDouble {
      * @throws NullPointerException if value is not present and {@code other} is null
      */
     public double orElseGet(@NotNull DoubleSupplier other) {
-        return isPresent ? value : other.getAsDouble();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -333,10 +301,7 @@ public final class OptionalDouble {
      * @since 1.2.0
      */
     public double orElseThrow() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -348,36 +313,22 @@ public final class OptionalDouble {
      * @throws X if inner value is not present
      */
     public <X extends Throwable> double orElseThrow(@NotNull Supplier<X> exceptionSupplier) throws X {
-        if (isPresent) {
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof OptionalDouble)) {
-            return false;
-        }
-
-        OptionalDouble other = (OptionalDouble) obj;
-        return (isPresent && other.isPresent)
-                ? Double.compare(value, other.value) == 0
-                : isPresent == other.isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return isPresent ? Objects.hashCode(value) : 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @NotNull
     @Override
     public String toString() {
-        return isPresent
-                ? String.format("OptionalDouble[%s]", value)
-                : "OptionalDouble.empty";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

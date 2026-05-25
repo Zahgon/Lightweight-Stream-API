@@ -7,36 +7,24 @@ import java.util.NoSuchElementException;
  */
 public final class PrimitiveExtIterator {
 
-    private PrimitiveExtIterator() { }
+    private PrimitiveExtIterator() {
+    }
 
     public static abstract class OfInt extends PrimitiveIterator.OfInt {
 
         protected int next;
+
         protected boolean hasNext, isInit;
 
         @Override
         public boolean hasNext() {
-            if (!isInit) {
-                // First call to hasNext() on new iterator
-                nextIteration();
-                isInit = true;
-            }
-            return hasNext;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @SuppressWarnings("ResultOfMethodCallIgnored")
         @Override
         public int nextInt() {
-            if (!isInit) {
-                // First call to next() or nextInt() on new iterator
-                hasNext();
-            }
-            if (!hasNext) {
-                throw new NoSuchElementException();
-            }
-            final int result = next;
-            nextIteration();
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         protected abstract void nextIteration();
@@ -45,30 +33,17 @@ public final class PrimitiveExtIterator {
     public static abstract class OfLong extends PrimitiveIterator.OfLong {
 
         protected long next;
+
         protected boolean hasNext, isInit;
 
         @Override
         public boolean hasNext() {
-            if (!isInit) {
-                // First call to hasNext() on new iterator
-                nextIteration();
-                isInit = true;
-            }
-            return hasNext;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public long nextLong() {
-            if (!isInit) {
-                // First call to next() or nextLong() on new iterator
-                hasNext();
-            }
-            if (!hasNext) {
-                throw new NoSuchElementException();
-            }
-            final long result = next;
-            nextIteration();
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         protected abstract void nextIteration();
@@ -77,33 +52,19 @@ public final class PrimitiveExtIterator {
     public static abstract class OfDouble extends PrimitiveIterator.OfDouble {
 
         protected double next;
+
         protected boolean hasNext, isInit;
 
         @Override
         public boolean hasNext() {
-            if (!isInit) {
-                // First call to hasNext() on new iterator
-                nextIteration();
-                isInit = true;
-            }
-            return hasNext;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public double nextDouble() {
-            if (!isInit) {
-                // First call to next() or nextDouble() on new iterator
-                hasNext();
-            }
-            if (!hasNext) {
-                throw new NoSuchElementException();
-            }
-            final double result = next;
-            nextIteration();
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         protected abstract void nextIteration();
     }
-
 }

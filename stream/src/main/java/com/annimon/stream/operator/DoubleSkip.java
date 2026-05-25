@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleSkip extends PrimitiveIterator.OfDouble {
 
     private final PrimitiveIterator.OfDouble iterator;
+
     private final long n;
+
     private long skipped;
 
     public DoubleSkip(@NotNull PrimitiveIterator.OfDouble iterator, long n) {
@@ -17,18 +19,11 @@ public class DoubleSkip extends PrimitiveIterator.OfDouble {
 
     @Override
     public boolean hasNext() {
-        while (iterator.hasNext()) {
-            if (skipped == n) {
-                break;
-            }
-            iterator.nextDouble();
-            skipped++;
-        }
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public double nextDouble() {
-        return iterator.nextDouble();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -21,7 +21,8 @@ public interface IndexedLongConsumer {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code IndexedLongConsumer} calls.
@@ -33,18 +34,8 @@ public interface IndexedLongConsumer {
          * @return a composed {@code IndexedLongConsumer}
          * @throws NullPointerException if {@code c1} or {@code c2} is null
          */
-        public static IndexedLongConsumer andThen(
-                @NotNull final IndexedLongConsumer c1,
-                @NotNull final IndexedLongConsumer c2) {
-            Objects.requireNonNull(c1, "c1");
-            Objects.requireNonNull(c2, "c2");
-            return new IndexedLongConsumer() {
-                @Override
-                public void accept(int index, long value) {
-                    c1.accept(index, value);
-                    c2.accept(index, value);
-                }
-            };
+        public static IndexedLongConsumer andThen(@NotNull final IndexedLongConsumer c1, @NotNull final IndexedLongConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -62,21 +53,8 @@ public interface IndexedLongConsumer {
          * @param c2  the {@code LongConsumer} for value, can be null
          * @return an {@code IndexedLongConsumer}
          */
-        public static IndexedLongConsumer accept(
-                @Nullable final IntConsumer c1,
-                @Nullable final LongConsumer c2) {
-            return new IndexedLongConsumer() {
-                @Override
-                public void accept(int index, long value) {
-                    if (c1 != null) {
-                        c1.accept(index);
-                    }
-                    if (c2 != null) {
-                        c2.accept(value);
-                    }
-                }
-            };
+        public static IndexedLongConsumer accept(@Nullable final IntConsumer c1, @Nullable final LongConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

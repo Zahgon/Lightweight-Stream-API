@@ -10,13 +10,13 @@ import org.jetbrains.annotations.NotNull;
 public class ObjConcat<T> extends LsaExtIterator<T> {
 
     private final List<? extends Iterator<? extends T>> iterators;
+
     private final int iteratorsCount;
+
     private int iteratorIndex;
 
     @SuppressWarnings("unchecked")
-    public ObjConcat(
-            @NotNull Iterator<? extends T> iterator1,
-            @NotNull Iterator<? extends T> iterator2) {
+    public ObjConcat(@NotNull Iterator<? extends T> iterator1, @NotNull Iterator<? extends T> iterator2) {
         iterators = Arrays.asList(iterator1, iterator2);
         iteratorsCount = 2;
         iteratorIndex = 0;
@@ -30,15 +30,6 @@ public class ObjConcat<T> extends LsaExtIterator<T> {
 
     @Override
     protected void nextIteration() {
-        while (iteratorIndex < iteratorsCount) {
-            Iterator<? extends T> currentIterator = iterators.get(iteratorIndex);
-            if (currentIterator.hasNext()) {
-                next = currentIterator.next();
-                hasNext = true;
-                return;
-            }
-            iteratorIndex++;
-        }
-        hasNext = false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

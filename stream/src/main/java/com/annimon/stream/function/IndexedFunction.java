@@ -23,7 +23,8 @@ public interface IndexedFunction<T, R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link Function} and returns {@code IndexedFunction}.
@@ -34,17 +35,8 @@ public interface IndexedFunction<T, R> {
          * @return a wrapped {@code IndexedFunction}
          * @throws NullPointerException if {@code function} is null
          */
-        public static <T, R> IndexedFunction<T, R> wrap(
-                @NotNull final Function<? super T, ? extends R> function) {
-            Objects.requireNonNull(function);
-            return new IndexedFunction<T, R>() {
-
-                @Override
-                public R apply(int index, T t) {
-                    return function.apply(t);
-                }
-            };
+        public static <T, R> IndexedFunction<T, R> wrap(@NotNull final Function<? super T, ? extends R> function) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

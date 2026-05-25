@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleLimit extends PrimitiveIterator.OfDouble {
 
     private final PrimitiveIterator.OfDouble iterator;
+
     private final long maxSize;
+
     private long index;
 
     public DoubleLimit(@NotNull PrimitiveIterator.OfDouble iterator, long maxSize) {
@@ -17,12 +19,11 @@ public class DoubleLimit extends PrimitiveIterator.OfDouble {
 
     @Override
     public boolean hasNext() {
-        return (index < maxSize) && iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public double nextDouble() {
-        index++;
-        return iterator.nextDouble();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

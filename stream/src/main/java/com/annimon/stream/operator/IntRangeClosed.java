@@ -5,7 +5,9 @@ import com.annimon.stream.iterator.PrimitiveIterator;
 public class IntRangeClosed extends PrimitiveIterator.OfInt {
 
     private final int endInclusive;
+
     private int current;
+
     private boolean hasNext;
 
     public IntRangeClosed(int startInclusive, int endInclusive) {
@@ -16,15 +18,11 @@ public class IntRangeClosed extends PrimitiveIterator.OfInt {
 
     @Override
     public boolean hasNext() {
-        return hasNext;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        if (current >= endInclusive) {
-            hasNext = false;
-            return endInclusive;
-        }
-        return current++;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

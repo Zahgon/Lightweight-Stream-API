@@ -7,11 +7,12 @@ import org.jetbrains.annotations.NotNull;
 public class ObjLimit<T> extends LsaIterator<T> {
 
     private final Iterator<? extends T> iterator;
+
     private final long maxSize;
+
     private long index;
 
-    public ObjLimit(
-            @NotNull Iterator<? extends T> iterator, long maxSize) {
+    public ObjLimit(@NotNull Iterator<? extends T> iterator, long maxSize) {
         this.iterator = iterator;
         this.maxSize = maxSize;
         index = 0;
@@ -19,12 +20,11 @@ public class ObjLimit<T> extends LsaIterator<T> {
 
     @Override
     public boolean hasNext() {
-        return (index < maxSize) && iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T nextIteration() {
-        index++;
-        return iterator.next();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

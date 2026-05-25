@@ -25,7 +25,8 @@ public interface IndexedBiFunction<T, U, R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link BiFunction} and returns {@code IndexedBiFunction}.
@@ -37,16 +38,8 @@ public interface IndexedBiFunction<T, U, R> {
          * @return a wrapped {@code IndexedBiFunction}
          * @throws NullPointerException if {@code function} is null
          */
-        public static <T, U, R> IndexedBiFunction<T, U, R> wrap(
-                @NotNull final BiFunction<? super T, ? super U, ? extends R> function) {
-            Objects.requireNonNull(function);
-            return new IndexedBiFunction<T, U, R>() {
-
-                @Override
-                public R apply(int index, T t, U u) {
-                    return function.apply(t, u);
-                }
-            };
+        public static <T, U, R> IndexedBiFunction<T, U, R> wrap(@NotNull final BiFunction<? super T, ? super U, ? extends R> function) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

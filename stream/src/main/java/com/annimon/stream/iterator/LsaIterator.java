@@ -11,15 +11,12 @@ public abstract class LsaIterator<T> implements Iterator<T> {
 
     @Override
     public void remove() {
-        throw new UnsupportedOperationException("remove not supported");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public final T next() {
-        if (!hasNext()) {
-            throw new NoSuchElementException();
-        }
-        return nextIteration();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public abstract T nextIteration();

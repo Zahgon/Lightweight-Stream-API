@@ -29,7 +29,7 @@ public final class OptionalLong {
      */
     @NotNull
     public static OptionalLong empty() {
-        return EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -40,7 +40,7 @@ public final class OptionalLong {
      */
     @NotNull
     public static OptionalLong of(long value) {
-        return new OptionalLong(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -52,10 +52,11 @@ public final class OptionalLong {
      */
     @NotNull
     public static OptionalLong ofNullable(@Nullable Long value) {
-        return value == null ? EMPTY : new OptionalLong(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final boolean isPresent;
+
     private final long value;
 
     private OptionalLong() {
@@ -79,7 +80,7 @@ public final class OptionalLong {
      * @see #orElseThrow()
      */
     public long getAsLong() {
-        return orElseThrow();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,7 +89,7 @@ public final class OptionalLong {
      * @return {@code true} if a value present, {@code false} otherwise
      */
     public boolean isPresent() {
-        return isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -98,7 +99,7 @@ public final class OptionalLong {
      * @since 1.2.1
      */
     public boolean isEmpty() {
-        return !isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -108,9 +109,7 @@ public final class OptionalLong {
      * @throws NullPointerException if value is present and {@code consumer} is null
      */
     public void ifPresent(@NotNull LongConsumer consumer) {
-        if (isPresent) {
-            consumer.accept(value);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,11 +122,7 @@ public final class OptionalLong {
      *         or no value is present and the given empty-based action is null.
      */
     public void ifPresentOrElse(@NotNull LongConsumer consumer, @NotNull Runnable emptyAction) {
-        if (isPresent) {
-            consumer.accept(value);
-        } else {
-            emptyAction.run();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -140,8 +135,7 @@ public final class OptionalLong {
      */
     @NotNull
     public OptionalLong executeIfPresent(@NotNull LongConsumer consumer) {
-        ifPresent(consumer);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -152,10 +146,7 @@ public final class OptionalLong {
      */
     @NotNull
     public OptionalLong executeIfAbsent(@NotNull Runnable action) {
-        if (!isPresent()) {
-            action.run();
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -169,8 +160,7 @@ public final class OptionalLong {
      */
     @Nullable
     public <R> R custom(@NotNull Function<OptionalLong, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -182,8 +172,7 @@ public final class OptionalLong {
      */
     @NotNull
     public OptionalLong filter(@NotNull LongPredicate predicate) {
-        if (!isPresent()) return this;
-        return predicate.test(value) ? this : OptionalLong.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -196,7 +185,7 @@ public final class OptionalLong {
      */
     @NotNull
     public OptionalLong filterNot(@NotNull LongPredicate predicate) {
-        return filter(LongPredicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -210,11 +199,7 @@ public final class OptionalLong {
      */
     @NotNull
     public OptionalLong map(@NotNull LongUnaryOperator mapper) {
-        if (!isPresent()) {
-            return empty();
-        }
-        Objects.requireNonNull(mapper);
-        return OptionalLong.of(mapper.applyAsLong(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -229,11 +214,7 @@ public final class OptionalLong {
      */
     @NotNull
     public <U> Optional<U> mapToObj(@NotNull LongFunction<U> mapper) {
-        if (!isPresent()) {
-            return Optional.empty();
-        }
-        Objects.requireNonNull(mapper);
-        return Optional.ofNullable(mapper.apply(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -247,11 +228,7 @@ public final class OptionalLong {
      */
     @NotNull
     public OptionalInt mapToInt(@NotNull LongToIntFunction mapper) {
-        if (!isPresent()) {
-            return OptionalInt.empty();
-        }
-        Objects.requireNonNull(mapper);
-        return OptionalInt.of(mapper.applyAsInt(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -262,10 +239,7 @@ public final class OptionalLong {
      */
     @NotNull
     public LongStream stream() {
-        if (!isPresent()) {
-            return LongStream.empty();
-        }
-        return LongStream.of(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -280,9 +254,7 @@ public final class OptionalLong {
      */
     @NotNull
     public OptionalLong or(@NotNull Supplier<OptionalLong> supplier) {
-        if (isPresent()) return this;
-        Objects.requireNonNull(supplier);
-        return Objects.requireNonNull(supplier.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -292,7 +264,7 @@ public final class OptionalLong {
      * @return the value, if present, otherwise {@code other}
      */
     public long orElse(long other) {
-        return isPresent ? value : other;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -303,7 +275,7 @@ public final class OptionalLong {
      * @throws NullPointerException if value is not present and {@code other} is null
      */
     public long orElseGet(@NotNull LongSupplier other) {
-        return isPresent ? value : other.getAsLong();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -314,10 +286,7 @@ public final class OptionalLong {
      * @since 1.2.0
      */
     public long orElseThrow() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -329,36 +298,22 @@ public final class OptionalLong {
      * @throws X if inner value is not present
      */
     public <X extends Throwable> long orElseThrow(@NotNull Supplier<X> exceptionSupplier) throws X {
-        if (isPresent) {
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof OptionalLong)) {
-            return false;
-        }
-
-        OptionalLong other = (OptionalLong) obj;
-        return (isPresent && other.isPresent)
-                ? value == other.value
-                : isPresent == other.isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return isPresent ? Objects.hashCode(value) : 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @NotNull
     @Override
     public String toString() {
-        return isPresent
-                ? String.format("OptionalLong[%s]", value)
-                : "OptionalLong.empty";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

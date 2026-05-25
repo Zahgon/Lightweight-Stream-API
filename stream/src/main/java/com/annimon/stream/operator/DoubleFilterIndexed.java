@@ -9,36 +9,26 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleFilterIndexed extends PrimitiveIterator.OfDouble {
 
     private final PrimitiveIndexedIterator.OfDouble iterator;
+
     private final IndexedDoublePredicate predicate;
+
     private boolean hasNext, hasNextEvaluated;
+
     private double next;
 
-    public DoubleFilterIndexed(
-            @NotNull PrimitiveIndexedIterator.OfDouble iterator,
-            @NotNull IndexedDoublePredicate predicate) {
+    public DoubleFilterIndexed(@NotNull PrimitiveIndexedIterator.OfDouble iterator, @NotNull IndexedDoublePredicate predicate) {
         this.iterator = iterator;
         this.predicate = predicate;
     }
 
     @Override
     public boolean hasNext() {
-        if (!hasNextEvaluated) {
-            nextIteration();
-            hasNextEvaluated = true;
-        }
-        return hasNext;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public double nextDouble() {
-        if (!hasNextEvaluated) {
-            hasNext = hasNext();
-        }
-        if (!hasNext) {
-            throw new NoSuchElementException();
-        }
-        hasNextEvaluated = false;
-        return next;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void nextIteration() {

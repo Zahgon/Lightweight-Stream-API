@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 public class ObjIterate<T> extends LsaIterator<T> {
 
     private final UnaryOperator<T> op;
+
     private T current;
 
     public ObjIterate(@Nullable T seed, @NotNull UnaryOperator<T> op) {
@@ -17,13 +18,11 @@ public class ObjIterate<T> extends LsaIterator<T> {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T nextIteration() {
-        final T old = current;
-        current = op.apply(current);
-        return old;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

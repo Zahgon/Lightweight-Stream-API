@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 public class ObjDistinct<T> extends LsaExtIterator<T> {
 
     private final Iterator<? extends T> iterator;
+
     private final Set<T> set;
 
     public ObjDistinct(@NotNull Iterator<? extends T> iterator) {
@@ -18,11 +19,6 @@ public class ObjDistinct<T> extends LsaExtIterator<T> {
 
     @Override
     protected void nextIteration() {
-        while (hasNext = iterator.hasNext()) {
-            next = iterator.next();
-            if (set.add(next)) {
-                return;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -23,7 +23,8 @@ public interface IndexedDoubleUnaryOperator {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link DoubleUnaryOperator} and returns {@code IndexedDoubleUnaryOperator}.
@@ -32,15 +33,8 @@ public interface IndexedDoubleUnaryOperator {
          * @return a wrapped {@code IndexedDoubleUnaryOperator}
          * @throws NullPointerException if {@code function} is null
          */
-        public static IndexedDoubleUnaryOperator wrap(
-                @NotNull final DoubleUnaryOperator function) {
-            Objects.requireNonNull(function);
-            return new IndexedDoubleUnaryOperator() {
-                @Override
-                public double applyAsDouble(int index, double value) {
-                    return function.applyAsDouble(value);
-                }
-            };
+        public static IndexedDoubleUnaryOperator wrap(@NotNull final DoubleUnaryOperator function) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

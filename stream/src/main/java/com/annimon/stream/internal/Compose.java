@@ -6,66 +6,19 @@ import java.util.List;
 
 public final class Compose {
 
-    private Compose() { }
+    private Compose() {
+    }
 
     public static Runnable runnables(final Runnable a, final Runnable b) {
-        return new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    a.run();
-                } catch (Throwable e1) {
-                    try {
-                        b.run();
-                    } catch (Throwable ignore) { }
-                    handleException(e1);
-                }
-                b.run();
-            }
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static Runnable closeables(final Closeable a, final Closeable b) {
-        return new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    a.close();
-                } catch (Throwable e1) {
-                    try {
-                        b.close();
-                    } catch (Throwable ignore) { }
-                    handleException(e1);
-                }
-                try {
-                    b.close();
-                } catch (Throwable e2) {
-                    handleException(e2);
-                }
-            }
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static Runnable closeables(final List<? extends Closeable> closeables) {
-        return new Runnable() {
-            @Override
-            public void run() {
-                final Iterator<? extends Closeable> iterator = closeables.iterator();
-                while (iterator.hasNext()) {
-                    try {
-                        iterator.next().close();
-                    } catch (Throwable currentExc) {
-                        // close next closeables ignoring possible exceptions
-                        while (iterator.hasNext()) {
-                            try {
-                                iterator.next().close();
-                            } catch (Throwable ignore) { }
-                        }
-                        handleException(currentExc);
-                    }
-                }
-            }
-        };
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static Throwable handleException(Throwable e) {

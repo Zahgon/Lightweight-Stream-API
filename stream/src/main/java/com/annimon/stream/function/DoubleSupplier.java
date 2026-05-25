@@ -20,7 +20,8 @@ public interface DoubleSupplier {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Creates a safe {@code DoubleSupplier}.
@@ -31,9 +32,8 @@ public interface DoubleSupplier {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableDoubleSupplier, double)
          */
-        public static DoubleSupplier safe(
-                @NotNull ThrowableDoubleSupplier<Throwable> throwableSupplier) {
-            return safe(throwableSupplier, 0.0);
+        public static DoubleSupplier safe(@NotNull ThrowableDoubleSupplier<Throwable> throwableSupplier) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -45,22 +45,8 @@ public interface DoubleSupplier {
          * @throws NullPointerException if {@code throwableSupplier} is null
          * @since 1.1.7
          */
-        public static DoubleSupplier safe(
-                @NotNull final ThrowableDoubleSupplier<Throwable> throwableSupplier,
-                final double resultIfFailed) {
-            Objects.requireNonNull(throwableSupplier);
-            return new DoubleSupplier() {
-
-                @Override
-                public double getAsDouble() {
-                    try {
-                        return throwableSupplier.getAsDouble();
-                    } catch (Throwable ex) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static DoubleSupplier safe(@NotNull final ThrowableDoubleSupplier<Throwable> throwableSupplier, final double resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

@@ -14,7 +14,7 @@ import java.util.Iterator;
  * iterating them. Maintains an array of increasingly sized arrays, so there is
  * no copying cost associated with growing the data structure.
  */
-@SuppressWarnings({"WeakerAccess", "SameParameterValue"})
+@SuppressWarnings({ "WeakerAccess", "SameParameterValue" })
 public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
 
     /**
@@ -75,10 +75,8 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
      */
     SpinedBuffer(int initialCapacity) {
         if (initialCapacity < 0)
-            throw new IllegalArgumentException("Illegal Capacity: "+ initialCapacity);
-
-        this.initialChunkPower = Math.max(MIN_CHUNK_POWER,
-                Integer.SIZE - Integer.numberOfLeadingZeros(initialCapacity - 1));
+            throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
+        this.initialChunkPower = Math.max(MIN_CHUNK_POWER, Integer.SIZE - Integer.numberOfLeadingZeros(initialCapacity - 1));
         curChunk = newArray(1 << initialChunkPower);
     }
 
@@ -96,7 +94,7 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
      * @return true, if buffer is empty
      */
     public boolean isEmpty() {
-        return (spineIndex == 0) && (elementIndex == 0);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -104,25 +102,18 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
      * @return a number of elements in buffer
      */
     public long count() {
-        return (spineIndex == 0)
-                ? elementIndex
-                : priorElementCount[spineIndex] + elementIndex;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * How big should the nth chunk be?
      */
     int chunkSize(int n) {
-        int power = (n == 0 || n == 1)
-                ? initialChunkPower
-                : Math.min(initialChunkPower + n - 1, MAX_CHUNK_POWER);
-        return 1 << power;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     long capacity() {
-        return (spineIndex == 0)
-                ? arrayLength(curChunk)
-                : priorElementCount[spineIndex] + arrayLength(spine[spineIndex]);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void inflateSpine() {
@@ -134,93 +125,37 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
     }
 
     final void ensureCapacity(long targetSize) {
-        long capacity = capacity();
-        if (targetSize > capacity) {
-            inflateSpine();
-            for (int i=spineIndex+1; targetSize > capacity; i++) {
-                if (i >= spine.length) {
-                    int newSpineSize = spine.length * 2;
-                    spine = Arrays.copyOf(spine, newSpineSize);
-                    priorElementCount = Arrays.copyOf(priorElementCount, newSpineSize);
-                }
-                int nextChunkSize = chunkSize(i);
-                spine[i] = newArray(nextChunkSize);
-                priorElementCount[i] = priorElementCount[i-1] + arrayLength(spine[i - 1]);
-                capacity += nextChunkSize;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     void increaseCapacity() {
-        ensureCapacity(capacity() + 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     int chunkFor(long index) {
-        if (spineIndex == 0) {
-            if (index < elementIndex)
-                return 0;
-            else
-                throw new IndexOutOfBoundsException(Long.toString(index));
-        }
-
-        if (index >= count())
-            throw new IndexOutOfBoundsException(Long.toString(index));
-
-        for (int j=0; j <= spineIndex; j++)
-            if (index < priorElementCount[j] + arrayLength(spine[j]))
-                return j;
-
-        throw new IndexOutOfBoundsException(Long.toString(index));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @SuppressWarnings("SuspiciousSystemArraycopy")
     void copyInto(T_ARR array, int offset) {
-        long finalOffset = offset + count();
-        if (finalOffset > arrayLength(array) || finalOffset < offset) {
-            throw new IndexOutOfBoundsException("does not fit");
-        }
-
-        if (spineIndex == 0)
-            System.arraycopy(curChunk, 0, array, offset, elementIndex);
-        else {
-            // full chunks
-            for (int i=0; i < spineIndex; i++) {
-                System.arraycopy(spine[i], 0, array, offset, arrayLength(spine[i]));
-                offset += arrayLength(spine[i]);
-            }
-            if (elementIndex > 0)
-                System.arraycopy(curChunk, 0, array, offset, elementIndex);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     void preAccept() {
-        if (elementIndex == arrayLength(curChunk)) {
-            inflateSpine();
-            if (spineIndex+1 >= spine.length || spine[spineIndex+1] == null)
-                increaseCapacity();
-            elementIndex = 0;
-            ++spineIndex;
-            curChunk = spine[spineIndex];
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * Remove all data from the buffer
      */
     public void clear() {
-        if (spine != null) {
-            curChunk = spine[0];
-            spine = null;
-            priorElementCount = null;
-        }
-        elementIndex = 0;
-        spineIndex = 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    public static class Of<E> extends SpinedBuffer<E, E[]>
-            implements Consumer<E> {
+    public static class Of<E> extends SpinedBuffer<E, E[]> implements Consumer<E> {
 
-        public Of() { }
+        public Of() {
+        }
 
         public Of(int initialCapacity) {
             super(initialCapacity);
@@ -229,87 +164,57 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
         @SuppressWarnings("unchecked")
         @Override
         protected E[][] newArrayArray(int size) {
-            return (E[][]) new Object[size][];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @SuppressWarnings("unchecked")
         @Override
         protected E[] newArray(int size) {
-            return (E[]) new Object[size];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected int arrayLength(E[] array) {
-            return array.length;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void accept(E e) {
-            preAccept();
-            curChunk[elementIndex++] = e;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public E get(long index) {
-            int ch = chunkFor(index);
-            if (spineIndex == 0 && ch == 0)
-                return curChunk[(int) index];
-            else
-                return spine[ch][(int) (index - priorElementCount[ch])];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
 
         @Override
         public Iterator<E> iterator() {
-            return new Iterator<E>() {
-                long index = 0;
-
-                @Override
-                public E next() {
-                    return get(index++);
-                }
-
-                @Override
-                public boolean hasNext() {
-                    return index < count();
-                }
-
-                @Override
-                public void remove() {
-                    throw new UnsupportedOperationException("remove");
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public E[] asArray(IntFunction<E[]> arrayFactory) {
-            long size = count();
-            Compat.checkMaxArraySize(size);
-            E[] result = arrayFactory.apply((int) size);
-            copyInto(result, 0);
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-
     abstract static class OfPrimitive<E, T_ARR> extends SpinedBuffer<E, T_ARR> {
 
-        OfPrimitive() { }
+        OfPrimitive() {
+        }
 
         OfPrimitive(int initialCapacity) {
             super(initialCapacity);
         }
 
         public T_ARR asPrimitiveArray() {
-            long size = count();
-            Compat.checkMaxArraySize(size);
-            T_ARR result = newArray((int) size);
-            copyInto(result, 0);
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-    public static class OfInt extends SpinedBuffer.OfPrimitive<Integer, int[]>
-            implements IntConsumer {
-        public OfInt() { }
+    public static class OfInt extends SpinedBuffer.OfPrimitive<Integer, int[]> implements IntConsumer {
+
+        public OfInt() {
+        }
 
         public OfInt(int initialCapacity) {
             super(initialCapacity);
@@ -317,57 +222,38 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
 
         @Override
         protected int[][] newArrayArray(int size) {
-            return new int[size][];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int[] newArray(int size) {
-            return new int[size];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected int arrayLength(int[] array) {
-            return array.length;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void accept(int i) {
-            preAccept();
-            curChunk[elementIndex++] = i;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public int get(long index) {
-            // Casts to int are safe since the spine array index is the index minus
-            // the prior element count from the current spine
-            int ch = chunkFor(index);
-            if (spineIndex == 0 && ch == 0)
-                return curChunk[(int) index];
-            else
-                return spine[ch][(int) (index - priorElementCount[ch])];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public PrimitiveIterator.OfInt iterator() {
-            return new PrimitiveIterator.OfInt() {
-
-                long index = 0;
-
-                @Override
-                public int nextInt() {
-                    return get(index++);
-                }
-
-                @Override
-                public boolean hasNext() {
-                    return index < count();
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-    public static class OfLong extends SpinedBuffer.OfPrimitive<Long, long[]>
-            implements LongConsumer {
-        public OfLong() { }
+    public static class OfLong extends SpinedBuffer.OfPrimitive<Long, long[]> implements LongConsumer {
+
+        public OfLong() {
+        }
 
         public OfLong(int initialCapacity) {
             super(initialCapacity);
@@ -375,55 +261,38 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
 
         @Override
         protected long[][] newArrayArray(int size) {
-            return new long[size][];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public long[] newArray(int size) {
-            return new long[size];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected int arrayLength(long[] array) {
-            return array.length;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void accept(long i) {
-            preAccept();
-            curChunk[elementIndex++] = i;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public long get(long index) {
-            int ch = chunkFor(index);
-            if (spineIndex == 0 && ch == 0)
-                return curChunk[(int) index];
-            else
-                return spine[ch][(int) (index - priorElementCount[ch])];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public PrimitiveIterator.OfLong iterator() {
-            return new PrimitiveIterator.OfLong() {
-
-                long index = 0;
-
-                @Override
-                public long nextLong() {
-                    return get(index++);
-                }
-
-                @Override
-                public boolean hasNext() {
-                    return index < count();
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
-    public static class OfDouble extends SpinedBuffer.OfPrimitive<Double, double[]>
-            implements DoubleConsumer {
-        public OfDouble() { }
+    public static class OfDouble extends SpinedBuffer.OfPrimitive<Double, double[]> implements DoubleConsumer {
+
+        public OfDouble() {
+        }
 
         public OfDouble(int initialCapacity) {
             super(initialCapacity);
@@ -431,49 +300,31 @@ public abstract class SpinedBuffer<E, T_ARR> implements Iterable<E> {
 
         @Override
         protected double[][] newArrayArray(int size) {
-            return new double[size][];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public double[] newArray(int size) {
-            return new double[size];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         protected int arrayLength(double[] array) {
-            return array.length;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void accept(double i) {
-            preAccept();
-            curChunk[elementIndex++] = i;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         public double get(long index) {
-            int ch = chunkFor(index);
-            if (spineIndex == 0 && ch == 0)
-                return curChunk[(int) index];
-            else
-                return spine[ch][(int) (index - priorElementCount[ch])];
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public PrimitiveIterator.OfDouble iterator() {
-            return new PrimitiveIterator.OfDouble() {
-
-                long index = 0;
-
-                @Override
-                public double nextDouble() {
-                    return get(index++);
-                }
-
-                @Override
-                public boolean hasNext() {
-                    return index < count();
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

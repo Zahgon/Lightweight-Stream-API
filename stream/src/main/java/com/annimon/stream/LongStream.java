@@ -32,12 +32,12 @@ public final class LongStream implements Closeable {
 
         @Override
         public boolean hasNext() {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public long nextLong() {
-            return 0L;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     });
 
@@ -48,7 +48,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public static LongStream empty() {
-        return EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -60,8 +60,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public static LongStream of(@NotNull PrimitiveIterator.OfLong iterator) {
-        Objects.requireNonNull(iterator);
-        return new LongStream(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -73,11 +72,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public static LongStream of(@NotNull final long... values) {
-        Objects.requireNonNull(values);
-        if (values.length == 0) {
-            return LongStream.empty();
-        }
-        return new LongStream(new LongArray(values));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,7 +83,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public static LongStream of(final long t) {
-        return new LongStream(new LongArray(new long[] { t }));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -103,10 +98,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public static LongStream range(final long startInclusive, final long endExclusive) {
-        if (startInclusive >= endExclusive) {
-            return empty();
-        }
-        return rangeClosed(startInclusive, endExclusive - 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -121,11 +113,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public static LongStream rangeClosed(final long startInclusive, final long endInclusive) {
-        if (startInclusive > endInclusive) {
-            return empty();
-        } else if (startInclusive == endInclusive) {
-            return of(startInclusive);
-        } else return new LongStream(new LongRangeClosed(startInclusive, endInclusive));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -137,8 +125,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public static LongStream generate(@NotNull final LongSupplier s) {
-        Objects.requireNonNull(s);
-        return new LongStream(new LongGenerate(s));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -164,10 +151,8 @@ public final class LongStream implements Closeable {
      * @throws NullPointerException if {@code f} is null
      */
     @NotNull
-    public static LongStream iterate(final long seed,
-                                     @NotNull final LongUnaryOperator f) {
-        Objects.requireNonNull(f);
-        return new LongStream(new LongIterate(seed, f));
+    public static LongStream iterate(final long seed, @NotNull final LongUnaryOperator f) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -190,12 +175,8 @@ public final class LongStream implements Closeable {
      * @since 1.1.5
      */
     @NotNull
-    public static LongStream iterate(
-            final long seed,
-            @NotNull final LongPredicate predicate,
-            @NotNull final LongUnaryOperator op) {
-        Objects.requireNonNull(predicate);
-        return iterate(seed, op).takeWhile(predicate);
+    public static LongStream iterate(final long seed, @NotNull final LongPredicate predicate, @NotNull final LongUnaryOperator op) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -214,13 +195,8 @@ public final class LongStream implements Closeable {
      * @throws NullPointerException if {@code a} or {@code b} is null
      */
     @NotNull
-    public static LongStream concat(
-            @NotNull final LongStream a,
-            @NotNull final LongStream b) {
-        Objects.requireNonNull(a);
-        Objects.requireNonNull(b);
-        LongStream result = new LongStream(new LongConcat(a.iterator, b.iterator));
-        return result.onClose(Compose.closeables(a, b));
+    public static LongStream concat(@NotNull final LongStream a, @NotNull final LongStream b) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -244,31 +220,12 @@ public final class LongStream implements Closeable {
      * @since 1.2.2
      */
     @NotNull
-    public static LongStream concat(
-            @NotNull final LongStream a,
-            @NotNull final LongStream b,
-            @NotNull final LongStream... rest) {
-        Objects.requireNonNull(a);
-        Objects.requireNonNull(b);
-        Objects.requireNonNull(rest);
-
-        final List<PrimitiveIterator.OfLong> iterators =
-                new ArrayList<PrimitiveIterator.OfLong>(rest.length + 2);
-        final List<Closeable> closeables =
-                new ArrayList<Closeable>(rest.length + 2);
-        Collections.addAll(iterators, a.iterator, b.iterator);
-        Collections.addAll(closeables, a, b);
-        for (final LongStream stream : rest) {
-            iterators.add(stream.iterator);
-            closeables.add(stream);
-        }
-
-        LongStream result = new LongStream(new LongConcat(iterators));
-        return result.onClose(Compose.closeables(closeables));
+    public static LongStream concat(@NotNull final LongStream a, @NotNull final LongStream b, @NotNull final LongStream... rest) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-
     private final PrimitiveIterator.OfLong iterator;
+
     private final Params params;
 
     private LongStream(PrimitiveIterator.OfLong iterator) {
@@ -286,7 +243,7 @@ public final class LongStream implements Closeable {
      * @return internal {@code LongStream} iterator.
      */
     public PrimitiveIterator.OfLong iterator() {
-        return iterator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -366,8 +323,7 @@ public final class LongStream implements Closeable {
      */
     @Nullable
     public <R> R custom(@NotNull final Function<LongStream, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -381,7 +337,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public Stream<Long> boxed() {
-        return new Stream<Long>(params, iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -403,7 +359,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream prepend(@NotNull LongStream stream) {
-        return LongStream.concat(stream, this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -425,7 +381,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream append(@NotNull LongStream stream) {
-        return LongStream.concat(this, stream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -445,7 +401,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream filter(@NotNull final LongPredicate predicate) {
-        return new LongStream(params, new LongFilter(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -469,7 +425,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream filterIndexed(@NotNull IndexedLongPredicate predicate) {
-        return filterIndexed(0, 1, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -496,11 +452,8 @@ public final class LongStream implements Closeable {
      * @since 1.2.1
      */
     @NotNull
-    public LongStream filterIndexed(int from, int step,
-                                    @NotNull IndexedLongPredicate predicate) {
-        return new LongStream(params, new LongFilterIndexed(
-                new PrimitiveIndexedIterator.OfLong(from, step, iterator),
-                predicate));
+    public LongStream filterIndexed(int from, int step, @NotNull IndexedLongPredicate predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -513,7 +466,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream filterNot(@NotNull final LongPredicate predicate) {
-        return filter(LongPredicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -535,7 +488,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream map(@NotNull final LongUnaryOperator mapper) {
-        return new LongStream(params, new LongMap(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -558,7 +511,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream mapIndexed(@NotNull IndexedLongUnaryOperator mapper) {
-        return mapIndexed(0, 1, mapper);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -584,11 +537,8 @@ public final class LongStream implements Closeable {
      * @since 1.2.1
      */
     @NotNull
-    public LongStream mapIndexed(int from, int step,
-                                 @NotNull IndexedLongUnaryOperator mapper) {
-        return new LongStream(params, new LongMapIndexed(
-                new PrimitiveIndexedIterator.OfLong(from, step, iterator),
-                mapper));
+    public LongStream mapIndexed(int from, int step, @NotNull IndexedLongUnaryOperator mapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -603,7 +553,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public <R> Stream<R> mapToObj(@NotNull final LongFunction<? extends R> mapper) {
-        return new Stream<R>(params, new LongMapToObj<R>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -617,7 +567,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public IntStream mapToInt(@NotNull final LongToIntFunction mapper) {
-        return new IntStream(params, new LongMapToInt(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -631,7 +581,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public DoubleStream mapToDouble(@NotNull final LongToDoubleFunction mapper) {
-        return new DoubleStream(params, new LongMapToDouble(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -654,7 +604,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream flatMap(@NotNull final LongFunction<? extends LongStream> mapper) {
-        return new LongStream(params, new LongFlatMap(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -672,14 +622,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream mapMulti(@NotNull final LongStream.LongMapMultiConsumer mapper) {
-        return flatMap(new LongFunction<LongStream>() {
-            @Override
-            public LongStream apply(long value) {
-                SpinedBuffer.OfLong buffer = new SpinedBuffer.OfLong();
-                mapper.accept(value, buffer);
-                return LongStream.of(buffer.iterator());
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -689,6 +632,7 @@ public final class LongStream implements Closeable {
      * @see #mapMulti(com.annimon.stream.LongStream.LongMapMultiConsumer)
      */
     public interface LongMapMultiConsumer {
+
         /**
          * Replaces the given {@code value} with zero or more values
          * by feeding the mapped values to the {@code consumer} consumer.
@@ -714,7 +658,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream distinct() {
-        return boxed().distinct().mapToLong(UNBOX_FUNCTION);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -732,7 +676,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream sorted() {
-        return new LongStream(params, new LongSorted(iterator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -753,7 +697,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream sorted(@Nullable Comparator<Long> comparator) {
-        return boxed().sorted(comparator).mapToLong(UNBOX_FUNCTION);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -775,9 +719,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream sample(final int stepWidth) {
-        if (stepWidth <= 0) throw new IllegalArgumentException("stepWidth cannot be zero or negative");
-        if (stepWidth == 1) return this;
-        return new LongStream(params, new LongSample(iterator, stepWidth));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -790,7 +732,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream peek(@NotNull final LongConsumer action) {
-        return new LongStream(params, new LongPeek(iterator, action));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -815,8 +757,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream scan(@NotNull final LongBinaryOperator accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new LongStream(params, new LongScan(iterator, accumulator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -842,10 +783,8 @@ public final class LongStream implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public LongStream scan(final long identity,
-                           @NotNull final LongBinaryOperator accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new LongStream(params, new LongScanIdentity(iterator, identity, accumulator));
+    public LongStream scan(final long identity, @NotNull final LongBinaryOperator accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -865,7 +804,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream takeWhile(@NotNull final LongPredicate predicate) {
-        return new LongStream(params, new LongTakeWhile(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -888,7 +827,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream takeUntil(@NotNull final LongPredicate stopPredicate) {
-        return new LongStream(params, new LongTakeUntil(iterator, stopPredicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -908,7 +847,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream dropWhile(@NotNull final LongPredicate predicate) {
-        return new LongStream(params, new LongDropWhile(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -934,9 +873,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream limit(final long maxSize) {
-        if (maxSize < 0) throw new IllegalArgumentException("maxSize cannot be negative");
-        if (maxSize == 0) return LongStream.empty();
-        return new LongStream(params, new LongLimit(iterator, maxSize));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -963,9 +900,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream skip(final long n) {
-        if (n < 0) throw new IllegalArgumentException("n cannot be negative");
-        if (n == 0) return this;
-        return new LongStream(params, new LongSkip(iterator, n));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -976,9 +911,7 @@ public final class LongStream implements Closeable {
      * @param action  the action to be performed on each element
      */
     public void forEach(@NotNull LongConsumer action) {
-        while (iterator.hasNext()) {
-            action.accept(iterator.nextLong());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -990,7 +923,7 @@ public final class LongStream implements Closeable {
      * @since 1.2.1
      */
     public void forEachIndexed(@NotNull IndexedLongConsumer action) {
-        forEachIndexed(0, 1, action);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1003,13 +936,8 @@ public final class LongStream implements Closeable {
      * @param action  the action to be performed on each element
      * @since 1.2.1
      */
-    public void forEachIndexed(int from, int step,
-                               @NotNull IndexedLongConsumer action) {
-        int index = from;
-        while (iterator.hasNext()) {
-            action.accept(index, iterator.nextLong());
-            index += step;
-        }
+    public void forEachIndexed(int from, int step, @NotNull IndexedLongConsumer action) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1040,12 +968,7 @@ public final class LongStream implements Closeable {
      * @see #max()
      */
     public long reduce(long identity, @NotNull LongBinaryOperator accumulator) {
-        long result = identity;
-        while (iterator.hasNext()) {
-            final long value = iterator.nextLong();
-            result = accumulator.applyAsLong(result, value);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1063,18 +986,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public OptionalLong reduce(@NotNull LongBinaryOperator accumulator) {
-        boolean foundAny = false;
-        long result = 0;
-        while (iterator.hasNext()) {
-            final long value = iterator.nextLong();
-            if (!foundAny) {
-                foundAny = true;
-                result = value;
-            } else {
-                result = accumulator.applyAsLong(result, value);
-            }
-        }
-        return foundAny ? OptionalLong.of(result) : OptionalLong.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1086,7 +998,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public long[] toArray() {
-        return Operators.toLongArray(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1101,14 +1013,8 @@ public final class LongStream implements Closeable {
      * @see Stream#collect(com.annimon.stream.function.Supplier, com.annimon.stream.function.BiConsumer)
      */
     @Nullable
-    public <R> R collect(@NotNull Supplier<R> supplier,
-                         @NotNull ObjLongConsumer<R> accumulator) {
-        final R result = supplier.get();
-        while (iterator.hasNext()) {
-            final long value = iterator.nextLong();
-            accumulator.accept(result, value);
-        }
-        return result;
+    public <R> R collect(@NotNull Supplier<R> supplier, @NotNull ObjLongConsumer<R> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1117,11 +1023,7 @@ public final class LongStream implements Closeable {
      * @return the sum of elements in this stream
      */
     public long sum() {
-        long sum = 0;
-        while (iterator.hasNext()) {
-            sum += iterator.nextLong();
-        }
-        return sum;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1134,12 +1036,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public OptionalLong min() {
-        return reduce(new LongBinaryOperator() {
-            @Override
-            public long applyAsLong(long left, long right) {
-                return Math.min(left, right);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1152,12 +1049,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public OptionalLong max() {
-        return reduce(new LongBinaryOperator() {
-            @Override
-            public long applyAsLong(long left, long right) {
-                return Math.max(left, right);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1168,12 +1060,7 @@ public final class LongStream implements Closeable {
      * @return the count of elements in this stream
      */
     public long count() {
-        long count = 0;
-        while (iterator.hasNext()) {
-            iterator.nextLong();
-            count++;
-        }
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1200,11 +1087,7 @@ public final class LongStream implements Closeable {
      *         predicate, otherwise {@code false}
      */
     public boolean anyMatch(@NotNull LongPredicate predicate) {
-        while (iterator.hasNext()) {
-            if (predicate.test(iterator.nextLong()))
-                return true;
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1231,11 +1114,7 @@ public final class LongStream implements Closeable {
      *         provided predicate or the stream is empty, otherwise {@code false}
      */
     public boolean allMatch(@NotNull LongPredicate predicate) {
-        while (iterator.hasNext()) {
-            if (!predicate.test(iterator.nextLong()))
-                return false;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1262,11 +1141,7 @@ public final class LongStream implements Closeable {
      *         provided predicate or the stream is empty, otherwise {@code false}
      */
     public boolean noneMatch(@NotNull LongPredicate predicate) {
-        while (iterator.hasNext()) {
-            if (predicate.test(iterator.nextLong()))
-                return false;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1280,10 +1155,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public OptionalLong findFirst() {
-        if (iterator.hasNext()) {
-            return OptionalLong.of(iterator.nextLong());
-        }
-        return OptionalLong.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1297,11 +1169,7 @@ public final class LongStream implements Closeable {
      * @since 1.2.2
      */
     public long findFirstOrElse(long other) {
-        if (iterator.hasNext()) {
-            return iterator.nextLong();
-        } else {
-            return other;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1316,12 +1184,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public OptionalLong findLast() {
-        return reduce(new LongBinaryOperator() {
-            @Override
-            public long applyAsLong(long left, long right) {
-                return right;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1348,15 +1211,7 @@ public final class LongStream implements Closeable {
      * @throws IllegalStateException if stream contains more than one element
      */
     public long single() {
-        if (!iterator.hasNext()) {
-            throw new NoSuchElementException("LongStream contains no element");
-        }
-
-        final long singleCandidate = iterator.nextLong();
-        if (iterator.hasNext()) {
-            throw new IllegalStateException("LongStream contains more than one element");
-        }
-        return singleCandidate;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1384,15 +1239,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public OptionalLong findSingle() {
-        if (!iterator.hasNext()) {
-            return OptionalLong.empty();
-        }
-
-        final long singleCandidate = iterator.nextLong();
-        if (iterator.hasNext()) {
-            throw new IllegalStateException("LongStream contains more than one element");
-        }
-        return OptionalLong.of(singleCandidate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1406,9 +1253,7 @@ public final class LongStream implements Closeable {
      */
     @NotNull
     public LongStream onClose(@NotNull final Runnable closeHandler) {
-        Objects.requireNonNull(closeHandler);
-        final Params newParams = Params.wrapWithCloseHandler(params, closeHandler);
-        return new LongStream(newParams, iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1420,17 +1265,14 @@ public final class LongStream implements Closeable {
      */
     @Override
     public void close() {
-        if (params != null && params.closeHandler != null) {
-            params.closeHandler.run();
-            params.closeHandler = null;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-
     private static final ToLongFunction<Long> UNBOX_FUNCTION = new ToLongFunction<Long>() {
+
         @Override
         public long applyAsLong(Long t) {
-            return t;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 }

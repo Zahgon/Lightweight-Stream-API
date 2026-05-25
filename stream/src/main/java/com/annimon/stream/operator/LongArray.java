@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 public class LongArray extends PrimitiveIterator.OfLong {
 
     private final long[] values;
+
     private int index;
 
     public LongArray(@NotNull long[] values) {
@@ -15,11 +16,11 @@ public class LongArray extends PrimitiveIterator.OfLong {
 
     @Override
     public long nextLong() {
-        return values[index++];
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean hasNext() {
-        return index < values.length;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

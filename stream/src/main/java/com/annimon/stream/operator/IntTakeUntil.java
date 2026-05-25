@@ -8,20 +8,16 @@ import org.jetbrains.annotations.NotNull;
 public class IntTakeUntil extends PrimitiveExtIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final IntPredicate stopPredicate;
 
-    public IntTakeUntil(
-            @NotNull PrimitiveIterator.OfInt iterator,
-            @NotNull IntPredicate stopPredicate) {
+    public IntTakeUntil(@NotNull PrimitiveIterator.OfInt iterator, @NotNull IntPredicate stopPredicate) {
         this.iterator = iterator;
         this.stopPredicate = stopPredicate;
     }
 
     @Override
     protected void nextIteration() {
-        hasNext = iterator.hasNext() && !(isInit && stopPredicate.test(next));
-        if (hasNext) {
-            next = iterator.nextInt();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

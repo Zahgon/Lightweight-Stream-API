@@ -22,7 +22,8 @@ public interface BooleanPredicate {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Returns a predicate that always returns its input argument.
@@ -30,12 +31,7 @@ public interface BooleanPredicate {
          * @return a predicate that always returns its input argument
          */
         public static BooleanPredicate identity() {
-            return new BooleanPredicate() {
-                @Override
-                public boolean test(boolean operand) {
-                    return operand;
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -46,17 +42,8 @@ public interface BooleanPredicate {
          * @return a composed {@code BooleanPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static BooleanPredicate and(
-                @NotNull final BooleanPredicate p1,
-                @NotNull final BooleanPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new BooleanPredicate() {
-                @Override
-                public boolean test(boolean value) {
-                    return p1.test(value) && p2.test(value);
-                }
-            };
+        public static BooleanPredicate and(@NotNull final BooleanPredicate p1, @NotNull final BooleanPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -67,17 +54,8 @@ public interface BooleanPredicate {
          * @return a composed {@code BooleanPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static BooleanPredicate or(
-                @NotNull final BooleanPredicate p1,
-                @NotNull final BooleanPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new BooleanPredicate() {
-                @Override
-                public boolean test(boolean value) {
-                    return p1.test(value) || p2.test(value);
-                }
-            };
+        public static BooleanPredicate or(@NotNull final BooleanPredicate p1, @NotNull final BooleanPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -88,17 +66,8 @@ public interface BooleanPredicate {
          * @return a composed {@code BooleanPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static BooleanPredicate xor(
-                @NotNull final BooleanPredicate p1,
-                @NotNull final BooleanPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new BooleanPredicate() {
-                @Override
-                public boolean test(boolean value) {
-                    return p1.test(value) ^ p2.test(value);
-                }
-            };
+        public static BooleanPredicate xor(@NotNull final BooleanPredicate p1, @NotNull final BooleanPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -109,14 +78,7 @@ public interface BooleanPredicate {
          * @throws NullPointerException if {@code p1} is null
          */
         public static BooleanPredicate negate(@NotNull final BooleanPredicate p1) {
-            Objects.requireNonNull(p1);
-            return new BooleanPredicate() {
-                @Override
-                public boolean test(boolean value) {
-                    return !p1.test(value);
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

@@ -22,7 +22,8 @@ public interface IndexedIntFunction<R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link IntFunction} and returns {@code IndexedIntFunction}.
@@ -32,16 +33,8 @@ public interface IndexedIntFunction<R> {
          * @return a wrapped {@code IndexedIntFunction}
          * @throws NullPointerException if {@code function} is null
          */
-        public static <R> IndexedIntFunction<R> wrap(
-                @NotNull final IntFunction<? extends R> function) {
-            Objects.requireNonNull(function);
-            return new IndexedIntFunction<R>() {
-                @Override
-                public R apply(int index, int value) {
-                    return function.apply(value);
-                }
-            };
+        public static <R> IndexedIntFunction<R> wrap(@NotNull final IntFunction<? extends R> function) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

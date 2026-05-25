@@ -7,24 +7,21 @@ import org.jetbrains.annotations.NotNull;
 public class DoublePeek extends PrimitiveIterator.OfDouble {
 
     private final PrimitiveIterator.OfDouble iterator;
+
     private final DoubleConsumer action;
 
-    public DoublePeek(
-            @NotNull PrimitiveIterator.OfDouble iterator,
-            @NotNull DoubleConsumer action) {
+    public DoublePeek(@NotNull PrimitiveIterator.OfDouble iterator, @NotNull DoubleConsumer action) {
         this.iterator = iterator;
         this.action = action;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public double nextDouble() {
-        final double value = iterator.nextDouble();
-        action.accept(value);
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

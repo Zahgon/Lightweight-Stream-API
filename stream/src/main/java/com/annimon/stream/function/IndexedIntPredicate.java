@@ -21,7 +21,8 @@ public interface IndexedIntPredicate {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link IntPredicate} and returns {@code IndexedIntPredicate}.
@@ -31,14 +32,7 @@ public interface IndexedIntPredicate {
          * @throws NullPointerException if {@code predicate} is null
          */
         public static IndexedIntPredicate wrap(@NotNull final IntPredicate predicate) {
-            Objects.requireNonNull(predicate);
-            return new IndexedIntPredicate() {
-                @Override
-                public boolean test(int index, int value) {
-                    return predicate.test(value);
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

@@ -7,24 +7,21 @@ import org.jetbrains.annotations.NotNull;
 public class IntPeek extends PrimitiveIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final IntConsumer action;
 
-    public IntPeek(
-            @NotNull PrimitiveIterator.OfInt iterator,
-            @NotNull IntConsumer action) {
+    public IntPeek(@NotNull PrimitiveIterator.OfInt iterator, @NotNull IntConsumer action) {
         this.iterator = iterator;
         this.action = action;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        final int value = iterator.nextInt();
-        action.accept(value);
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

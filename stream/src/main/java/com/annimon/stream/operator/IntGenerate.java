@@ -14,11 +14,11 @@ public class IntGenerate extends PrimitiveIterator.OfInt {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        return supplier.getAsInt();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

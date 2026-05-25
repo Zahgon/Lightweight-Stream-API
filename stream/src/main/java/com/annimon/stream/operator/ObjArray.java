@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 public class ObjArray<T> extends LsaIterator<T> {
 
     private final T[] elements;
+
     private int index;
 
     public ObjArray(@NotNull T[] elements) {
@@ -15,11 +16,11 @@ public class ObjArray<T> extends LsaIterator<T> {
 
     @Override
     public boolean hasNext() {
-        return index < elements.length;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T nextIteration() {
-        return elements[index++];
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -21,7 +21,8 @@ public interface BiConsumer<T, U> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code BiConsumer} calls.
@@ -35,16 +36,8 @@ public interface BiConsumer<T, U> {
          * @return composed {@code BiConsumer}
          * @throws NullPointerException if {@code c1} or {@code c2} is null
          */
-        public static <T, U> BiConsumer<T, U> andThen(
-                @NotNull final BiConsumer<? super T, ? super U> c1,
-                @NotNull final BiConsumer<? super T, ? super U> c2) {
-            return new BiConsumer<T, U>() {
-                @Override
-                public void accept(T t, U u) {
-                    c1.accept(t, u);
-                    c2.accept(t, u);
-                }
-            };
+        public static <T, U> BiConsumer<T, U> andThen(@NotNull final BiConsumer<? super T, ? super U> c1, @NotNull final BiConsumer<? super T, ? super U> c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

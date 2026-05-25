@@ -7,22 +7,21 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleMapToInt extends PrimitiveIterator.OfInt {
 
     private final PrimitiveIterator.OfDouble iterator;
+
     private final DoubleToIntFunction mapper;
 
-    public DoubleMapToInt(
-            @NotNull PrimitiveIterator.OfDouble iterator,
-            @NotNull DoubleToIntFunction mapper) {
+    public DoubleMapToInt(@NotNull PrimitiveIterator.OfDouble iterator, @NotNull DoubleToIntFunction mapper) {
         this.iterator = iterator;
         this.mapper = mapper;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        return mapper.applyAsInt(iterator.nextDouble());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

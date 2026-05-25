@@ -8,7 +8,6 @@ import com.annimon.stream.function.ToDoubleFunction;
 import com.annimon.stream.function.ToIntFunction;
 import com.annimon.stream.function.ToLongFunction;
 import com.annimon.stream.function.ToBooleanFunction;
-
 import java.util.NoSuchElementException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +35,7 @@ public class Optional<T> {
     @NotNull
     @Contract("_ -> new")
     public static <T> Optional<T> of(@NotNull T value) {
-        return new Optional<T>(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -49,7 +48,7 @@ public class Optional<T> {
      */
     @NotNull
     public static <T> Optional<T> ofNullable(@Nullable T value) {
-        return value == null ? Optional.<T>empty() : of(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -62,7 +61,7 @@ public class Optional<T> {
     @Contract(pure = true)
     @SuppressWarnings("unchecked")
     public static <T> Optional<T> empty() {
-        return (Optional<T>) EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Nullable
@@ -87,7 +86,7 @@ public class Optional<T> {
      */
     @NotNull
     public T get() {
-        return orElseThrow();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -96,7 +95,7 @@ public class Optional<T> {
      * @return {@code true} if a value present, {@code false} otherwise
      */
     public boolean isPresent() {
-        return value != null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -106,7 +105,7 @@ public class Optional<T> {
      * @since 1.2.1
      */
     public boolean isEmpty() {
-        return value == null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -115,8 +114,7 @@ public class Optional<T> {
      * @param consumer  the consumer function
      */
     public void ifPresent(@NotNull Consumer<? super T> consumer) {
-        if (value != null)
-            consumer.accept(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -129,11 +127,7 @@ public class Optional<T> {
      *         or no value is present and the given empty-based action is null.
      */
     public void ifPresentOrElse(@NotNull Consumer<? super T> consumer, @NotNull Runnable emptyAction) {
-        if (value != null) {
-            consumer.accept(value);
-        } else {
-            emptyAction.run();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -147,8 +141,7 @@ public class Optional<T> {
      */
     @NotNull
     public Optional<T> executeIfPresent(@NotNull Consumer<? super T> consumer) {
-        ifPresent(consumer);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -160,9 +153,7 @@ public class Optional<T> {
      */
     @NotNull
     public Optional<T> executeIfAbsent(@NotNull Runnable action) {
-        if (value == null)
-            action.run();
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -176,8 +167,7 @@ public class Optional<T> {
      */
     @Nullable
     public <R> R custom(@NotNull Function<Optional<T>, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -189,8 +179,7 @@ public class Optional<T> {
      */
     @NotNull
     public Optional<T> filter(@NotNull Predicate<? super T> predicate) {
-        if (!isPresent()) return this;
-        return predicate.test(value) ? this : Optional.<T>empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -203,7 +192,7 @@ public class Optional<T> {
      */
     @NotNull
     public Optional<T> filterNot(@NotNull Predicate<? super T> predicate) {
-        return filter(Predicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -218,8 +207,7 @@ public class Optional<T> {
      */
     @NotNull
     public <U> Optional<U> map(@NotNull Function<? super T, ? extends U> mapper) {
-        if (!isPresent()) return empty();
-        return Optional.ofNullable(mapper.apply(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -234,8 +222,7 @@ public class Optional<T> {
      */
     @NotNull
     public OptionalInt mapToInt(@NotNull ToIntFunction<? super T> mapper) {
-        if (!isPresent()) return OptionalInt.empty();
-        return OptionalInt.of(mapper.applyAsInt(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -250,8 +237,7 @@ public class Optional<T> {
      */
     @NotNull
     public OptionalLong mapToLong(@NotNull ToLongFunction<? super T> mapper) {
-        if (!isPresent()) return OptionalLong.empty();
-        return OptionalLong.of(mapper.applyAsLong(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -266,8 +252,7 @@ public class Optional<T> {
      */
     @NotNull
     public OptionalDouble mapToDouble(@NotNull ToDoubleFunction<? super T> mapper) {
-        if (!isPresent()) return OptionalDouble.empty();
-        return OptionalDouble.of(mapper.applyAsDouble(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -281,8 +266,7 @@ public class Optional<T> {
      */
     @NotNull
     public OptionalBoolean mapToBoolean(@NotNull ToBooleanFunction<? super T> mapper) {
-        if (!isPresent()) return OptionalBoolean.empty();
-        return OptionalBoolean.of(mapper.applyAsBoolean(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -294,8 +278,7 @@ public class Optional<T> {
      */
     @NotNull
     public <U> Optional<U> flatMap(@NotNull Function<? super T, Optional<U>> mapper) {
-        if (!isPresent()) return empty();
-        return Objects.requireNonNull(mapper.apply(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -306,8 +289,7 @@ public class Optional<T> {
     @NotNull
     @SuppressWarnings("unchecked")
     public Stream<T> stream() {
-        if (!isPresent()) return Stream.empty();
-        return Stream.of(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -320,9 +302,7 @@ public class Optional<T> {
     @NotNull
     @SuppressWarnings("unchecked")
     public <R> Optional<R> select(@NotNull Class<R> clazz) {
-        Objects.requireNonNull(clazz);
-        if (!isPresent()) return empty();
-        return (Optional<R>) Optional.ofNullable(clazz.isInstance(value) ? value : null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -337,9 +317,7 @@ public class Optional<T> {
      */
     @NotNull
     public Optional<T> or(@NotNull Supplier<Optional<T>> supplier) {
-        if (isPresent()) return this;
-        Objects.requireNonNull(supplier);
-        return Objects.requireNonNull(supplier.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -350,7 +328,7 @@ public class Optional<T> {
      */
     @Nullable
     public T orElse(@Nullable T other) {
-        return value != null ? value : other;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -361,7 +339,7 @@ public class Optional<T> {
      */
     @Nullable
     public T orElseGet(@NotNull Supplier<? extends T> other) {
-        return value != null ? value : other.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -373,10 +351,7 @@ public class Optional<T> {
      */
     @NotNull
     public T orElseThrow() {
-        if (value == null) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -389,34 +364,22 @@ public class Optional<T> {
      */
     @NotNull
     public <X extends Throwable> T orElseThrow(@NotNull Supplier<? extends X> exc) throws X {
-        if (value != null) return value;
-        else throw exc.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof Optional)) {
-            return false;
-        }
-
-        Optional<?> other = (Optional<?>) obj;
-        return Objects.equals(value, other.value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @NotNull
     @Override
     public String toString() {
-        return value != null
-            ? String.format("Optional[%s]", value)
-            : "Optional.empty";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -47,7 +47,7 @@ public final class RandomCompat {
      */
     @NotNull
     public Random getRandom() {
-        return random;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -64,11 +64,7 @@ public final class RandomCompat {
      */
     @NotNull
     public IntStream ints(long streamSize) {
-        if (streamSize < 0L) throw new IllegalArgumentException();
-        if (streamSize == 0L) {
-            return IntStream.empty();
-        }
-        return ints().limit(streamSize);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -86,11 +82,7 @@ public final class RandomCompat {
      */
     @NotNull
     public LongStream longs(long streamSize) {
-        if (streamSize < 0L) throw new IllegalArgumentException();
-        if (streamSize == 0L) {
-            return LongStream.empty();
-        }
-        return longs().limit(streamSize);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -108,13 +100,8 @@ public final class RandomCompat {
      */
     @NotNull
     public DoubleStream doubles(long streamSize) {
-        if (streamSize < 0L) throw new IllegalArgumentException();
-        if (streamSize == 0L) {
-            return DoubleStream.empty();
-        }
-        return doubles().limit(streamSize);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 
     /**
      * Returns an effectively unlimited stream of pseudorandom {@code int}
@@ -127,12 +114,7 @@ public final class RandomCompat {
      */
     @NotNull
     public IntStream ints() {
-        return IntStream.generate(new IntSupplier() {
-            @Override
-            public int getAsInt() {
-                return random.nextInt();
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -146,12 +128,7 @@ public final class RandomCompat {
      */
     @NotNull
     public LongStream longs() {
-        return LongStream.generate(new LongSupplier() {
-            @Override
-            public long getAsLong() {
-                return random.nextLong();
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -165,12 +142,7 @@ public final class RandomCompat {
      */
     @NotNull
     public DoubleStream doubles() {
-        return DoubleStream.generate(new DoubleSupplier() {
-            @Override
-            public double getAsDouble() {
-                return random.nextDouble();
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -189,11 +161,7 @@ public final class RandomCompat {
      */
     @NotNull
     public IntStream ints(long streamSize, final int randomNumberOrigin, final int randomNumberBound) {
-        if (streamSize < 0L) throw new IllegalArgumentException();
-        if (streamSize == 0L) {
-            return IntStream.empty();
-        }
-        return ints(randomNumberOrigin, randomNumberBound).limit(streamSize);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -211,13 +179,8 @@ public final class RandomCompat {
      *         greater than or equal to {@code randomNumberBound}
      */
     @NotNull
-    public LongStream longs(long streamSize,
-            final long randomNumberOrigin, final long randomNumberBound) {
-        if (streamSize < 0L) throw new IllegalArgumentException();
-        if (streamSize == 0L) {
-            return LongStream.empty();
-        }
-        return longs(randomNumberOrigin, randomNumberBound).limit(streamSize);
+    public LongStream longs(long streamSize, final long randomNumberOrigin, final long randomNumberBound) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -235,13 +198,8 @@ public final class RandomCompat {
      *         greater than or equal to {@code randomNumberBound}
      */
     @NotNull
-    public DoubleStream doubles(long streamSize,
-            final double randomNumberOrigin, final double randomNumberBound) {
-        if (streamSize < 0L) throw new IllegalArgumentException();
-        if (streamSize == 0L) {
-            return DoubleStream.empty();
-        }
-        return doubles(randomNumberOrigin, randomNumberBound).limit(streamSize);
+    public DoubleStream doubles(long streamSize, final double randomNumberOrigin, final double randomNumberBound) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -257,26 +215,7 @@ public final class RandomCompat {
      */
     @NotNull
     public IntStream ints(final int randomNumberOrigin, final int randomNumberBound) {
-        if (randomNumberOrigin >= randomNumberBound) {
-            throw new IllegalArgumentException();
-        }
-        return IntStream.generate(new IntSupplier() {
-
-            private final int bound = randomNumberBound - randomNumberOrigin;
-
-            @Override
-            public int getAsInt() {
-                if (bound < 0) {
-                    // range not representable as int
-                    int result;
-                    do {
-                        result = random.nextInt();
-                    } while (randomNumberOrigin >= result || result >= randomNumberBound);
-                    return result;
-                }
-                return randomNumberOrigin + random.nextInt(bound);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -292,36 +231,7 @@ public final class RandomCompat {
      */
     @NotNull
     public LongStream longs(final long randomNumberOrigin, final long randomNumberBound) {
-        if (randomNumberOrigin >= randomNumberBound) {
-            throw new IllegalArgumentException();
-        }
-        return LongStream.generate(new LongSupplier() {
-
-            private final long bound = randomNumberBound - randomNumberOrigin;
-            private final long boundMinus1 = bound - 1;
-
-            @Override
-            public long getAsLong() {
-                long result = random.nextLong();
-                if ((bound & boundMinus1) == 0L) {
-                    // power of two
-                    result = (result & boundMinus1) + randomNumberOrigin;
-                } else if (bound > 0L) {
-                    // reject over-represented candidates
-                    long u = result >>> 1; // ensure nonnegative
-                    while (u + boundMinus1 - (result = u % bound) < 0L) {
-                        u = random.nextLong() >>> 1;
-                    }
-                    result += randomNumberOrigin;
-                } else {
-                    // range not representable as long
-                    while (randomNumberOrigin >= result || result >= randomNumberBound) {
-                        result = random.nextLong();
-                    }
-                }
-                return result;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -337,22 +247,6 @@ public final class RandomCompat {
      */
     @NotNull
     public DoubleStream doubles(final double randomNumberOrigin, final double randomNumberBound) {
-        if (randomNumberOrigin >= randomNumberBound) {
-            throw new IllegalArgumentException();
-        }
-        return DoubleStream.generate(new DoubleSupplier() {
-
-            private final double bound = randomNumberBound - randomNumberOrigin;
-
-            @Override
-            public double getAsDouble() {
-                double result = random.nextDouble() * bound + randomNumberOrigin;
-                if (result >= randomNumberBound) {
-                    result = Double.longBitsToDouble(Double.doubleToLongBits(randomNumberBound) - 1);
-                }
-                return result;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

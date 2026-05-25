@@ -24,7 +24,8 @@ public interface LongFunction<R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Creates a safe {@code LongFunction},
@@ -36,9 +37,8 @@ public interface LongFunction<R> {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableLongFunction, java.lang.Object)
          */
-        public static <R> LongFunction<R> safe(
-                @NotNull ThrowableLongFunction<? extends R, Throwable> throwableFunction) {
-            return Util.<R>safe(throwableFunction, null);
+        public static <R> LongFunction<R> safe(@NotNull ThrowableLongFunction<? extends R, Throwable> throwableFunction) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -51,22 +51,8 @@ public interface LongFunction<R> {
          * @throws NullPointerException if {@code throwableFunction} is null
          * @since 1.1.7
          */
-        public static <R> LongFunction<R> safe(
-                @NotNull final ThrowableLongFunction<? extends R, Throwable> throwableFunction,
-                @Nullable final R resultIfFailed) {
-            Objects.requireNonNull(throwableFunction);
-            return new LongFunction<R>() {
-
-                @Override
-                public R apply(long value) {
-                    try {
-                        return throwableFunction.apply(value);
-                    } catch (Throwable throwable) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static <R> LongFunction<R> safe(@NotNull final ThrowableLongFunction<? extends R, Throwable> throwableFunction, @Nullable final R resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

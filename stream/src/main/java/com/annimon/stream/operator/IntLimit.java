@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 public class IntLimit extends PrimitiveIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final long maxSize;
+
     private long index;
 
     public IntLimit(@NotNull PrimitiveIterator.OfInt iterator, long maxSize) {
@@ -17,12 +19,11 @@ public class IntLimit extends PrimitiveIterator.OfInt {
 
     @Override
     public boolean hasNext() {
-        return (index < maxSize) && iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        index++;
-        return iterator.nextInt();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

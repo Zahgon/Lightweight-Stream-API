@@ -24,7 +24,8 @@ public interface DoubleFunction<R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Creates a safe {@code DoubleFunction},
@@ -36,9 +37,8 @@ public interface DoubleFunction<R> {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableDoubleFunction, java.lang.Object)
          */
-        public static <R> DoubleFunction<R> safe(
-                @NotNull ThrowableDoubleFunction<? extends R, Throwable> throwableFunction) {
-            return Util.<R>safe(throwableFunction, null);
+        public static <R> DoubleFunction<R> safe(@NotNull ThrowableDoubleFunction<? extends R, Throwable> throwableFunction) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -51,22 +51,8 @@ public interface DoubleFunction<R> {
          * @throws NullPointerException if {@code throwableFunction} is null
          * @since 1.1.7
          */
-        public static <R> DoubleFunction<R> safe(
-                @NotNull final ThrowableDoubleFunction<? extends R, Throwable> throwableFunction,
-                @Nullable final R resultIfFailed) {
-            Objects.requireNonNull(throwableFunction);
-            return new DoubleFunction<R>() {
-
-                @Override
-                public R apply(double value) {
-                    try {
-                        return throwableFunction.apply(value);
-                    } catch (Throwable throwable) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static <R> DoubleFunction<R> safe(@NotNull final ThrowableDoubleFunction<? extends R, Throwable> throwableFunction, @Nullable final R resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

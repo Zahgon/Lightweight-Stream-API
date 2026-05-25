@@ -7,22 +7,21 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleMapToLong extends PrimitiveIterator.OfLong {
 
     private final PrimitiveIterator.OfDouble iterator;
+
     private final DoubleToLongFunction mapper;
 
-    public DoubleMapToLong(
-            @NotNull PrimitiveIterator.OfDouble iterator,
-            @NotNull DoubleToLongFunction mapper) {
+    public DoubleMapToLong(@NotNull PrimitiveIterator.OfDouble iterator, @NotNull DoubleToLongFunction mapper) {
         this.iterator = iterator;
         this.mapper = mapper;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        return mapper.applyAsLong(iterator.nextDouble());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

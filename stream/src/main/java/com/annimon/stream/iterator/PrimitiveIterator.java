@@ -9,7 +9,8 @@ import java.util.Iterator;
  */
 public final class PrimitiveIterator {
 
-    private PrimitiveIterator() { }
+    private PrimitiveIterator() {
+    }
 
     public abstract static class OfInt implements Iterator<Integer> {
 
@@ -17,12 +18,12 @@ public final class PrimitiveIterator {
 
         @Override
         public Integer next() {
-            return nextInt();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("remove");
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -32,12 +33,12 @@ public final class PrimitiveIterator {
 
         @Override
         public Long next() {
-            return nextLong();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("remove");
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
@@ -47,12 +48,12 @@ public final class PrimitiveIterator {
 
         @Override
         public Double next() {
-            return nextDouble();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("remove");
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

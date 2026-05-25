@@ -21,7 +21,8 @@ public interface IndexedDoublePredicate {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link DoublePredicate} and returns {@code IndexedLongPredicate}.
@@ -30,16 +31,8 @@ public interface IndexedDoublePredicate {
          * @return a wrapped {@code IndexedDoublePredicate}
          * @throws NullPointerException if {@code predicate} is null
          */
-        public static IndexedDoublePredicate wrap(
-                @NotNull final DoublePredicate predicate) {
-            Objects.requireNonNull(predicate);
-            return new IndexedDoublePredicate() {
-                @Override
-                public boolean test(int index, double value) {
-                    return predicate.test(value);
-                }
-            };
+        public static IndexedDoublePredicate wrap(@NotNull final DoublePredicate predicate) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

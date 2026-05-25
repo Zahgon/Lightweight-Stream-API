@@ -9,7 +9,9 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleSorted extends PrimitiveExtIterator.OfDouble {
 
     private final PrimitiveIterator.OfDouble iterator;
+
     private int index;
+
     private double[] array;
 
     public DoubleSorted(@NotNull PrimitiveIterator.OfDouble iterator) {
@@ -19,13 +21,6 @@ public class DoubleSorted extends PrimitiveExtIterator.OfDouble {
 
     @Override
     protected void nextIteration() {
-        if (!isInit) {
-            array = Operators.toDoubleArray(iterator);
-            Arrays.sort(array);
-        }
-        hasNext = index < array.length;
-        if (hasNext) {
-            next = array[index++];
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

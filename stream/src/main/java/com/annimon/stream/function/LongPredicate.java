@@ -21,7 +21,8 @@ public interface LongPredicate {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Applies logical AND to predicates.
@@ -31,17 +32,8 @@ public interface LongPredicate {
          * @return a composed {@code LongPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static LongPredicate and(
-                @NotNull final LongPredicate p1,
-                @NotNull final LongPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new LongPredicate() {
-                @Override
-                public boolean test(long value) {
-                    return p1.test(value) && p2.test(value);
-                }
-            };
+        public static LongPredicate and(@NotNull final LongPredicate p1, @NotNull final LongPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -52,17 +44,8 @@ public interface LongPredicate {
          * @return a composed {@code LongPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static LongPredicate or(
-                @NotNull final LongPredicate p1,
-                @NotNull final LongPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new LongPredicate() {
-                @Override
-                public boolean test(long value) {
-                    return p1.test(value) || p2.test(value);
-                }
-            };
+        public static LongPredicate or(@NotNull final LongPredicate p1, @NotNull final LongPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -73,17 +56,8 @@ public interface LongPredicate {
          * @return a composed {@code LongPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static LongPredicate xor(
-                @NotNull final LongPredicate p1,
-                @NotNull final LongPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new LongPredicate() {
-                @Override
-                public boolean test(long value) {
-                    return p1.test(value) ^ p2.test(value);
-                }
-            };
+        public static LongPredicate xor(@NotNull final LongPredicate p1, @NotNull final LongPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -94,13 +68,7 @@ public interface LongPredicate {
          * @throws NullPointerException if {@code p1} is null
          */
         public static LongPredicate negate(@NotNull final LongPredicate p1) {
-            Objects.requireNonNull(p1);
-            return new LongPredicate() {
-                @Override
-                public boolean test(long value) {
-                    return !p1.test(value);
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -112,7 +80,7 @@ public interface LongPredicate {
          * @see #safe(com.annimon.stream.function.ThrowableLongPredicate, boolean)
          */
         public static LongPredicate safe(@NotNull ThrowableLongPredicate<Throwable> throwablePredicate) {
-            return safe(throwablePredicate, false);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -124,22 +92,8 @@ public interface LongPredicate {
          * @throws NullPointerException if {@code throwablePredicate} is null
          * @since 1.1.7
          */
-        public static LongPredicate safe(
-                @NotNull final ThrowableLongPredicate<Throwable> throwablePredicate,
-                final boolean resultIfFailed) {
-            Objects.requireNonNull(throwablePredicate);
-            return new LongPredicate() {
-
-                @Override
-                public boolean test(long value) {
-                    try {
-                        return throwablePredicate.test(value);
-                    } catch (Throwable throwable) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static LongPredicate safe(@NotNull final ThrowableLongPredicate<Throwable> throwablePredicate, final boolean resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

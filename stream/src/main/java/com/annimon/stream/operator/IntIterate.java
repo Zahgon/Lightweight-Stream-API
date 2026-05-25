@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 public class IntIterate extends PrimitiveIterator.OfInt {
 
     private final IntUnaryOperator op;
+
     private int current;
 
     public IntIterate(int seed, @NotNull IntUnaryOperator f) {
@@ -16,13 +17,11 @@ public class IntIterate extends PrimitiveIterator.OfInt {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        final int old = current;
-        current = op.applyAsInt(current);
-        return old;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

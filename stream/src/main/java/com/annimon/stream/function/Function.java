@@ -22,7 +22,8 @@ public interface Function<T, R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code Function} calls.
@@ -38,12 +39,8 @@ public interface Function<T, R> {
          * @throws NullPointerException if {@code f1} or {@code f2} is null
          * @see #andThen(com.annimon.stream.function.Function, com.annimon.stream.function.Function)
          */
-        public static <V, T, R> Function<V, R> compose(
-                @NotNull final Function<? super T, ? extends R> f1,
-                @NotNull final Function<? super V, ? extends T> f2) {
-            Objects.requireNonNull(f1, "f1");
-            Objects.requireNonNull(f2, "f2");
-            return Util.<V, T, R>andThen(f2, f1);
+        public static <V, T, R> Function<V, R> compose(@NotNull final Function<? super T, ? extends R> f1, @NotNull final Function<? super V, ? extends T> f2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -60,18 +57,8 @@ public interface Function<T, R> {
          * @throws NullPointerException if {@code f1} or {@code f2} is null
          * @see #compose(com.annimon.stream.function.Function, com.annimon.stream.function.Function)
          */
-        public static <T, R, V> Function<T, V> andThen(
-                @NotNull final Function<? super T, ? extends R> f1,
-                @NotNull final Function<? super R, ? extends V> f2) {
-            Objects.requireNonNull(f1, "f1");
-            Objects.requireNonNull(f2, "f2");
-            return new Function<T, V>() {
-
-                @Override
-                public V apply(T t) {
-                    return f2.apply(f1.apply(t));
-                }
-            };
+        public static <T, R, V> Function<T, V> andThen(@NotNull final Function<? super T, ? extends R> f1, @NotNull final Function<? super R, ? extends V> f2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -84,9 +71,8 @@ public interface Function<T, R> {
          * @throws NullPointerException if {@code throwableFunction} is null
          * @see #safe(com.annimon.stream.function.ThrowableFunction, java.lang.Object)
          */
-        public static <T, R> Function<T, R> safe(
-                @NotNull ThrowableFunction<? super T, ? extends R, Throwable> throwableFunction) {
-            return Util.<T, R>safe(throwableFunction, null);
+        public static <T, R> Function<T, R> safe(@NotNull ThrowableFunction<? super T, ? extends R, Throwable> throwableFunction) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -100,22 +86,8 @@ public interface Function<T, R> {
          * @throws NullPointerException if {@code throwableFunction} is null
          * @see #safe(com.annimon.stream.function.ThrowableFunction)
          */
-        public static <T, R> Function<T, R> safe(
-                @NotNull final ThrowableFunction<? super T, ? extends R, Throwable> throwableFunction,
-                @Nullable final R resultIfFailed) {
-            Objects.requireNonNull(throwableFunction);
-            return new Function<T, R>() {
-
-                @Override
-                public R apply(T value) {
-                    try {
-                        return throwableFunction.apply(value);
-                    } catch (Throwable throwable) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static <T, R> Function<T, R> safe(@NotNull final ThrowableFunction<? super T, ? extends R, Throwable> throwableFunction, @Nullable final R resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

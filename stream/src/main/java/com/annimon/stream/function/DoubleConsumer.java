@@ -21,7 +21,8 @@ public interface DoubleConsumer {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Composes {@code DoubleConsumer} calls.
@@ -33,18 +34,8 @@ public interface DoubleConsumer {
          * @return a composed {@code DoubleConsumer}
          * @throws NullPointerException if {@code c1} or {@code c2} is null
          */
-        public static DoubleConsumer andThen(
-                @NotNull final DoubleConsumer c1,
-                @NotNull final DoubleConsumer c2) {
-            Objects.requireNonNull(c1, "c1");
-            Objects.requireNonNull(c2, "c2");
-            return new DoubleConsumer() {
-                @Override
-                public void accept(double value) {
-                    c1.accept(value);
-                    c2.accept(value);
-                }
-            };
+        public static DoubleConsumer andThen(@NotNull final DoubleConsumer c1, @NotNull final DoubleConsumer c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -56,9 +47,8 @@ public interface DoubleConsumer {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableDoubleConsumer, com.annimon.stream.function.DoubleConsumer)
          */
-        public static DoubleConsumer safe(
-                @NotNull ThrowableDoubleConsumer<Throwable> throwableConsumer) {
-            return safe(throwableConsumer, null);
+        public static DoubleConsumer safe(@NotNull ThrowableDoubleConsumer<Throwable> throwableConsumer) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -71,24 +61,8 @@ public interface DoubleConsumer {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableDoubleConsumer)
          */
-        public static DoubleConsumer safe(
-                @NotNull final ThrowableDoubleConsumer<Throwable> throwableConsumer,
-                @Nullable final DoubleConsumer onFailedConsumer) {
-            Objects.requireNonNull(throwableConsumer);
-            return new DoubleConsumer() {
-
-                @Override
-                public void accept(double value) {
-                    try {
-                        throwableConsumer.accept(value);
-                    } catch (Throwable ex) {
-                        if (onFailedConsumer != null) {
-                            onFailedConsumer.accept(value);
-                        }
-                    }
-                }
-            };
+        public static DoubleConsumer safe(@NotNull final ThrowableDoubleConsumer<Throwable> throwableConsumer, @Nullable final DoubleConsumer onFailedConsumer) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

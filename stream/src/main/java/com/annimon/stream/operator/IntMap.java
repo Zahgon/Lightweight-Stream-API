@@ -7,22 +7,21 @@ import org.jetbrains.annotations.NotNull;
 public class IntMap extends PrimitiveIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final IntUnaryOperator mapper;
 
-    public IntMap(
-            @NotNull PrimitiveIterator.OfInt iterator,
-            @NotNull IntUnaryOperator mapper) {
+    public IntMap(@NotNull PrimitiveIterator.OfInt iterator, @NotNull IntUnaryOperator mapper) {
         this.iterator = iterator;
         this.mapper = mapper;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        return mapper.applyAsInt(iterator.nextInt());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

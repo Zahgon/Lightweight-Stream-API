@@ -22,7 +22,8 @@ public interface IndexedLongFunction<R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link LongFunction} and returns {@code IndexedLongFunction}.
@@ -32,16 +33,8 @@ public interface IndexedLongFunction<R> {
          * @return a wrapped {@code IndexedLongFunction}
          * @throws NullPointerException if {@code function} is null
          */
-        public static <R> IndexedLongFunction<R> wrap(
-                @NotNull final LongFunction<? extends R> function) {
-            Objects.requireNonNull(function);
-            return new IndexedLongFunction<R>() {
-                @Override
-                public R apply(int index, long value) {
-                    return function.apply(value);
-                }
-            };
+        public static <R> IndexedLongFunction<R> wrap(@NotNull final LongFunction<? extends R> function) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

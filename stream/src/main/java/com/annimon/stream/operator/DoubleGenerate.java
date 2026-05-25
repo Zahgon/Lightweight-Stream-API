@@ -14,11 +14,11 @@ public class DoubleGenerate extends PrimitiveIterator.OfDouble {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public double nextDouble() {
-        return supplier.getAsDouble();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

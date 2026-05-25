@@ -18,7 +18,8 @@ public interface IntPredicate {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Applies logical AND to predicates.
@@ -28,17 +29,8 @@ public interface IntPredicate {
          * @return a composed {@code IntPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static IntPredicate and(
-                @NotNull final IntPredicate p1,
-                @NotNull final IntPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new IntPredicate() {
-                @Override
-                public boolean test(int value) {
-                    return p1.test(value) && p2.test(value);
-                }
-            };
+        public static IntPredicate and(@NotNull final IntPredicate p1, @NotNull final IntPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -49,17 +41,8 @@ public interface IntPredicate {
          * @return a composed {@code IntPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static IntPredicate or(
-                @NotNull final IntPredicate p1,
-                @NotNull final IntPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new IntPredicate() {
-                @Override
-                public boolean test(int value) {
-                    return p1.test(value) || p2.test(value);
-                }
-            };
+        public static IntPredicate or(@NotNull final IntPredicate p1, @NotNull final IntPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -70,17 +53,8 @@ public interface IntPredicate {
          * @return a composed {@code IntPredicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static IntPredicate xor(
-                @NotNull final IntPredicate p1,
-                @NotNull final IntPredicate p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new IntPredicate() {
-                @Override
-                public boolean test(int value) {
-                    return p1.test(value) ^ p2.test(value);
-                }
-            };
+        public static IntPredicate xor(@NotNull final IntPredicate p1, @NotNull final IntPredicate p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -91,13 +65,7 @@ public interface IntPredicate {
          * @throws NullPointerException if {@code p1} is null
          */
         public static IntPredicate negate(@NotNull final IntPredicate p1) {
-            Objects.requireNonNull(p1);
-            return new IntPredicate() {
-                @Override
-                public boolean test(int value) {
-                    return !p1.test(value);
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -109,7 +77,7 @@ public interface IntPredicate {
          * @see #safe(com.annimon.stream.function.ThrowableIntPredicate, boolean)
          */
         public static IntPredicate safe(@NotNull ThrowableIntPredicate<Throwable> throwablePredicate) {
-            return safe(throwablePredicate, false);
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -121,22 +89,8 @@ public interface IntPredicate {
          * @throws NullPointerException if {@code throwablePredicate} is null
          * @since 1.1.7
          */
-        public static IntPredicate safe(
-                @NotNull final ThrowableIntPredicate<Throwable> throwablePredicate,
-                final boolean resultIfFailed) {
-            Objects.requireNonNull(throwablePredicate);
-            return new IntPredicate() {
-
-                @Override
-                public boolean test(int value) {
-                    try {
-                        return throwablePredicate.test(value);
-                    } catch (Throwable throwable) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static IntPredicate safe(@NotNull final ThrowableIntPredicate<Throwable> throwablePredicate, final boolean resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

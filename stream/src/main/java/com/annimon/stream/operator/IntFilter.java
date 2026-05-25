@@ -8,36 +8,26 @@ import org.jetbrains.annotations.NotNull;
 public class IntFilter extends PrimitiveIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final IntPredicate predicate;
+
     private boolean hasNext, hasNextEvaluated;
+
     private int next;
 
-    public IntFilter(
-            @NotNull PrimitiveIterator.OfInt iterator,
-            @NotNull IntPredicate predicate) {
+    public IntFilter(@NotNull PrimitiveIterator.OfInt iterator, @NotNull IntPredicate predicate) {
         this.iterator = iterator;
         this.predicate = predicate;
     }
 
     @Override
     public boolean hasNext() {
-        if (!hasNextEvaluated) {
-            nextIteration();
-            hasNextEvaluated = true;
-        }
-        return hasNext;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int nextInt() {
-        if (!hasNextEvaluated) {
-            hasNext = hasNext();
-        }
-        if (!hasNext) {
-            throw new NoSuchElementException();
-        }
-        hasNextEvaluated = false;
-        return next;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void nextIteration() {

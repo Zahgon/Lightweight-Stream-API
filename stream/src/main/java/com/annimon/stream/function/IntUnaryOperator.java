@@ -16,7 +16,8 @@ public interface IntUnaryOperator {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Returns a unary operator that always returns its input argument.
@@ -24,12 +25,7 @@ public interface IntUnaryOperator {
          * @return a unary operator that always returns its input argument
          */
         public static IntUnaryOperator identity() {
-            return new IntUnaryOperator() {
-                @Override
-                public int applyAsInt(int operand) {
-                    return operand;
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

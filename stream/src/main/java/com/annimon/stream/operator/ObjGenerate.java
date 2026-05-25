@@ -14,11 +14,11 @@ public class ObjGenerate<T> extends LsaIterator<T> {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T nextIteration() {
-        return supplier.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -10,19 +10,21 @@ import org.jetbrains.annotations.NotNull;
 public class ObjMerge<T> extends LsaIterator<T> {
 
     public enum MergeResult {
+
         TAKE_FIRST, TAKE_SECOND
     }
 
     private final Iterator<? extends T> iterator1;
+
     private final Iterator<? extends T> iterator2;
+
     private final BiFunction<? super T, ? super T, MergeResult> selector;
+
     private final Queue<T> buffer1;
+
     private final Queue<T> buffer2;
 
-    public ObjMerge(
-            @NotNull Iterator<? extends T> iterator1,
-            @NotNull Iterator<? extends T> iterator2,
-            @NotNull BiFunction<? super T, ? super T, MergeResult> selector) {
+    public ObjMerge(@NotNull Iterator<? extends T> iterator1, @NotNull Iterator<? extends T> iterator2, @NotNull BiFunction<? super T, ? super T, MergeResult> selector) {
         this.iterator1 = iterator1;
         this.iterator2 = iterator2;
         this.selector = selector;
@@ -32,44 +34,20 @@ public class ObjMerge<T> extends LsaIterator<T> {
 
     @Override
     public boolean hasNext() {
-        return !buffer1.isEmpty() || !buffer2.isEmpty()
-                || iterator1.hasNext() || iterator2.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public T nextIteration() {
-        if (!buffer1.isEmpty()) {
-            final T v1 = buffer1.poll();
-            if (iterator2.hasNext()) {
-                return select(v1, iterator2.next());
-            }
-            return v1;
-        }
-        if (!buffer2.isEmpty()) {
-            final T v2 = buffer2.poll();
-            if (iterator1.hasNext()) {
-                return select(iterator1.next(), v2);
-            }
-            return v2;
-        }
-
-        if (!iterator1.hasNext()) {
-            return iterator2.next();
-        }
-        if (!iterator2.hasNext()) {
-            return iterator1.next();
-        }
-
-        return select(iterator1.next(), iterator2.next());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private T select(T v1, T v2) {
         final MergeResult result = selector.apply(v1, v2);
-        switch (result) {
+        switch(result) {
             case TAKE_FIRST:
                 buffer2.add(v2);
                 return v1;
-
             case TAKE_SECOND:
             default:
                 buffer1.add(v1);

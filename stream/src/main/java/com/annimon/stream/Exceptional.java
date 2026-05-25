@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * @param <T> the type of the inner value
  */
-@SuppressWarnings({"WeakerAccess", "UnusedReturnValue"})
+@SuppressWarnings({ "WeakerAccess", "UnusedReturnValue" })
 public class Exceptional<T> {
 
     /**
@@ -45,12 +45,7 @@ public class Exceptional<T> {
      */
     @NotNull
     public static <T> Exceptional<T> of(@NotNull ThrowableSupplier<T, Throwable> supplier) {
-        Objects.requireNonNull(supplier);
-        try {
-            return new Exceptional<T>(supplier.get(), null);
-        } catch (Throwable throwable) {
-            return of(throwable);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -63,11 +58,11 @@ public class Exceptional<T> {
     @NotNull
     @Contract("_ -> new")
     public static <T> Exceptional<T> of(@NotNull Throwable throwable) {
-        Objects.requireNonNull(throwable);
-        return new Exceptional<T>(null, throwable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final T value;
+
     private final Throwable throwable;
 
     private Exceptional(@Nullable T value, @Nullable Throwable throwable) {
@@ -82,7 +77,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public T get() {
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -91,7 +86,7 @@ public class Exceptional<T> {
      * @return {@code true} if a value present, {@code false} otherwise
      */
     public boolean isPresent() {
-        return throwable == null;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -102,7 +97,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public T getOrElse(@Nullable T other) {
-        return throwable == null ? value : other;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -114,7 +109,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public T getOrElse(@NotNull Supplier<? extends T> other) {
-        return throwable == null ? value : other.get();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -124,7 +119,7 @@ public class Exceptional<T> {
      */
     @NotNull
     public Optional<T> getOptional() {
-        return Optional.ofNullable(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -134,7 +129,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public Throwable getException() {
-        return throwable;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -145,10 +140,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public T getOrThrow() throws Throwable {
-        if (throwable != null) {
-            throw throwable;
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -159,10 +151,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public T getOrThrowRuntimeException() throws RuntimeException {
-        if (throwable != null) {
-            throw new RuntimeException(throwable);
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -175,11 +164,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public <E extends Throwable> T getOrThrow(@NotNull E exception) throws E {
-        if (throwable != null) {
-            exception.initCause(throwable);
-            throw exception;
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -193,10 +178,7 @@ public class Exceptional<T> {
      */
     @NotNull
     public Exceptional<T> or(@NotNull Supplier<Exceptional<T>> supplier) {
-        if (throwable == null) return this;
-
-        Objects.requireNonNull(supplier);
-        return Objects.requireNonNull(supplier.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -210,8 +192,7 @@ public class Exceptional<T> {
      */
     @Nullable
     public <R> R custom(@NotNull Function<Exceptional<T>, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -224,15 +205,7 @@ public class Exceptional<T> {
      */
     @NotNull
     public <U> Exceptional<U> map(@NotNull ThrowableFunction<? super T, ? extends U, Throwable> mapper) {
-        if (throwable != null) {
-            return of(throwable);
-        }
-        Objects.requireNonNull(mapper);
-        try {
-            return new Exceptional<U>(mapper.apply(value), null);
-        } catch (Throwable t) {
-            return of(t);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -244,10 +217,7 @@ public class Exceptional<T> {
      */
     @NotNull
     public Exceptional<T> ifPresent(@NotNull Consumer<? super T> consumer) {
-        if (throwable == null) {
-            consumer.accept(value);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -258,10 +228,7 @@ public class Exceptional<T> {
      */
     @NotNull
     public Exceptional<T> ifException(@NotNull Consumer<Throwable> consumer) {
-        if (throwable != null) {
-            consumer.accept(throwable);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -275,11 +242,7 @@ public class Exceptional<T> {
     @NotNull
     @SuppressWarnings("unchecked")
     public <E extends Throwable> Exceptional<T> ifExceptionIs(@NotNull Class<E> throwableClass, @NotNull Consumer<? super E> consumer) {
-        if ( (throwable != null) &&
-                (throwableClass.isAssignableFrom(throwable.getClass())) ) {
-            consumer.accept((E) throwable);
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -294,14 +257,7 @@ public class Exceptional<T> {
      */
     @NotNull
     public Exceptional<T> recover(@NotNull final ThrowableFunction<Throwable, ? extends T, Throwable> function) {
-        if (throwable == null) return this;
-
-        Objects.requireNonNull(function);
-        try {
-            return new Exceptional<T>(function.apply(throwable), null);
-        } catch (Throwable throwable) {
-            return of(throwable);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -316,37 +272,22 @@ public class Exceptional<T> {
      */
     @NotNull
     public Exceptional<T> recoverWith(@NotNull final Function<Throwable, ? extends Exceptional<T>> function) {
-        if (throwable == null) return this;
-
-        Objects.requireNonNull(function);
-        return Objects.requireNonNull(function.apply(throwable));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        if (!(obj instanceof Exceptional)) {
-            return false;
-        }
-
-        Exceptional<?> other = (Exceptional<?>) obj;
-        return Objects.equals(value, other.value) &&
-                Objects.equals(throwable, other.throwable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value, throwable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @NotNull
     @Override
     public String toString() {
-        return throwable == null
-            ? String.format("Exceptional value %s", value)
-            : String.format("Exceptional throwable %s", throwable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

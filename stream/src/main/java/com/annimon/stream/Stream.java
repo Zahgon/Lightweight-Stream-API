@@ -35,7 +35,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> empty() {
-        return of(Collections.<T>emptyList());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -49,8 +49,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <K, V> Stream<Map.Entry<K, V>> of(@NotNull Map<K, V> map) {
-        Objects.requireNonNull(map);
-        return new Stream<Map.Entry<K, V>>(map.entrySet());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -63,8 +62,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> of(@NotNull Iterator<? extends T> iterator) {
-        Objects.requireNonNull(iterator);
-        return new Stream<T>(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -77,8 +75,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> of(@NotNull Iterable<? extends T> iterable) {
-        Objects.requireNonNull(iterable);
-        return new Stream<T>(iterable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -91,11 +88,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> of(@NotNull final T... elements) {
-        Objects.requireNonNull(elements);
-        if (elements.length == 0) {
-            return Stream.<T>empty();
-        }
-        return new Stream<T>(new ObjArray<T>(elements));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -110,7 +103,7 @@ public class Stream<T> implements Closeable {
     @NotNull
     @SuppressWarnings("unchecked")
     public static <T> Stream<T> ofNullable(@Nullable T element) {
-        return (element == null) ? Stream.<T>empty() : Stream.of(element);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -124,7 +117,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> ofNullable(@Nullable final T[] array) {
-        return (array == null) ? Stream.<T>empty() : Stream.of(array);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -139,7 +132,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <K, V> Stream<Map.Entry<K, V>> ofNullable(@Nullable Map<K, V> map) {
-        return (map == null) ? Stream.<Map.Entry<K, V>>empty() : Stream.of(map);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -153,7 +146,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> ofNullable(@Nullable Iterator<? extends T> iterator) {
-        return (iterator == null) ? Stream.<T>empty() : Stream.of(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -167,7 +160,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> ofNullable(@Nullable Iterable<? extends T> iterable) {
-        return (iterable == null) ? Stream.<T>empty() : Stream.of(iterable);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -181,7 +174,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static Stream<Integer> range(final int from, final int to) {
-        return IntStream.range(from, to).boxed();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -194,7 +187,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static Stream<Long> range(final long from, final long to) {
-        return LongStream.range(from, to).boxed();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -208,7 +201,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static Stream<Integer> rangeClosed(final int from, final int to) {
-        return IntStream.rangeClosed(from, to).boxed();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -221,7 +214,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static Stream<Long> rangeClosed(final long from, final long to) {
-        return LongStream.rangeClosed(from, to).boxed();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -234,8 +227,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public static <T> Stream<T> generate(@NotNull final Supplier<T> supplier) {
-        Objects.requireNonNull(supplier);
-        return new Stream<T>(new ObjGenerate<T>(supplier));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -257,11 +249,8 @@ public class Stream<T> implements Closeable {
      * @throws NullPointerException if {@code op} is null
      */
     @NotNull
-    public static <T> Stream<T> iterate(
-            @Nullable final T seed,
-            @NotNull final UnaryOperator<T> op) {
-        Objects.requireNonNull(op);
-        return new Stream<T>(new ObjIterate<T>(seed, op));
+    public static <T> Stream<T> iterate(@Nullable final T seed, @NotNull final UnaryOperator<T> op) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -285,12 +274,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.5
      */
     @NotNull
-    public static <T> Stream<T> iterate(
-            @Nullable final T seed,
-            @NotNull final Predicate<? super T> predicate,
-            @NotNull final UnaryOperator<T> op) {
-        Objects.requireNonNull(predicate);
-        return iterate(seed, op).takeWhile(predicate);
+    public static <T> Stream<T> iterate(@Nullable final T seed, @NotNull final Predicate<? super T> predicate, @NotNull final UnaryOperator<T> op) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -310,13 +295,8 @@ public class Stream<T> implements Closeable {
      * @throws NullPointerException if {@code stream1} or {@code stream2} is null
      */
     @NotNull
-    public static <T> Stream<T> concat(
-            @NotNull Stream<? extends T> stream1,
-            @NotNull Stream<? extends T> stream2) {
-        Objects.requireNonNull(stream1);
-        Objects.requireNonNull(stream2);
-        Stream<T> result = new Stream<T>(new ObjConcat<T>(stream1.iterator, stream2.iterator));
-        return result.onClose(Compose.closeables(stream1, stream2));
+    public static <T> Stream<T> concat(@NotNull Stream<? extends T> stream1, @NotNull Stream<? extends T> stream2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -338,22 +318,8 @@ public class Stream<T> implements Closeable {
      * @since 1.2.2
      */
     @NotNull
-    public static <T> Stream<T> concat(
-            @NotNull List<? extends Stream<? extends T>> streams) {
-        Objects.requireNonNull(streams);
-
-        final int size = streams.size();
-        final List<Iterator<? extends T>> iterators =
-                new ArrayList<Iterator<? extends T>>(size);
-        final List<Closeable> closeables =
-                new ArrayList<Closeable>(size);
-        for (final Stream<? extends T> stream : streams) {
-            iterators.add(stream.iterator);
-            closeables.add(stream);
-        }
-
-        Stream<T> result = new Stream<T>(new ObjConcat<T>(iterators));
-        return result.onClose(Compose.closeables(closeables));
+    public static <T> Stream<T> concat(@NotNull List<? extends Stream<? extends T>> streams) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -374,12 +340,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.9
      */
     @NotNull
-    public static <T> Stream<T> concat(
-            @NotNull Iterator<? extends T> iterator1,
-            @NotNull Iterator<? extends T> iterator2) {
-        Objects.requireNonNull(iterator1);
-        Objects.requireNonNull(iterator2);
-        return new Stream<T>(new ObjConcat<T>(iterator1, iterator2));
+    public static <T> Stream<T> concat(@NotNull Iterator<? extends T> iterator1, @NotNull Iterator<? extends T> iterator2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -405,20 +367,8 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     @SuppressWarnings("unchecked")
-    public static <T> Stream<T> concat(
-            @NotNull Iterator<? extends T> iterator1,
-            @NotNull Iterator<? extends T> iterator2,
-            @NotNull Iterator<? extends T>... rest) {
-        Objects.requireNonNull(iterator1);
-        Objects.requireNonNull(iterator2);
-        Objects.requireNonNull(rest);
-
-        final List<Iterator<? extends T>> iterators =
-                new ArrayList<Iterator<? extends T>>(rest.length + 2);
-        Collections.addAll(iterators, iterator1, iterator2);
-        Collections.addAll(iterators, rest);
-
-        return new Stream<T>(new ObjConcat<T>(iterators));
+    public static <T> Stream<T> concat(@NotNull Iterator<? extends T> iterator1, @NotNull Iterator<? extends T> iterator2, @NotNull Iterator<? extends T>... rest) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -442,13 +392,8 @@ public class Stream<T> implements Closeable {
      * @throws NullPointerException if {@code stream1} or {@code stream2} is null
      */
     @NotNull
-    public static <F, S, R> Stream<R> zip(
-            @NotNull Stream<? extends F> stream1,
-            @NotNull Stream<? extends S> stream2,
-            @NotNull final BiFunction<? super F, ? super S, ? extends R> combiner) {
-        Objects.requireNonNull(stream1);
-        Objects.requireNonNull(stream2);
-        return Stream.<F, S, R>zip(stream1.iterator, stream2.iterator, combiner);
+    public static <F, S, R> Stream<R> zip(@NotNull Stream<? extends F> stream1, @NotNull Stream<? extends S> stream2, @NotNull final BiFunction<? super F, ? super S, ? extends R> combiner) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -473,13 +418,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.2
      */
     @NotNull
-    public static <F, S, R> Stream<R> zip(
-            @NotNull final Iterator<? extends F> iterator1,
-            @NotNull final Iterator<? extends S> iterator2,
-            @NotNull final BiFunction<? super F, ? super S, ? extends R> combiner) {
-        Objects.requireNonNull(iterator1);
-        Objects.requireNonNull(iterator2);
-        return new Stream<R>(new ObjZip<F, S, R>(iterator1, iterator2, combiner));
+    public static <F, S, R> Stream<R> zip(@NotNull final Iterator<? extends F> iterator1, @NotNull final Iterator<? extends S> iterator2, @NotNull final BiFunction<? super F, ? super S, ? extends R> combiner) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -510,13 +450,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.9
      */
     @NotNull
-    public static <T> Stream<T> merge(
-            @NotNull Stream<? extends T> stream1,
-            @NotNull Stream<? extends T> stream2,
-            @NotNull BiFunction<? super T, ? super T, ObjMerge.MergeResult> selector) {
-        Objects.requireNonNull(stream1);
-        Objects.requireNonNull(stream2);
-        return Stream.<T>merge(stream1.iterator, stream2.iterator, selector);
+    public static <T> Stream<T> merge(@NotNull Stream<? extends T> stream1, @NotNull Stream<? extends T> stream2, @NotNull BiFunction<? super T, ? super T, ObjMerge.MergeResult> selector) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -546,18 +481,13 @@ public class Stream<T> implements Closeable {
      * @throws NullPointerException if {@code iterator1} or {@code iterator2} is null
      * @since 1.1.9
      */
-    public static <T> Stream<T> merge(
-            @NotNull Iterator<? extends T> iterator1,
-            @NotNull Iterator<? extends T> iterator2,
-            @NotNull BiFunction<? super T, ? super T, ObjMerge.MergeResult> selector) {
-        Objects.requireNonNull(iterator1);
-        Objects.requireNonNull(iterator2);
-        return new Stream<T>(new ObjMerge<T>(iterator1, iterator2, selector));
+    public static <T> Stream<T> merge(@NotNull Iterator<? extends T> iterator1, @NotNull Iterator<? extends T> iterator2, @NotNull BiFunction<? super T, ? super T, ObjMerge.MergeResult> selector) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-
-//<editor-fold defaultstate="collapsed" desc="Implementation">
+    //<editor-fold defaultstate="collapsed" desc="Implementation">
     private final Iterator<? extends T> iterator;
+
     private final Params params;
 
     private Stream(Iterator<? extends T> iterator) {
@@ -583,7 +513,7 @@ public class Stream<T> implements Closeable {
      * @return internal stream iterator
      */
     public Iterator<? extends T> iterator() {
-        return iterator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -644,8 +574,7 @@ public class Stream<T> implements Closeable {
      */
     @Nullable
     public <R> R custom(@NotNull Function<Stream<T>, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -667,7 +596,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> prepend(@NotNull Stream<? extends T> stream) {
-        return Stream.concat(stream, this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -689,7 +618,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> append(@NotNull Stream<? extends T> stream) {
-        return Stream.concat(this, stream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -709,7 +638,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> filter(@NotNull final Predicate<? super T> predicate) {
-        return new Stream<T>(params, new ObjFilter<T>(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -733,7 +662,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> filterIndexed(@NotNull IndexedPredicate<? super T> predicate) {
-        return filterIndexed(0, 1, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -760,11 +689,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public Stream<T> filterIndexed(int from, int step,
-                                   @NotNull IndexedPredicate<? super T> predicate) {
-        return new Stream<T>(params, new ObjFilterIndexed<T>(
-                new IndexedIterator<T>(from, step, iterator),
-                predicate));
+    public Stream<T> filterIndexed(int from, int step, @NotNull IndexedPredicate<? super T> predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -777,7 +703,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> filterNot(@NotNull final Predicate<? super T> predicate) {
-        return filter(Predicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -793,12 +719,7 @@ public class Stream<T> implements Closeable {
     @NotNull
     @SuppressWarnings("unchecked")
     public <TT> Stream<TT> select(@NotNull final Class<TT> clazz) {
-        return (Stream<TT>) filter(new Predicate<T>() {
-            @Override
-            public boolean test(T value) {
-                return clazz.isInstance(value);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -811,7 +732,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> withoutNulls() {
-        return filter(Predicate.Util.<T>notNull());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -824,7 +745,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> nullsOnly() {
-        return filterNot(Predicate.Util.<T>notNull());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -838,12 +759,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> equalsOnly(@Nullable final T object) {
-        return filter(new Predicate<T>() {
-            @Override
-            public boolean test(T value) {
-                return Objects.equals(value, object);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -864,7 +780,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public <R> Stream<R> map(@NotNull final Function<? super T, ? extends R> mapper) {
-        return new Stream<R>(params, new ObjMap<T, R>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -887,7 +803,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public <R> Stream<R> mapIndexed(@NotNull IndexedFunction<? super T, ? extends R> mapper) {
-        return this.<R>mapIndexed(0, 1, mapper);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -913,11 +829,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public <R> Stream<R> mapIndexed(int from, int step,
-                                    @NotNull IndexedFunction<? super T, ? extends R> mapper) {
-        return new Stream<R>(params, new ObjMapIndexed<T, R>(
-                new IndexedIterator<T>(from, step, iterator),
-                mapper));
+    public <R> Stream<R> mapIndexed(int from, int step, @NotNull IndexedFunction<? super T, ? extends R> mapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -931,7 +844,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public IntStream mapToInt(@NotNull final ToIntFunction<? super T> mapper) {
-        return new IntStream(params, new ObjMapToInt<T>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -946,7 +859,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public LongStream mapToLong(@NotNull final ToLongFunction<? super T> mapper) {
-        return new LongStream(params, new ObjMapToLong<T>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -961,7 +874,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public DoubleStream mapToDouble(@NotNull final ToDoubleFunction<? super T> mapper) {
-        return new DoubleStream(params, new ObjMapToDouble<T>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -984,7 +897,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public <R> Stream<R> flatMap(@NotNull final Function<? super T, ? extends Stream<? extends R>> mapper) {
-        return new Stream<R>(params, new ObjFlatMap<T, R>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1000,7 +913,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public IntStream flatMapToInt(@NotNull final Function<? super T, ? extends IntStream> mapper) {
-        return new IntStream(params, new ObjFlatMapToInt<T>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1016,7 +929,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public LongStream flatMapToLong(@NotNull final Function<? super T, ? extends LongStream> mapper) {
-        return new LongStream(params, new ObjFlatMapToLong<T>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1032,7 +945,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public DoubleStream flatMapToDouble(@NotNull final Function<? super T, ? extends DoubleStream> mapper) {
-        return new DoubleStream(params, new ObjFlatMapToDouble<T>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1067,14 +980,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public <R> Stream<R> mapMulti(@NotNull final BiConsumer<? super T, ? super Consumer<R>> mapper) {
-        return flatMap(new Function<T, Stream<? extends R>>() {
-            @Override
-            public Stream<? extends R> apply(T t) {
-                SpinedBuffer.Of<R> buffer = new SpinedBuffer.Of<R>();
-                mapper.accept(t, buffer);
-                return of(buffer.iterator());
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1092,14 +998,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public IntStream mapMultiToInt(@NotNull final BiConsumer<? super T, ? super IntConsumer> mapper) {
-        return flatMapToInt(new Function<T, IntStream>() {
-            @Override
-            public IntStream apply(T t) {
-                SpinedBuffer.OfInt buffer = new SpinedBuffer.OfInt();
-                mapper.accept(t, buffer);
-                return IntStream.of(buffer.iterator());
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1117,14 +1016,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public LongStream mapMultiToLong(@NotNull final BiConsumer<? super T, ? super LongConsumer> mapper) {
-        return flatMapToLong(new Function<T, LongStream>() {
-            @Override
-            public LongStream apply(T t) {
-                SpinedBuffer.OfLong buffer = new SpinedBuffer.OfLong();
-                mapper.accept(t, buffer);
-                return LongStream.of(buffer.iterator());
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1142,14 +1034,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public DoubleStream mapMultiToDouble(@NotNull final BiConsumer<? super T, ? super DoubleConsumer> mapper) {
-        return flatMapToDouble(new Function<T, DoubleStream>() {
-            @Override
-            public DoubleStream apply(T t) {
-                SpinedBuffer.OfDouble buffer = new SpinedBuffer.OfDouble();
-                mapper.accept(t, buffer);
-                return DoubleStream.of(buffer.iterator());
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1169,7 +1054,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<IntPair<T>> indexed() {
-        return indexed(0, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1191,14 +1076,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<IntPair<T>> indexed(final int from, final int step) {
-        return mapIndexed(from, step, new IndexedFunction<T, IntPair<T>>() {
-
-            @NotNull
-            @Override
-            public IntPair<T> apply(int index, T t) {
-                return new IntPair<T>(index, t);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1216,7 +1094,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> distinct() {
-        return new Stream<T>(params, new ObjDistinct<T>(iterator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1239,7 +1117,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public <K> Stream<T> distinctBy(@NotNull Function<? super T, ? extends K> classifier) {
-        return new Stream<T>(params, new ObjDistinctBy<T, K>(iterator, classifier));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1259,16 +1137,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> sorted() {
-        return sorted(new Comparator<T>() {
-
-            @SuppressWarnings("unchecked")
-            @Override
-            public int compare(T o1, T o2) {
-                Comparable c1 = (Comparable) o1;
-                Comparable c2 = (Comparable) o2;
-                return c1.compareTo(c2);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1288,7 +1157,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> sorted(@Nullable final Comparator<? super T> comparator) {
-        return new Stream<T>(params, new ObjSorted<T>(iterator, comparator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1309,9 +1178,8 @@ public class Stream<T> implements Closeable {
      * @return the new stream
      */
     @NotNull
-    public <R extends Comparable<? super R>> Stream<T> sortBy(
-            @NotNull final Function<? super T, ? extends R> f) {
-        return sorted(ComparatorCompat.comparing(f));
+    public <R extends Comparable<? super R>> Stream<T> sortBy(@NotNull final Function<? super T, ? extends R> f) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1331,10 +1199,8 @@ public class Stream<T> implements Closeable {
      * @return the new stream
      */
     @NotNull
-    public <K> Stream<Map.Entry<K, List<T>>> groupBy(
-            @NotNull final Function<? super T, ? extends K> classifier) {
-        Map<K, List<T>> map = collect(Collectors.<T, K>groupingBy(classifier));
-        return new Stream<Map.Entry<K, List<T>>>(params, map.entrySet());
+    public <K> Stream<Map.Entry<K, List<T>>> groupBy(@NotNull final Function<? super T, ? extends K> classifier) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1359,7 +1225,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public <K> Stream<List<T>> chunkBy(@NotNull final Function<? super T, ? extends K> classifier) {
-        return new Stream<List<T>>(params, new ObjChunkBy<T, K>(iterator, classifier));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1380,14 +1246,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> sample(final int stepWidth) {
-        if (stepWidth <= 0) throw new IllegalArgumentException("stepWidth cannot be zero or negative");
-        if (stepWidth == 1) return this;
-        return slidingWindow(1, stepWidth).map(new Function<List<T>, T>() {
-            @Override
-            public T apply(@NotNull List<T> list) {
-                return list.get(0);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1410,7 +1269,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<List<T>> slidingWindow(final int windowSize) {
-        return slidingWindow(windowSize, 1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1445,9 +1304,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<List<T>> slidingWindow(final int windowSize, final int stepWidth) {
-        if (windowSize <= 0) throw new IllegalArgumentException("windowSize cannot be zero or negative");
-        if (stepWidth <= 0) throw new IllegalArgumentException("stepWidth cannot be zero or negative");
-        return new Stream<List<T>>(params, new ObjSlidingWindow<T>(iterator, windowSize, stepWidth));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1460,7 +1317,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> peek(@NotNull final Consumer<? super T> action) {
-        return new Stream<T>(params, new ObjPeek<T>(iterator, action));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1485,8 +1342,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> scan(@NotNull final BiFunction<T, T, T> accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new Stream<T>(params, new ObjScan<T>(iterator, accumulator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1513,11 +1369,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public <R> Stream<R> scan(
-            @Nullable final R identity,
-            @NotNull final BiFunction<? super R, ? super T, ? extends R> accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new Stream<R>(params, new ObjScanIdentity<T, R>(iterator, identity, accumulator));
+    public <R> Stream<R> scan(@Nullable final R identity, @NotNull final BiFunction<? super R, ? super T, ? extends R> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1537,7 +1390,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> takeWhile(@NotNull final Predicate<? super T> predicate) {
-        return new Stream<T>(params, new ObjTakeWhile<T>(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1560,7 +1413,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> takeWhileIndexed(@NotNull IndexedPredicate<? super T> predicate) {
-        return takeWhileIndexed(0, 1, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1586,11 +1439,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public Stream<T> takeWhileIndexed(int from, int step,
-                                      @NotNull IndexedPredicate<? super T> predicate) {
-        return new Stream<T>(params, new ObjTakeWhileIndexed<T>(
-                new IndexedIterator<T>(from, step, iterator),
-                predicate));
+    public Stream<T> takeWhileIndexed(int from, int step, @NotNull IndexedPredicate<? super T> predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1613,7 +1463,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> takeUntil(@NotNull final Predicate<? super T> stopPredicate) {
-        return new Stream<T>(params, new ObjTakeUntil<T>(iterator, stopPredicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1638,7 +1488,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> takeUntilIndexed(@NotNull IndexedPredicate<? super T> stopPredicate) {
-        return takeUntilIndexed(0, 1, stopPredicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1666,11 +1516,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public Stream<T> takeUntilIndexed(int from, int step,
-                                      @NotNull IndexedPredicate<? super T> stopPredicate) {
-        return new Stream<T>(params, new ObjTakeUntilIndexed<T>(
-                new IndexedIterator<T>(from, step, iterator),
-                stopPredicate));
+    public Stream<T> takeUntilIndexed(int from, int step, @NotNull IndexedPredicate<? super T> stopPredicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1690,7 +1537,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> dropWhile(@NotNull final Predicate<? super T> predicate) {
-        return new Stream<T>(params, new ObjDropWhile<T>(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1713,7 +1560,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> dropWhileIndexed(@NotNull IndexedPredicate<? super T> predicate) {
-        return dropWhileIndexed(0, 1, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1739,11 +1586,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public Stream<T> dropWhileIndexed(int from, int step,
-                                      @NotNull IndexedPredicate<? super T> predicate) {
-        return new Stream<T>(params, new ObjDropWhileIndexed<T>(
-                new IndexedIterator<T>(from, step, iterator),
-                predicate));
+    public Stream<T> dropWhileIndexed(int from, int step, @NotNull IndexedPredicate<? super T> predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1768,13 +1612,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> limit(final long maxSize) {
-        if (maxSize < 0) {
-            throw new IllegalArgumentException("maxSize cannot be negative");
-        }
-        if (maxSize == 0) {
-            return Stream.empty();
-        }
-        return new Stream<T>(params, new ObjLimit<T>(iterator, maxSize));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1800,9 +1638,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> skip(final long n) {
-        if (n < 0) throw new IllegalArgumentException("n cannot be negative");
-        if (n == 0) return this;
-        return new Stream<T>(params, new ObjSkip<T>(iterator, n));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1813,9 +1649,7 @@ public class Stream<T> implements Closeable {
      * @param action  the action to be performed on each element
      */
     public void forEach(@NotNull final Consumer<? super T> action) {
-        while (iterator.hasNext()) {
-            action.accept(iterator.next());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1827,7 +1661,7 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     public void forEachIndexed(@NotNull IndexedConsumer<? super T> action) {
-        forEachIndexed(0, 1, action);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1840,13 +1674,8 @@ public class Stream<T> implements Closeable {
      * @param action  the action to be performed on each element
      * @since 1.1.6
      */
-    public void forEachIndexed(int from, int step,
-                               @NotNull IndexedConsumer<? super T> action) {
-        int index = from;
-        while (iterator.hasNext()) {
-            action.accept(index, iterator.next());
-            index += step;
-        }
+    public void forEachIndexed(int from, int step, @NotNull IndexedConsumer<? super T> action) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1868,14 +1697,8 @@ public class Stream<T> implements Closeable {
      * @return the result of the reduction
      */
     @Nullable
-    public <R> R reduce(@Nullable R identity,
-                        @NotNull BiFunction<? super R, ? super T, ? extends R> accumulator) {
-        R result = identity;
-        while (iterator.hasNext()) {
-            final T value = iterator.next();
-            result = accumulator.apply(result, value);
-        }
-        return result;
+    public <R> R reduce(@Nullable R identity, @NotNull BiFunction<? super R, ? super T, ? extends R> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1900,9 +1723,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @Nullable
-    public <R> R reduceIndexed(@Nullable R identity,
-                               @NotNull IndexedBiFunction<? super R, ? super T, ? extends R> accumulator) {
-        return reduceIndexed(0, 1, identity, accumulator);
+    public <R> R reduceIndexed(@Nullable R identity, @NotNull IndexedBiFunction<? super R, ? super T, ? extends R> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1931,17 +1753,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.6
      */
     @Nullable
-    public <R> R reduceIndexed(int from, int step,
-                               @Nullable R identity,
-                               @NotNull IndexedBiFunction<? super R, ? super T, ? extends R> accumulator) {
-        R result = identity;
-        int index = from;
-        while (iterator.hasNext()) {
-            final T value = iterator.next();
-            result = accumulator.apply(index, result, value);
-            index += step;
-        }
-        return result;
+    public <R> R reduceIndexed(int from, int step, @Nullable R identity, @NotNull IndexedBiFunction<? super R, ? super T, ? extends R> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1955,18 +1768,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Optional<T> reduce(@NotNull BiFunction<T, T, T> accumulator) {
-        boolean foundAny = false;
-        T result = null;
-        while (iterator.hasNext()) {
-            final T value = iterator.next();
-            if (!foundAny) {
-                foundAny = true;
-                result = value;
-            } else {
-                result = accumulator.apply(result, value);
-            }
-        }
-        return foundAny ? Optional.of(result) : Optional.<T>empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1979,14 +1781,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Object[] toArray() {
-        return toArray(new IntFunction<Object[]>() {
-
-            @NotNull
-            @Override
-            public Object[] apply(int value) {
-                return new Object[value];
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2000,7 +1795,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public <R> R[] toArray(@NotNull IntFunction<R[]> generator) {
-        return Operators.toArray(iterator, generator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2017,11 +1812,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public List<T> toList() {
-        final List<T> result = new ArrayList<T>();
-        while (iterator.hasNext()) {
-            result.add(iterator.next());
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2036,14 +1827,8 @@ public class Stream<T> implements Closeable {
      * @see #collect(com.annimon.stream.Collector)
      */
     @Nullable
-    public <R> R collect(@NotNull Supplier<R> supplier,
-                         @NotNull BiConsumer<R, ? super T> accumulator) {
-        final R result = supplier.get();
-        while (iterator.hasNext()) {
-            final T value = iterator.next();
-            accumulator.accept(result, value);
-        }
-        return result;
+    public <R> R collect(@NotNull Supplier<R> supplier, @NotNull BiConsumer<R, ? super T> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2059,12 +1844,7 @@ public class Stream<T> implements Closeable {
      */
     @Nullable
     public <R, A> R collect(@NotNull Collector<? super T, A, R> collector) {
-        A container = collector.supplier().get();
-        while (iterator.hasNext()) {
-            final T value = iterator.next();
-            collector.accumulator().accept(container, value);
-        }
-        return collector.finisher().apply(container);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2084,7 +1864,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Optional<T> min(@NotNull Comparator<? super T> comparator) {
-        return reduce(BinaryOperator.Util.<T>minBy(comparator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2104,7 +1884,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Optional<T> max(@NotNull Comparator<? super T> comparator) {
-        return reduce(BinaryOperator.Util.<T>maxBy(comparator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2115,12 +1895,7 @@ public class Stream<T> implements Closeable {
      * @return the count of elements
      */
     public long count() {
-        long count = 0;
-        while (iterator.hasNext()) {
-            iterator.next();
-            count++;
-        }
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2143,7 +1918,7 @@ public class Stream<T> implements Closeable {
      * @return {@code true} if any elements match the given predicate, otherwise {@code false}
      */
     public boolean anyMatch(@NotNull Predicate<? super T> predicate) {
-        return match(predicate, MATCH_ANY);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2166,7 +1941,7 @@ public class Stream<T> implements Closeable {
      * @return {@code true} if all elements match the given predicate, otherwise {@code false}
      */
     public boolean allMatch(@NotNull Predicate<? super T> predicate) {
-        return match(predicate, MATCH_ALL);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2189,7 +1964,7 @@ public class Stream<T> implements Closeable {
      * @return {@code true} if no elements match the given predicate, otherwise {@code false}
      */
     public boolean noneMatch(@NotNull Predicate<? super T> predicate) {
-        return match(predicate, MATCH_NONE);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2212,7 +1987,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Optional<IntPair<T>> findIndexed(@NotNull IndexedPredicate<? super T> predicate) {
-        return findIndexed(0, 1, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2238,18 +2013,8 @@ public class Stream<T> implements Closeable {
      * @since 1.1.8
      */
     @NotNull
-    public Optional<IntPair<T>> findIndexed(
-            int from, int step,
-            @NotNull IndexedPredicate<? super T> predicate) {
-        int index = from;
-        while (iterator.hasNext()) {
-            final T value = iterator.next();
-            if (predicate.test(index, value)) {
-                return Optional.of(new IntPair<T>(index, value));
-            }
-            index += step;
-        }
-        return Optional.empty();
+    public Optional<IntPair<T>> findIndexed(int from, int step, @NotNull IndexedPredicate<? super T> predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2263,10 +2028,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Optional<T> findFirst() {
-        if (iterator.hasNext()) {
-            return Optional.of(iterator.next());
-        }
-        return Optional.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2281,10 +2043,7 @@ public class Stream<T> implements Closeable {
      */
     @Nullable
     public T findFirstOrElse(@Nullable T other) {
-        if (iterator.hasNext()) {
-            return iterator.next();
-        }
-        return other;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2299,12 +2058,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Optional<T> findLast() {
-        return reduce(new BinaryOperator<T>() {
-            @Override
-            public T apply(T left, T right) {
-                return right;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2333,16 +2087,7 @@ public class Stream<T> implements Closeable {
      */
     @Nullable
     public T single() {
-        if (iterator.hasNext()) {
-            T singleCandidate = iterator.next();
-            if (iterator.hasNext()) {
-                throw new IllegalStateException("Stream contains more than one element");
-            } else {
-                return singleCandidate;
-            }
-        } else {
-            throw new NoSuchElementException("Stream contains no element");
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2370,16 +2115,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Optional<T> findSingle() {
-        if (iterator.hasNext()) {
-            T singleCandidate = iterator.next();
-            if (iterator.hasNext()) {
-                throw new IllegalStateException("Stream contains more than one element");
-            } else {
-                return Optional.of(singleCandidate);
-            }
-        } else {
-            return Optional.empty();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2393,9 +2129,7 @@ public class Stream<T> implements Closeable {
      */
     @NotNull
     public Stream<T> onClose(@NotNull final Runnable closeHandler) {
-        Objects.requireNonNull(closeHandler);
-        final Params newParams = Params.wrapWithCloseHandler(params, closeHandler);
-        return new Stream<T>(newParams, iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -2407,23 +2141,20 @@ public class Stream<T> implements Closeable {
      */
     @Override
     public void close() {
-        if (params != null && params.closeHandler != null) {
-            params.closeHandler.run();
-            params.closeHandler = null;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private static final int MATCH_ANY = 0;
+
     private static final int MATCH_ALL = 1;
+
     private static final int MATCH_NONE = 2;
 
     private boolean match(@NotNull Predicate<? super T> predicate, int matchKind) {
         final boolean kindAny = (matchKind == MATCH_ANY);
         final boolean kindAll = (matchKind == MATCH_ALL);
-
         while (iterator.hasNext()) {
             final T value = iterator.next();
-
             /*if (predicate.test(value)) {
                 // anyMatch -> true
                 // noneMatch -> false
@@ -2440,7 +2171,8 @@ public class Stream<T> implements Closeable {
             // !match && kindAll -> false
             final boolean match = predicate.test(value);
             if (match ^ kindAll) {
-                return kindAny && match; // (match ? kindAny : false);
+                // (match ? kindAny : false);
+                return kindAny && match;
             }
         }
         // anyMatch -> false
@@ -2448,5 +2180,5 @@ public class Stream<T> implements Closeable {
         // noneMatch -> true
         return !kindAny;
     }
-//</editor-fold>
+    //</editor-fold>
 }

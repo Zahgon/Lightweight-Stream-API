@@ -17,18 +17,15 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("WeakerAccess")
 public final class ComparatorCompat<T> implements Comparator<T> {
 
-    private static final ComparatorCompat<Comparable<Object>>
-            NATURAL_ORDER = new ComparatorCompat<Comparable<Object>>(
-                    new Comparator<Comparable<Object>>() {
-                        @Override
-                        public int compare(@NotNull Comparable<Object> o1, @NotNull Comparable<Object> o2) {
-                            return o1.compareTo(o2);
-                        }
-                    });
+    private static final ComparatorCompat<Comparable<Object>> NATURAL_ORDER = new ComparatorCompat<Comparable<Object>>(new Comparator<Comparable<Object>>() {
 
-    private static final ComparatorCompat<Comparable<Object>>
-            REVERSE_ORDER = new ComparatorCompat<Comparable<Object>>(
-                    Collections.reverseOrder());
+        @Override
+        public int compare(@NotNull Comparable<Object> o1, @NotNull Comparable<Object> o2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
+        }
+    });
+
+    private static final ComparatorCompat<Comparable<Object>> REVERSE_ORDER = new ComparatorCompat<Comparable<Object>>(Collections.reverseOrder());
 
     /**
      * Returns a comparator with natural order.
@@ -39,7 +36,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
     @NotNull
     @SuppressWarnings("unchecked")
     public static <T extends Comparable<? super T>> ComparatorCompat<T> naturalOrder() {
-        return (ComparatorCompat<T>) NATURAL_ORDER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -52,7 +49,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
     @NotNull
     @SuppressWarnings("unchecked")
     public static <T extends Comparable<? super T>> ComparatorCompat<T> reverseOrder() {
-        return (ComparatorCompat<T>) REVERSE_ORDER;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -68,7 +65,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public static <T> Comparator<T> reversed(@Nullable Comparator<T> comparator) {
-        return Collections.reverseOrder(comparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -82,19 +79,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @throws NullPointerException if {@code c1} or {@code c2} is null
      */
     @NotNull
-    public static <T> Comparator<T> thenComparing(
-            @NotNull final Comparator<? super T> c1,
-            @NotNull final Comparator<? super T> c2) {
-        Objects.requireNonNull(c1);
-        Objects.requireNonNull(c2);
-        return new Comparator<T>() {
-
-            @Override
-            public int compare(T t1, T t2) {
-                final int result = c1.compare(t1, t2);
-                return (result != 0) ? result : c2.compare(t1, t2);
-            }
-        };
+    public static <T> Comparator<T> thenComparing(@NotNull final Comparator<? super T> c1, @NotNull final Comparator<? super T> c2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -109,20 +95,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @throws NullPointerException if {@code keyExtractor} or {@code keyComparator} is null
      */
     @NotNull
-    public static <T, U> ComparatorCompat<T> comparing(
-            @NotNull final Function<? super T, ? extends U> keyExtractor,
-            @NotNull final Comparator<? super U> keyComparator) {
-        Objects.requireNonNull(keyExtractor);
-        Objects.requireNonNull(keyComparator);
-        return new ComparatorCompat<T>(new Comparator<T>() {
-
-            @Override
-            public int compare(T t1, T t2) {
-                final U u1 = keyExtractor.apply(t1);
-                final U u2 = keyExtractor.apply(t2);
-                return keyComparator.compare(u1, u2);
-            }
-        });
+    public static <T, U> ComparatorCompat<T> comparing(@NotNull final Function<? super T, ? extends U> keyExtractor, @NotNull final Comparator<? super U> keyComparator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -136,18 +110,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @throws NullPointerException if {@code keyExtractor} is null
      */
     @NotNull
-    public static <T, U extends Comparable<? super U>> ComparatorCompat<T> comparing(
-            @NotNull final Function<? super T, ? extends U> keyExtractor) {
-        Objects.requireNonNull(keyExtractor);
-        return new ComparatorCompat<T>(new Comparator<T>() {
-
-            @Override
-            public int compare(T t1, T t2) {
-                final U u1 = keyExtractor.apply(t1);
-                final U u2 = keyExtractor.apply(t2);
-                return u1.compareTo(u2);
-            }
-        });
+    public static <T, U extends Comparable<? super U>> ComparatorCompat<T> comparing(@NotNull final Function<? super T, ? extends U> keyExtractor) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -160,18 +124,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @throws NullPointerException if {@code keyExtractor} is null
      */
     @NotNull
-    public static <T> ComparatorCompat<T> comparingInt(
-            @NotNull final ToIntFunction<? super T> keyExtractor) {
-        Objects.requireNonNull(keyExtractor);
-        return new ComparatorCompat<T>(new Comparator<T>() {
-
-            @Override
-            public int compare(T t1, T t2) {
-                final int i1 = keyExtractor.applyAsInt(t1);
-                final int i2 = keyExtractor.applyAsInt(t2);
-                return Objects.compareInt(i1, i2);
-            }
-        });
+    public static <T> ComparatorCompat<T> comparingInt(@NotNull final ToIntFunction<? super T> keyExtractor) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -184,18 +138,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @throws NullPointerException if {@code keyExtractor} is null
      */
     @NotNull
-    public static <T> ComparatorCompat<T> comparingLong(
-            @NotNull final ToLongFunction<? super T> keyExtractor) {
-        Objects.requireNonNull(keyExtractor);
-        return new ComparatorCompat<T>(new Comparator<T>() {
-
-            @Override
-            public int compare(T t1, T t2) {
-                final long l1 = keyExtractor.applyAsLong(t1);
-                final long l2 = keyExtractor.applyAsLong(t2);
-                return Objects.compareLong(l1, l2);
-            }
-        });
+    public static <T> ComparatorCompat<T> comparingLong(@NotNull final ToLongFunction<? super T> keyExtractor) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -208,18 +152,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @throws NullPointerException if {@code keyExtractor} is null
      */
     @NotNull
-    public static <T> ComparatorCompat<T> comparingDouble(
-            @NotNull final ToDoubleFunction<? super T> keyExtractor) {
-        Objects.requireNonNull(keyExtractor);
-        return new ComparatorCompat<T>(new Comparator<T>() {
-
-            @Override
-            public int compare(T t1, T t2) {
-                final double d1 = keyExtractor.applyAsDouble(t1);
-                final double d2 = keyExtractor.applyAsDouble(t2);
-                return Double.compare(d1, d2);
-            }
-        });
+    public static <T> ComparatorCompat<T> comparingDouble(@NotNull final ToDoubleFunction<? super T> keyExtractor) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -231,7 +165,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public static <T> ComparatorCompat<T> nullsFirst() {
-        return nullsComparator(true, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -245,7 +179,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public static <T> ComparatorCompat<T> nullsFirst(@Nullable Comparator<? super T> comparator) {
-        return nullsComparator(true, comparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -257,7 +191,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public static <T> ComparatorCompat<T> nullsLast() {
-        return nullsComparator(false, null);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -271,23 +205,15 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public static <T> ComparatorCompat<T> nullsLast(@Nullable Comparator<? super T> comparator) {
-        return nullsComparator(false, comparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    private static <T> ComparatorCompat<T> nullsComparator(
-            final boolean nullFirst,
-            @Nullable final Comparator<? super T> comparator) {
+    private static <T> ComparatorCompat<T> nullsComparator(final boolean nullFirst, @Nullable final Comparator<? super T> comparator) {
         return new ComparatorCompat<T>(new Comparator<T>() {
 
             @Override
             public int compare(@Nullable T t1, @Nullable T t2) {
-                if (t1 == null) {
-                    return (t2 == null) ? 0 : (nullFirst ? -1 : 1);
-                } else if (t2 == null) {
-                    return nullFirst ? 1 : -1;
-                } else {
-                    return (comparator == null) ? 0 : comparator.compare(t1, t2);
-                }
+                throw new UnsupportedOperationException("STUB: not implemented");
             }
         });
     }
@@ -301,9 +227,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public static <T> ComparatorCompat<T> chain(@NotNull Comparator<T> comparator) {
-        return new ComparatorCompat<T>(comparator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 
     @NotNull
     private final Comparator<? super T> comparator;
@@ -320,7 +245,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public ComparatorCompat<T> reversed() {
-        return new ComparatorCompat<T>(Collections.reverseOrder(comparator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -332,7 +257,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public ComparatorCompat<T> thenComparing(@NotNull final Comparator<? super T> other) {
-        return new ComparatorCompat<T>(thenComparing(comparator, other));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -345,10 +270,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @return the new {@code ComparatorCompat} instance
      */
     @NotNull
-    public <U> ComparatorCompat<T> thenComparing(
-            @NotNull Function<? super T, ? extends U> keyExtractor,
-            @NotNull Comparator<? super U> keyComparator) {
-        return thenComparing(comparing(keyExtractor, keyComparator));
+    public <U> ComparatorCompat<T> thenComparing(@NotNull Function<? super T, ? extends U> keyExtractor, @NotNull Comparator<? super U> keyComparator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -360,9 +283,8 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      * @return the new {@code ComparatorCompat} instance
      */
     @NotNull
-    public <U extends Comparable<? super U>> ComparatorCompat<T> thenComparing(
-            @NotNull Function<? super T, ? extends U> keyExtractor) {
-        return thenComparing(comparing(keyExtractor));
+    public <U extends Comparable<? super U>> ComparatorCompat<T> thenComparing(@NotNull Function<? super T, ? extends U> keyExtractor) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -374,7 +296,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public ComparatorCompat<T> thenComparingInt(@NotNull ToIntFunction<? super T> keyExtractor) {
-        return thenComparing(comparingInt(keyExtractor));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -386,7 +308,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public ComparatorCompat<T> thenComparingLong(@NotNull ToLongFunction<? super T> keyExtractor) {
-        return thenComparing(comparingLong(keyExtractor));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -398,7 +320,7 @@ public final class ComparatorCompat<T> implements Comparator<T> {
      */
     @NotNull
     public ComparatorCompat<T> thenComparingDouble(@NotNull ToDoubleFunction<? super T> keyExtractor) {
-        return thenComparing(comparingDouble(keyExtractor));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -410,11 +332,11 @@ public final class ComparatorCompat<T> implements Comparator<T> {
     @NotNull
     @SuppressWarnings("unchecked")
     public Comparator<T> comparator() {
-        return (Comparator<T>) comparator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int compare(T o1, T o2) {
-        return comparator.compare(o1, o2);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

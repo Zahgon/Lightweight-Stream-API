@@ -22,7 +22,8 @@ public interface IndexedConsumer<T> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps a {@link Consumer} and returns {@code IndexedConsumer}.
@@ -32,16 +33,8 @@ public interface IndexedConsumer<T> {
          * @return a wrapped {@code IndexedConsumer}
          * @throws NullPointerException if {@code consumer} is null
          */
-        public static <T> IndexedConsumer<T> wrap(
-                @NotNull final Consumer<? super T> consumer) {
-            Objects.requireNonNull(consumer);
-            return new IndexedConsumer<T>() {
-
-                @Override
-                public void accept(int index, T t) {
-                    consumer.accept(t);
-                }
-            };
+        public static <T> IndexedConsumer<T> wrap(@NotNull final Consumer<? super T> consumer) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -60,22 +53,8 @@ public interface IndexedConsumer<T> {
          * @param c2  the {@code Consumer} for object, can be null
          * @return an {@code IndexedConsumer}
          */
-        public static <T> IndexedConsumer<T> accept(
-                @Nullable final IntConsumer c1,
-                @Nullable final Consumer<? super T> c2) {
-            return new IndexedConsumer<T>() {
-
-                @Override
-                public void accept(int index, T value) {
-                    if (c1 != null) {
-                        c1.accept(index);
-                    }
-                    if (c2 != null) {
-                        c2.accept(value);
-                    }
-                }
-            };
+        public static <T> IndexedConsumer<T> accept(@Nullable final IntConsumer c1, @Nullable final Consumer<? super T> c2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

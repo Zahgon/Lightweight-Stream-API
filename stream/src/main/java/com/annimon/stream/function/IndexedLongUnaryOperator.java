@@ -23,7 +23,8 @@ public interface IndexedLongUnaryOperator {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Wraps {@link LongUnaryOperator} and returns {@code IndexedLongUnaryOperator}.
@@ -32,15 +33,8 @@ public interface IndexedLongUnaryOperator {
          * @return a wrapped {@code IndexedLongUnaryOperator}
          * @throws NullPointerException if {@code function} is null
          */
-        public static IndexedLongUnaryOperator wrap(
-                @NotNull final LongUnaryOperator function) {
-            Objects.requireNonNull(function);
-            return new IndexedLongUnaryOperator() {
-                @Override
-                public long applyAsLong(int index, long value) {
-                    return function.applyAsLong(value);
-                }
-            };
+        public static IndexedLongUnaryOperator wrap(@NotNull final LongUnaryOperator function) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 }

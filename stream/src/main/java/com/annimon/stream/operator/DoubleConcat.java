@@ -10,12 +10,12 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleConcat extends PrimitiveExtIterator.OfDouble {
 
     private final List<? extends PrimitiveIterator.OfDouble> iterators;
+
     private final int iteratorsCount;
+
     private int iteratorIndex;
 
-    public DoubleConcat(
-            @NotNull PrimitiveIterator.OfDouble iterator1,
-            @NotNull PrimitiveIterator.OfDouble iterator2) {
+    public DoubleConcat(@NotNull PrimitiveIterator.OfDouble iterator1, @NotNull PrimitiveIterator.OfDouble iterator2) {
         iterators = Arrays.asList(iterator1, iterator2);
         iteratorsCount = 2;
         iteratorIndex = 0;
@@ -27,18 +27,8 @@ public class DoubleConcat extends PrimitiveExtIterator.OfDouble {
         iteratorIndex = 0;
     }
 
-
     @Override
     protected void nextIteration() {
-        while (iteratorIndex < iteratorsCount) {
-            PrimitiveIterator.OfDouble currentIterator = iterators.get(iteratorIndex);
-            if (currentIterator.hasNext()) {
-                next = currentIterator.nextDouble();
-                hasNext = true;
-                return;
-            }
-            iteratorIndex++;
-        }
-        hasNext = false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

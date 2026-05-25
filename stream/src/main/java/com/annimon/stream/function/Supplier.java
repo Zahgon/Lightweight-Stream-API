@@ -20,7 +20,8 @@ public interface Supplier<T> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Creates a safe {@code Supplier}.
@@ -32,9 +33,8 @@ public interface Supplier<T> {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableSupplier, java.lang.Object)
          */
-        public static <T> Supplier<T> safe(
-                @NotNull ThrowableSupplier<? extends T, Throwable> throwableSupplier) {
-            return Util.<T>safe(throwableSupplier, null);
+        public static <T> Supplier<T> safe(@NotNull ThrowableSupplier<? extends T, Throwable> throwableSupplier) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -47,22 +47,8 @@ public interface Supplier<T> {
          * @throws NullPointerException if {@code throwableSupplier} is null
          * @since 1.1.7
          */
-        public static <T> Supplier<T> safe(
-                @NotNull final ThrowableSupplier<? extends T, Throwable> throwableSupplier,
-                @Nullable final T resultIfFailed) {
-            Objects.requireNonNull(throwableSupplier);
-            return new Supplier<T>() {
-
-                @Override
-                public T get() {
-                    try {
-                        return throwableSupplier.get();
-                    } catch (Throwable ex) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static <T> Supplier<T> safe(@NotNull final ThrowableSupplier<? extends T, Throwable> throwableSupplier, @Nullable final T resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

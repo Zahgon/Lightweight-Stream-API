@@ -28,7 +28,8 @@ public interface IntFunction<R> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Creates a safe {@code IntFunction},
@@ -40,9 +41,8 @@ public interface IntFunction<R> {
          * @since 1.1.7
          * @see #safe(com.annimon.stream.function.ThrowableIntFunction, java.lang.Object)
          */
-        public static <R> IntFunction<R> safe(
-                @NotNull ThrowableIntFunction<? extends R, Throwable> throwableFunction) {
-            return Util.<R>safe(throwableFunction, null);
+        public static <R> IntFunction<R> safe(@NotNull ThrowableIntFunction<? extends R, Throwable> throwableFunction) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -55,22 +55,8 @@ public interface IntFunction<R> {
          * @throws NullPointerException if {@code throwableFunction} is null
          * @since 1.1.7
          */
-        public static <R> IntFunction<R> safe(
-                @NotNull final ThrowableIntFunction<? extends R, Throwable> throwableFunction,
-                @Nullable final R resultIfFailed) {
-            Objects.requireNonNull(throwableFunction);
-            return new IntFunction<R>() {
-
-                @Override
-                public R apply(int value) {
-                    try {
-                        return throwableFunction.apply(value);
-                    } catch (Throwable throwable) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static <R> IntFunction<R> safe(@NotNull final ThrowableIntFunction<? extends R, Throwable> throwableFunction, @Nullable final R resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

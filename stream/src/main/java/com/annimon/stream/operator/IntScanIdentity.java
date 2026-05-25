@@ -8,13 +8,12 @@ import org.jetbrains.annotations.NotNull;
 public class IntScanIdentity extends PrimitiveExtIterator.OfInt {
 
     private final PrimitiveIterator.OfInt iterator;
+
     private final int identity;
+
     private final IntBinaryOperator accumulator;
 
-    public IntScanIdentity(
-            @NotNull PrimitiveIterator.OfInt iterator,
-            int identity,
-            @NotNull IntBinaryOperator accumulator) {
+    public IntScanIdentity(@NotNull PrimitiveIterator.OfInt iterator, int identity, @NotNull IntBinaryOperator accumulator) {
         this.iterator = iterator;
         this.identity = identity;
         this.accumulator = accumulator;
@@ -22,16 +21,6 @@ public class IntScanIdentity extends PrimitiveExtIterator.OfInt {
 
     @Override
     protected void nextIteration() {
-        if (!isInit) {
-            // Return identity
-            hasNext = true;
-            next = identity;
-            return;
-        }
-        hasNext = iterator.hasNext();
-        if (hasNext) {
-            final int current = iterator.nextInt();
-            next = accumulator.applyAsInt(next, current);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -12,26 +12,18 @@ import org.jetbrains.annotations.Nullable;
 public class ObjSorted<T> extends LsaExtIterator<T> {
 
     private final Iterator<? extends T> iterator;
+
     private final Comparator<? super T> comparator;
+
     private Iterator<T> sortedIterator;
 
-    public ObjSorted(
-            @NotNull Iterator<? extends T> iterator,
-            @Nullable Comparator<? super T> comparator) {
+    public ObjSorted(@NotNull Iterator<? extends T> iterator, @Nullable Comparator<? super T> comparator) {
         this.iterator = iterator;
         this.comparator = comparator;
     }
 
     @Override
     protected void nextIteration() {
-        if (!isInit) {
-            final List<T> list = Operators.<T>toList(iterator);
-            Collections.sort(list, comparator);
-            sortedIterator = list.iterator();
-        }
-        hasNext = sortedIterator.hasNext();
-        if (hasNext) {
-            next = sortedIterator.next();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

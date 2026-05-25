@@ -8,22 +8,21 @@ import org.jetbrains.annotations.NotNull;
 public class DoubleMapIndexed extends PrimitiveIterator.OfDouble {
 
     private final PrimitiveIndexedIterator.OfDouble iterator;
+
     private final IndexedDoubleUnaryOperator mapper;
 
-    public DoubleMapIndexed(
-            @NotNull PrimitiveIndexedIterator.OfDouble iterator,
-            @NotNull IndexedDoubleUnaryOperator mapper) {
+    public DoubleMapIndexed(@NotNull PrimitiveIndexedIterator.OfDouble iterator, @NotNull IndexedDoubleUnaryOperator mapper) {
         this.iterator = iterator;
         this.mapper = mapper;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public double nextDouble() {
-        return mapper.applyAsDouble(iterator.getIndex(), iterator.nextDouble());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -10,32 +10,26 @@ import org.jetbrains.annotations.NotNull;
 public class ObjChunkBy<T, K> extends LsaIterator<List<T>> {
 
     private final Iterator<? extends T> iterator;
+
     private final Function<? super T, ? extends K> classifier;
+
     private T next;
+
     private boolean peekedNext;
 
-    public ObjChunkBy(
-            @NotNull Iterator<? extends T> iterator,
-            @NotNull Function<? super T, ? extends K> classifier) {
+    public ObjChunkBy(@NotNull Iterator<? extends T> iterator, @NotNull Function<? super T, ? extends K> classifier) {
         this.iterator = iterator;
         this.classifier = classifier;
     }
 
     @Override
     public boolean hasNext() {
-        return peekedNext || iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public List<T> nextIteration() {
-        final K key = classifier.apply(peek());
-
-        final List<T> list = new ArrayList<T>();
-        do {
-            list.add(takeNext());
-        } while ( iterator.hasNext() && key.equals(classifier.apply(peek())) );
-
-        return list;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private T takeNext() {

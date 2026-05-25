@@ -19,7 +19,9 @@ import org.jetbrains.annotations.Nullable;
 public final class OptionalBoolean {
 
     private static final OptionalBoolean EMPTY = new OptionalBoolean();
+
     private static final OptionalBoolean TRUE = new OptionalBoolean(true);
+
     private static final OptionalBoolean FALSE = new OptionalBoolean(false);
 
     /**
@@ -29,7 +31,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public static OptionalBoolean empty() {
-        return EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -40,7 +42,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public static OptionalBoolean of(boolean value) {
-        return value ? TRUE : FALSE;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -52,10 +54,11 @@ public final class OptionalBoolean {
      */
     @NotNull
     public static OptionalBoolean ofNullable(@Nullable Boolean value) {
-        return value == null ? EMPTY : of(value);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private final boolean isPresent;
+
     private final boolean value;
 
     private OptionalBoolean() {
@@ -79,7 +82,7 @@ public final class OptionalBoolean {
      * @see #orElseThrow()
      */
     public boolean getAsBoolean() {
-        return orElseThrow();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,7 +91,7 @@ public final class OptionalBoolean {
      * @return {@code true} if a value present, {@code false} otherwise
      */
     public boolean isPresent() {
-        return isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -98,7 +101,7 @@ public final class OptionalBoolean {
      * @since 1.2.1
      */
     public boolean isEmpty() {
-        return !isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -108,9 +111,7 @@ public final class OptionalBoolean {
      * @throws NullPointerException if value is present and {@code consumer} is null
      */
     public void ifPresent(@NotNull BooleanConsumer consumer) {
-        if (isPresent) {
-            consumer.accept(value);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -123,11 +124,7 @@ public final class OptionalBoolean {
      *         or no value is present and the given empty-based action is null.
      */
     public void ifPresentOrElse(@NotNull BooleanConsumer consumer, @NotNull Runnable emptyAction) {
-        if (isPresent) {
-            consumer.accept(value);
-        } else {
-            emptyAction.run();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -140,8 +137,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public OptionalBoolean executeIfPresent(@NotNull BooleanConsumer consumer) {
-        ifPresent(consumer);
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -152,10 +148,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public OptionalBoolean executeIfAbsent(@NotNull Runnable action) {
-        if (!isPresent()) {
-            action.run();
-        }
-        return this;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -169,8 +162,7 @@ public final class OptionalBoolean {
      */
     @Nullable
     public <R> R custom(@NotNull Function<OptionalBoolean, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -182,8 +174,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public OptionalBoolean filter(@NotNull BooleanPredicate predicate) {
-        if (!isPresent()) return this;
-        return predicate.test(value) ? this : OptionalBoolean.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -196,7 +187,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public OptionalBoolean filterNot(@NotNull BooleanPredicate predicate) {
-        return filter(BooleanPredicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -210,11 +201,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public OptionalBoolean map(@NotNull BooleanPredicate mapper) {
-        if (!isPresent()) {
-            return empty();
-        }
-        Objects.requireNonNull(mapper);
-        return OptionalBoolean.of(mapper.test(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -229,11 +216,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public <U> Optional<U> mapToObj(@NotNull BooleanFunction<U> mapper) {
-        if (!isPresent()) {
-            return Optional.empty();
-        }
-        Objects.requireNonNull(mapper);
-        return Optional.ofNullable(mapper.apply(value));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -248,9 +231,7 @@ public final class OptionalBoolean {
      */
     @NotNull
     public OptionalBoolean or(@NotNull Supplier<OptionalBoolean> supplier) {
-        if (isPresent()) return this;
-        Objects.requireNonNull(supplier);
-        return Objects.requireNonNull(supplier.get());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -260,7 +241,7 @@ public final class OptionalBoolean {
      * @return the value, if present, otherwise {@code other}
      */
     public boolean orElse(boolean other) {
-        return isPresent ? value : other;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -271,7 +252,7 @@ public final class OptionalBoolean {
      * @throws NullPointerException if value is not present and {@code other} is null
      */
     public boolean orElseGet(@NotNull BooleanSupplier other) {
-        return isPresent ? value : other.getAsBoolean();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -282,10 +263,7 @@ public final class OptionalBoolean {
      * @since 1.2.0
      */
     public boolean orElseThrow() {
-        if (!isPresent) {
-            throw new NoSuchElementException("No value present");
-        }
-        return value;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -297,36 +275,22 @@ public final class OptionalBoolean {
      * @throws X if inner value is not present
      */
     public <X extends Throwable> boolean orElseThrow(@NotNull Supplier<X> exceptionSupplier) throws X {
-        if (isPresent) {
-            return value;
-        } else {
-            throw exceptionSupplier.get();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof OptionalBoolean)) {
-            return false;
-        }
-
-        OptionalBoolean other = (OptionalBoolean) obj;
-        return (isPresent && other.isPresent)
-                ? value == other.value
-                : isPresent == other.isPresent;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        return isPresent ? (value ? 1231 : 1237) : 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @NotNull
     @Override
     public String toString() {
-        return isPresent
-                ? (value ? "OptionalBoolean[true]" : "OptionalBoolean[false]")
-                : "OptionalBoolean.empty";
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

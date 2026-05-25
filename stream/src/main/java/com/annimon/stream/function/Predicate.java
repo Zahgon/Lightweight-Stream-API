@@ -21,7 +21,8 @@ public interface Predicate<T> {
 
     class Util {
 
-        private Util() { }
+        private Util() {
+        }
 
         /**
          * Applies logical AND to predicates.
@@ -32,17 +33,8 @@ public interface Predicate<T> {
          * @return a composed {@code Predicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static <T> Predicate<T> and(
-                @NotNull final Predicate<? super T> p1,
-                @NotNull final Predicate<? super T> p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new Predicate<T>() {
-                @Override
-                public boolean test(T value) {
-                    return p1.test(value) && p2.test(value);
-                }
-            };
+        public static <T> Predicate<T> and(@NotNull final Predicate<? super T> p1, @NotNull final Predicate<? super T> p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -56,25 +48,8 @@ public interface Predicate<T> {
          * @throws NullPointerException if any of predicates are null
          * @since 1.2.1
          */
-        public static <T> Predicate<T> and(
-                @NotNull final Predicate<? super T> p1,
-                @NotNull final Predicate<? super T> p2,
-                @NotNull final Predicate<? super T>... rest) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            Objects.requireNonNull(rest, "rest");
-            Objects.requireNonNullElements(Arrays.asList(rest));
-            return new Predicate<T>() {
-                @Override
-                public boolean test(T value) {
-                    boolean result = p1.test(value) && p2.test(value);
-                    if (!result) return false;
-                    for (Predicate<? super T> p : rest) {
-                        if (!p.test(value)) return false;
-                    }
-                    return true;
-                }
-            };
+        public static <T> Predicate<T> and(@NotNull final Predicate<? super T> p1, @NotNull final Predicate<? super T> p2, @NotNull final Predicate<? super T>... rest) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -86,17 +61,8 @@ public interface Predicate<T> {
          * @return a composed {@code Predicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static <T> Predicate<T> or(
-                @NotNull final Predicate<? super T> p1,
-                @NotNull final Predicate<? super T> p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new Predicate<T>() {
-                @Override
-                public boolean test(T value) {
-                    return p1.test(value) || p2.test(value);
-                }
-            };
+        public static <T> Predicate<T> or(@NotNull final Predicate<? super T> p1, @NotNull final Predicate<? super T> p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -109,25 +75,8 @@ public interface Predicate<T> {
          * @return a composed {@code Predicate}
          * @throws NullPointerException if any of predicates are null
          */
-        public static <T> Predicate<T> or(
-                @NotNull final Predicate<? super T> p1,
-                @NotNull final Predicate<? super T> p2,
-                @NotNull final Predicate<? super T>... rest) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            Objects.requireNonNull(rest, "rest");
-            Objects.requireNonNullElements(Arrays.asList(rest));
-            return new Predicate<T>() {
-                @Override
-                public boolean test(T value) {
-                    boolean result = p1.test(value) || p2.test(value);
-                    if (result) return true;
-                    for (Predicate<? super T> p : rest) {
-                        if (p.test(value)) return true;
-                    }
-                    return false;
-                }
-            };
+        public static <T> Predicate<T> or(@NotNull final Predicate<? super T> p1, @NotNull final Predicate<? super T> p2, @NotNull final Predicate<? super T>... rest) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -139,17 +88,8 @@ public interface Predicate<T> {
          * @return a composed {@code Predicate}
          * @throws NullPointerException if {@code p1} or {@code p2} is null
          */
-        public static <T> Predicate<T> xor(
-                @NotNull final Predicate<? super T> p1,
-                @NotNull final Predicate<? super T> p2) {
-            Objects.requireNonNull(p1, "predicate1");
-            Objects.requireNonNull(p2, "predicate2");
-            return new Predicate<T>() {
-                @Override
-                public boolean test(T value) {
-                    return p1.test(value) ^ p2.test(value);
-                }
-            };
+        public static <T> Predicate<T> xor(@NotNull final Predicate<? super T> p1, @NotNull final Predicate<? super T> p2) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -161,13 +101,7 @@ public interface Predicate<T> {
          * @throws NullPointerException if {@code p1} is null
          */
         public static <T> Predicate<T> negate(@NotNull final Predicate<? super T> predicate) {
-            Objects.requireNonNull(predicate);
-            return new Predicate<T>() {
-                @Override
-                public boolean test(T value) {
-                    return !predicate.test(value);
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -177,12 +111,7 @@ public interface Predicate<T> {
          * @return {@code Predicate} that checks value to be not null
          */
         public static <T> Predicate<T> notNull() {
-            return new Predicate<T>() {
-                @Override
-                public boolean test(T value) {
-                    return value != null;
-                }
-            };
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -192,9 +121,8 @@ public interface Predicate<T> {
          * @param throwablePredicate  the predicate that may throw an exception
          * @return a {@code Predicate} or {@code false} if exception was thrown
          */
-        public static <T> Predicate<T> safe(
-                @NotNull ThrowablePredicate<? super T, Throwable> throwablePredicate) {
-            return safe(throwablePredicate, false);
+        public static <T> Predicate<T> safe(@NotNull ThrowablePredicate<? super T, Throwable> throwablePredicate) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         /**
@@ -206,22 +134,8 @@ public interface Predicate<T> {
          * @return a {@code Predicate} or {@code resultIfFailed}
          * @throws NullPointerException if {@code throwablePredicate} is null
          */
-        public static <T> Predicate<T> safe(
-                @NotNull final ThrowablePredicate<? super T, Throwable> throwablePredicate,
-                final boolean resultIfFailed) {
-            Objects.requireNonNull(throwablePredicate);
-            return new Predicate<T>() {
-
-                @Override
-                public boolean test(T value) {
-                    try {
-                        return throwablePredicate.test(value);
-                    } catch (Throwable throwable) {
-                        return resultIfFailed;
-                    }
-                }
-            };
+        public static <T> Predicate<T> safe(@NotNull final ThrowablePredicate<? super T, Throwable> throwablePredicate, final boolean resultIfFailed) {
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
-
     }
 }

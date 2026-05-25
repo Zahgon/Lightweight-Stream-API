@@ -9,6 +9,7 @@ package com.annimon.stream;
 public final class IntPair<T> {
 
     private final int first;
+
     private final T second;
 
     public IntPair(int first, T second) {
@@ -22,7 +23,7 @@ public final class IntPair<T> {
      * @return a first element
      */
     public int getFirst() {
-        return first;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -31,32 +32,21 @@ public final class IntPair<T> {
      * @return a second element
      */
     public T getSecond() {
-        return second;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.first;
-        hash = 97 * hash + (this.second != null ? this.second.hashCode() : 0);
-        return hash;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final IntPair<?> other = (IntPair<?>) obj;
-        if (this.first != other.first)
-            return false;
-        return !(this.second != other.second &&
-                (this.second == null || !this.second.equals(other.second)));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return "IntPair[" + first + ", " + second + ']';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

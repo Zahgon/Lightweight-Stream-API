@@ -32,12 +32,12 @@ public final class DoubleStream implements Closeable {
 
         @Override
         public boolean hasNext() {
-            return false;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public double nextDouble() {
-            return 0d;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     });
 
@@ -48,7 +48,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public static DoubleStream empty() {
-        return EMPTY;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -60,8 +60,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public static DoubleStream of(@NotNull PrimitiveIterator.OfDouble iterator) {
-        Objects.requireNonNull(iterator);
-        return new DoubleStream(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -73,11 +72,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public static DoubleStream of(@NotNull final double... values) {
-        Objects.requireNonNull(values);
-        if (values.length == 0) {
-            return DoubleStream.empty();
-        }
-        return new DoubleStream(new DoubleArray(values));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -88,7 +83,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public static DoubleStream of(final double t) {
-        return new DoubleStream(new DoubleArray(new double[] { t }));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -100,8 +95,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public static DoubleStream generate(@NotNull final DoubleSupplier s) {
-        Objects.requireNonNull(s);
-        return new DoubleStream(new DoubleGenerate(s));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -127,10 +121,8 @@ public final class DoubleStream implements Closeable {
      * @throws NullPointerException if {@code f} is null
      */
     @NotNull
-    public static DoubleStream iterate(final double seed,
-                                       @NotNull final DoubleUnaryOperator f) {
-        Objects.requireNonNull(f);
-        return new DoubleStream(new DoubleIterate(seed, f));
+    public static DoubleStream iterate(final double seed, @NotNull final DoubleUnaryOperator f) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -153,12 +145,8 @@ public final class DoubleStream implements Closeable {
      * @since 1.1.5
      */
     @NotNull
-    public static DoubleStream iterate(
-            final double seed,
-            @NotNull final DoublePredicate predicate,
-            @NotNull final DoubleUnaryOperator op) {
-        Objects.requireNonNull(predicate);
-        return iterate(seed, op).takeWhile(predicate);
+    public static DoubleStream iterate(final double seed, @NotNull final DoublePredicate predicate, @NotNull final DoubleUnaryOperator op) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -177,13 +165,8 @@ public final class DoubleStream implements Closeable {
      * @throws NullPointerException if {@code a} or {@code b} is null
      */
     @NotNull
-    public static DoubleStream concat(
-            @NotNull final DoubleStream a,
-            @NotNull final DoubleStream b) {
-        Objects.requireNonNull(a);
-        Objects.requireNonNull(b);
-        DoubleStream result = new DoubleStream(new DoubleConcat(a.iterator, b.iterator));
-        return result.onClose(Compose.closeables(a, b));
+    public static DoubleStream concat(@NotNull final DoubleStream a, @NotNull final DoubleStream b) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -207,31 +190,12 @@ public final class DoubleStream implements Closeable {
      * @since 1.2.2
      */
     @NotNull
-    public static DoubleStream concat(
-            @NotNull final DoubleStream a,
-            @NotNull final DoubleStream b,
-            @NotNull final DoubleStream... rest) {
-        Objects.requireNonNull(a);
-        Objects.requireNonNull(b);
-        Objects.requireNonNull(rest);
-
-        final List<PrimitiveIterator.OfDouble> iterators =
-                new ArrayList<PrimitiveIterator.OfDouble>(rest.length + 2);
-        final List<Closeable> closeables =
-                new ArrayList<Closeable>(rest.length + 2);
-        Collections.addAll(iterators, a.iterator, b.iterator);
-        Collections.addAll(closeables, a, b);
-        for (final DoubleStream stream : rest) {
-            iterators.add(stream.iterator);
-            closeables.add(stream);
-        }
-
-        DoubleStream result = new DoubleStream(new DoubleConcat(iterators));
-        return result.onClose(Compose.closeables(closeables));
+    public static DoubleStream concat(@NotNull final DoubleStream a, @NotNull final DoubleStream b, @NotNull final DoubleStream... rest) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-
     private final PrimitiveIterator.OfDouble iterator;
+
     private final Params params;
 
     private DoubleStream(PrimitiveIterator.OfDouble iterator) {
@@ -249,7 +213,7 @@ public final class DoubleStream implements Closeable {
      * @return internal {@code DoubleStream} iterator.
      */
     public PrimitiveIterator.OfDouble iterator() {
-        return iterator;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -330,8 +294,7 @@ public final class DoubleStream implements Closeable {
      */
     @Nullable
     public <R> R custom(@NotNull final Function<DoubleStream, R> function) {
-        Objects.requireNonNull(function);
-        return function.apply(this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -345,7 +308,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public Stream<Double> boxed() {
-        return new Stream<Double>(params, iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -367,7 +330,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream prepend(@NotNull DoubleStream stream) {
-        return DoubleStream.concat(stream, this);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -389,7 +352,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream append(@NotNull DoubleStream stream) {
-        return DoubleStream.concat(this, stream);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -409,7 +372,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream filter(@NotNull final DoublePredicate predicate) {
-        return new DoubleStream(params, new DoubleFilter(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -433,7 +396,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream filterIndexed(@NotNull IndexedDoublePredicate predicate) {
-        return filterIndexed(0, 1, predicate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -460,11 +423,8 @@ public final class DoubleStream implements Closeable {
      * @since 1.2.1
      */
     @NotNull
-    public DoubleStream filterIndexed(int from, int step,
-                                      @NotNull IndexedDoublePredicate predicate) {
-        return new DoubleStream(params, new DoubleFilterIndexed(
-                new PrimitiveIndexedIterator.OfDouble(from, step, iterator),
-                predicate));
+    public DoubleStream filterIndexed(int from, int step, @NotNull IndexedDoublePredicate predicate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -477,7 +437,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream filterNot(@NotNull final DoublePredicate predicate) {
-        return filter(DoublePredicate.Util.negate(predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -499,7 +459,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream map(@NotNull final DoubleUnaryOperator mapper) {
-        return new DoubleStream(params, new DoubleMap(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -522,7 +482,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream mapIndexed(@NotNull IndexedDoubleUnaryOperator mapper) {
-        return mapIndexed(0, 1, mapper);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -548,11 +508,8 @@ public final class DoubleStream implements Closeable {
      * @since 1.2.1
      */
     @NotNull
-    public DoubleStream mapIndexed(int from, int step,
-                                   @NotNull IndexedDoubleUnaryOperator mapper) {
-        return new DoubleStream(params, new DoubleMapIndexed(
-                new PrimitiveIndexedIterator.OfDouble(from, step, iterator),
-                mapper));
+    public DoubleStream mapIndexed(int from, int step, @NotNull IndexedDoubleUnaryOperator mapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -567,7 +524,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public <R> Stream<R> mapToObj(@NotNull final DoubleFunction<? extends R> mapper) {
-        return new Stream<R>(params, new DoubleMapToObj<R>(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -581,7 +538,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public IntStream mapToInt(@NotNull final DoubleToIntFunction mapper) {
-        return new IntStream(params, new DoubleMapToInt(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -595,7 +552,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public LongStream mapToLong(@NotNull final DoubleToLongFunction mapper) {
-        return new LongStream(params, new DoubleMapToLong(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -618,7 +575,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream flatMap(@NotNull final DoubleFunction<? extends DoubleStream> mapper) {
-        return new DoubleStream(params, new DoubleFlatMap(iterator, mapper));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -636,14 +593,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream mapMulti(@NotNull final DoubleMapMultiConsumer mapper) {
-        return flatMap(new DoubleFunction<DoubleStream>() {
-            @Override
-            public DoubleStream apply(double value) {
-                SpinedBuffer.OfDouble buffer = new SpinedBuffer.OfDouble();
-                mapper.accept(value, buffer);
-                return DoubleStream.of(buffer.iterator());
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -653,6 +603,7 @@ public final class DoubleStream implements Closeable {
      * @see #mapMulti(com.annimon.stream.DoubleStream.DoubleMapMultiConsumer)
      */
     public interface DoubleMapMultiConsumer {
+
         /**
          * Replaces the given {@code value} with zero or more values
          * by feeding the mapped values to the {@code consumer} consumer.
@@ -678,7 +629,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream distinct() {
-        return boxed().distinct().mapToDouble(UNBOX_FUNCTION);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -696,7 +647,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream sorted() {
-        return new DoubleStream(params, new DoubleSorted(iterator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -717,7 +668,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream sorted(@Nullable Comparator<Double> comparator) {
-        return boxed().sorted(comparator).mapToDouble(UNBOX_FUNCTION);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -739,9 +690,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream sample(final int stepWidth) {
-        if (stepWidth <= 0) throw new IllegalArgumentException("stepWidth cannot be zero or negative");
-        if (stepWidth == 1) return this;
-        return new DoubleStream(params, new DoubleSample(iterator, stepWidth));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -754,7 +703,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream peek(@NotNull final DoubleConsumer action) {
-        return new DoubleStream(params, new DoublePeek(iterator, action));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -779,8 +728,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream scan(@NotNull final DoubleBinaryOperator accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new DoubleStream(params, new DoubleScan(iterator, accumulator));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -806,10 +754,8 @@ public final class DoubleStream implements Closeable {
      * @since 1.1.6
      */
     @NotNull
-    public DoubleStream scan(final double identity,
-                             @NotNull final DoubleBinaryOperator accumulator) {
-        Objects.requireNonNull(accumulator);
-        return new DoubleStream(params, new DoubleScanIdentity(iterator, identity, accumulator));
+    public DoubleStream scan(final double identity, @NotNull final DoubleBinaryOperator accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -829,7 +775,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream takeWhile(@NotNull final DoublePredicate predicate) {
-        return new DoubleStream(params, new DoubleTakeWhile(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -852,7 +798,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream takeUntil(@NotNull final DoublePredicate stopPredicate) {
-        return new DoubleStream(params, new DoubleTakeUntil(iterator, stopPredicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -872,7 +818,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream dropWhile(@NotNull final DoublePredicate predicate) {
-        return new DoubleStream(params, new DoubleDropWhile(iterator, predicate));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -898,9 +844,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream limit(final long maxSize) {
-        if (maxSize < 0) throw new IllegalArgumentException("maxSize cannot be negative");
-        if (maxSize == 0) return DoubleStream.empty();
-        return new DoubleStream(params, new DoubleLimit(iterator, maxSize));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -927,9 +871,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream skip(final long n) {
-        if (n < 0) throw new IllegalArgumentException("n cannot be negative");
-        if (n == 0) return this;
-        return new DoubleStream(params, new DoubleSkip(iterator, n));
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -940,9 +882,7 @@ public final class DoubleStream implements Closeable {
      * @param action  the action to be performed on each element
      */
     public void forEach(@NotNull DoubleConsumer action) {
-        while (iterator.hasNext()) {
-            action.accept(iterator.nextDouble());
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -954,7 +894,7 @@ public final class DoubleStream implements Closeable {
      * @since 1.2.1
      */
     public void forEachIndexed(@NotNull IndexedDoubleConsumer action) {
-        forEachIndexed(0, 1, action);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -967,13 +907,8 @@ public final class DoubleStream implements Closeable {
      * @param action  the action to be performed on each element
      * @since 1.2.1
      */
-    public void forEachIndexed(int from, int step,
-                               @NotNull IndexedDoubleConsumer action) {
-        int index = from;
-        while (iterator.hasNext()) {
-            action.accept(index, iterator.nextDouble());
-            index += step;
-        }
+    public void forEachIndexed(int from, int step, @NotNull IndexedDoubleConsumer action) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1004,12 +939,7 @@ public final class DoubleStream implements Closeable {
      * @see #max()
      */
     public double reduce(double identity, @NotNull DoubleBinaryOperator accumulator) {
-        double result = identity;
-        while (iterator.hasNext()) {
-            final double value = iterator.nextDouble();
-            result = accumulator.applyAsDouble(result, value);
-        }
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1027,18 +957,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public OptionalDouble reduce(@NotNull DoubleBinaryOperator accumulator) {
-        boolean foundAny = false;
-        double result = 0;
-        while (iterator.hasNext()) {
-            final double value = iterator.nextDouble();
-            if (!foundAny) {
-                foundAny = true;
-                result = value;
-            } else {
-                result = accumulator.applyAsDouble(result, value);
-            }
-        }
-        return foundAny ? OptionalDouble.of(result) : OptionalDouble.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1050,7 +969,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public double[] toArray() {
-        return Operators.toDoubleArray(iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1065,14 +984,8 @@ public final class DoubleStream implements Closeable {
      * @see Stream#collect(com.annimon.stream.function.Supplier, com.annimon.stream.function.BiConsumer)
      */
     @Nullable
-    public <R> R collect(@NotNull Supplier<R> supplier,
-                         @NotNull ObjDoubleConsumer<R> accumulator) {
-        final R result = supplier.get();
-        while (iterator.hasNext()) {
-            final double value = iterator.nextDouble();
-            accumulator.accept(result, value);
-        }
-        return result;
+    public <R> R collect(@NotNull Supplier<R> supplier, @NotNull ObjDoubleConsumer<R> accumulator) {
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1081,11 +994,7 @@ public final class DoubleStream implements Closeable {
      * @return the sum of elements in this stream
      */
     public double sum() {
-        double sum = 0;
-        while (iterator.hasNext()) {
-            sum += iterator.nextDouble();
-        }
-        return sum;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1098,12 +1007,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public OptionalDouble min() {
-        return reduce(new DoubleBinaryOperator() {
-            @Override
-            public double applyAsDouble(double left, double right) {
-                return Math.min(left, right);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1116,12 +1020,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public OptionalDouble max() {
-        return reduce(new DoubleBinaryOperator() {
-            @Override
-            public double applyAsDouble(double left, double right) {
-                return Math.max(left, right);
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1132,12 +1031,7 @@ public final class DoubleStream implements Closeable {
      * @return the count of elements in this stream
      */
     public long count() {
-        long count = 0;
-        while (iterator.hasNext()) {
-            iterator.nextDouble();
-            count++;
-        }
-        return count;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1149,14 +1043,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public OptionalDouble average() {
-        long count = 0;
-        double sum = 0d;
-        while (iterator.hasNext()) {
-            sum += iterator.nextDouble();
-            count++;
-        }
-        if (count == 0) return OptionalDouble.empty();
-        return OptionalDouble.of(sum / (double) count);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1183,11 +1070,7 @@ public final class DoubleStream implements Closeable {
      *         predicate, otherwise {@code false}
      */
     public boolean anyMatch(@NotNull DoublePredicate predicate) {
-        while (iterator.hasNext()) {
-            if (predicate.test(iterator.nextDouble()))
-                return true;
-        }
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1214,11 +1097,7 @@ public final class DoubleStream implements Closeable {
      *         provided predicate or the stream is empty, otherwise {@code false}
      */
     public boolean allMatch(@NotNull DoublePredicate predicate) {
-        while (iterator.hasNext()) {
-            if (!predicate.test(iterator.nextDouble()))
-                return false;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1245,11 +1124,7 @@ public final class DoubleStream implements Closeable {
      *         provided predicate or the stream is empty, otherwise {@code false}
      */
     public boolean noneMatch(@NotNull DoublePredicate predicate) {
-        while (iterator.hasNext()) {
-            if (predicate.test(iterator.nextDouble()))
-                return false;
-        }
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1263,10 +1138,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public OptionalDouble findFirst() {
-        if (iterator.hasNext()) {
-            return OptionalDouble.of(iterator.nextDouble());
-        }
-        return OptionalDouble.empty();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1280,11 +1152,7 @@ public final class DoubleStream implements Closeable {
      * @since 1.2.2
      */
     public double findFirstOrElse(double other) {
-        if (iterator.hasNext()) {
-            return iterator.nextDouble();
-        } else {
-            return other;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1299,12 +1167,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public OptionalDouble findLast() {
-        return reduce(new DoubleBinaryOperator() {
-            @Override
-            public double applyAsDouble(double left, double right) {
-                return right;
-            }
-        });
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1331,15 +1194,7 @@ public final class DoubleStream implements Closeable {
      * @throws IllegalStateException if stream contains more than one element
      */
     public double single() {
-        if (!iterator.hasNext()) {
-            throw new NoSuchElementException("DoubleStream contains no element");
-        }
-
-        final double singleCandidate = iterator.nextDouble();
-        if (iterator.hasNext()) {
-            throw new IllegalStateException("DoubleStream contains more than one element");
-        }
-        return singleCandidate;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1367,15 +1222,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public OptionalDouble findSingle() {
-        if (!iterator.hasNext()) {
-            return OptionalDouble.empty();
-        }
-
-        final double singleCandidate = iterator.nextDouble();
-        if (iterator.hasNext()) {
-            throw new IllegalStateException("DoubleStream contains more than one element");
-        }
-        return OptionalDouble.of(singleCandidate);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1389,9 +1236,7 @@ public final class DoubleStream implements Closeable {
      */
     @NotNull
     public DoubleStream onClose(@NotNull final Runnable closeHandler) {
-        Objects.requireNonNull(closeHandler);
-        final Params newParams = Params.wrapWithCloseHandler(params, closeHandler);
-        return new DoubleStream(newParams, iterator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -1403,17 +1248,14 @@ public final class DoubleStream implements Closeable {
      */
     @Override
     public void close() {
-        if (params != null && params.closeHandler != null) {
-            params.closeHandler.run();
-            params.closeHandler = null;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-
     private static final ToDoubleFunction<Double> UNBOX_FUNCTION = new ToDoubleFunction<Double>() {
+
         @Override
         public double applyAsDouble(Double t) {
-            return t;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     };
 }

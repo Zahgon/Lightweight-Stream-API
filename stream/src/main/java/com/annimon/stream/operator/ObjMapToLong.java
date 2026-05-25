@@ -8,22 +8,21 @@ import org.jetbrains.annotations.NotNull;
 public class ObjMapToLong<T> extends PrimitiveIterator.OfLong {
 
     private final Iterator<? extends T> iterator;
+
     private final ToLongFunction<? super T> mapper;
 
-    public ObjMapToLong(
-            @NotNull Iterator<? extends T> iterator,
-            @NotNull ToLongFunction<? super T> mapper) {
+    public ObjMapToLong(@NotNull Iterator<? extends T> iterator, @NotNull ToLongFunction<? super T> mapper) {
         this.iterator = iterator;
         this.mapper = mapper;
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        return mapper.applyAsLong(iterator.next());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 public class LongIterate extends PrimitiveIterator.OfLong {
 
     private final LongUnaryOperator op;
+
     private long current;
 
     public LongIterate(long seed, @NotNull LongUnaryOperator f) {
@@ -16,13 +17,11 @@ public class LongIterate extends PrimitiveIterator.OfLong {
 
     @Override
     public boolean hasNext() {
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public long nextLong() {
-        final long old = current;
-        current = op.applyAsLong(current);
-        return old;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

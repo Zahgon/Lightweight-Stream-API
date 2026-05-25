@@ -7,14 +7,17 @@ package com.annimon.stream.iterator;
  */
 public final class PrimitiveIndexedIterator {
 
-    private PrimitiveIndexedIterator() { }
+    private PrimitiveIndexedIterator() {
+    }
 
     public static class OfInt extends PrimitiveIterator.OfInt {
 
         private final PrimitiveIterator.OfInt iterator;
+
         private final int step;
+
         private int index;
-        
+
         public OfInt(PrimitiveIterator.OfInt iterator) {
             this(0, 1, iterator);
         }
@@ -26,28 +29,28 @@ public final class PrimitiveIndexedIterator {
         }
 
         public int getIndex() {
-            return index;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean hasNext() {
-            return iterator.hasNext();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public int nextInt() {
-            final int result = iterator.next();
-            index += step;
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
     public static class OfLong extends PrimitiveIterator.OfLong {
 
         private final PrimitiveIterator.OfLong iterator;
+
         private final int step;
+
         private int index;
-        
+
         public OfLong(PrimitiveIterator.OfLong iterator) {
             this(0, 1, iterator);
         }
@@ -57,28 +60,28 @@ public final class PrimitiveIndexedIterator {
             this.step = step;
             index = start;
         }
-        
+
         public int getIndex() {
-            return index;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean hasNext() {
-            return iterator.hasNext();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public long nextLong() {
-            final long result = iterator.next();
-            index += step;
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
 
     public static class OfDouble extends PrimitiveIterator.OfDouble {
 
         private final PrimitiveIterator.OfDouble iterator;
+
         private final int step;
+
         private int index;
 
         public OfDouble(PrimitiveIterator.OfDouble iterator) {
@@ -92,20 +95,17 @@ public final class PrimitiveIndexedIterator {
         }
 
         public int getIndex() {
-            return index;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public boolean hasNext() {
-            return iterator.hasNext();
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
 
         @Override
         public double nextDouble() {
-            final double result = iterator.next();
-            index += step;
-            return result;
+            throw new UnsupportedOperationException("STUB: not implemented");
         }
     }
-
 }
